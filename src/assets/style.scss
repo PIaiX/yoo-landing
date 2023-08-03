@@ -1,0 +1,257 @@
+@import 'bootstrapCustom';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --h-height: 51px;
+    --f-height: 117px;
+    // @include media-breakpoint-down(lg) {
+    //   --f-height: 70px;
+    // }
+}
+
+
+$main-font: "Open Sans";
+$radius: 1em;
+$indent: 0.625em;
+$blue: #4CA5F8;
+$light-blue: #CCE4FF;
+$purpur: #9697E6;
+$light-purpur: #E9E9FF;
+$black: #242424;
+$dark-gray: #637381;
+$gray: #c2c2c2;
+$light-gray: #F4F6F8;
+$white: #fff;
+$red: #E31F0F;
+$transition: 300ms ease-in;
+
+
+/* mixins */
+@mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $x;
+    align-items: $y;
+    flex-wrap: $wrap;
+}
+@mixin no-appearance {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+}
+@mixin safariFix {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    isolation: isolate;
+    transform: translateZ(0);
+}
+@mixin absBG($z: 1, $top: 0%, $h: 100%) {
+    position: absolute;
+    top: $top;
+    left: 0px;
+    width: 100%;
+    height: $h;
+    z-index: $z;
+}
+@mixin clamp($count, $line, $strict: false) {
+    display: -webkit-box;
+    -webkit-line-clamp: $count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: $line;
+    @if $strict {
+      height: $line * $count;
+    } @else {
+      max-height: $line * $count;
+    }
+}
+@mixin list {
+    list-style: none;
+    padding-left: 0px;
+}
+@mixin placeholder($color, $fw: 400){
+    &:-moz-placeholder, &::-moz-placeholder,
+    &::-webkit-input-placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder {
+      color: $color;
+      font-weight: $fw;
+    }
+    &::placeholder {
+      color: $color;
+      font-weight: $fw;
+    }
+}
+@mixin roundedImg($w, $rad:50%, $fit:cover) {
+    width: $w;
+    height: $w;
+    border-radius: $rad;
+    object-fit: $fit;
+}
+
+@mixin shadowEffect {
+    /* очень эффектная тень */
+    box-shadow: -10px 30px 40px 0px rgba(145, 158, 171, 0.10);
+}
+
+
+/* Typography */
+a, a:hover, a:focus, a:active {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, select, input, textarea, button, div, blockquote, cite, figure, figcaption, table, ul, ol, dl, li, address {
+    line-height: normal;
+    margin-bottom: 0px;
+}
+h1 {
+    font-size: 1.75em;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 1em;
+}
+.fs {
+    &-08 {font-size: 0.8em;}
+    &-09 {font-size: 0.9em;}
+    &-10 {font-size: 1em;}
+    &-11 {font-size: 1.1em;}
+    &-12 {font-size: 1.2em;}
+    &-13 {font-size: 1.3em;}
+    &-14 {font-size: 1.4em;}
+    &-15 {font-size: 1.5em;}
+    &-16 {font-size: 1.6em;}
+    &-17 {font-size: 1.7em;}
+    &-18 {font-size: 1.8em;}
+    &-19 {font-size: 1.9em;}
+    &-20 {font-size: 2em;}
+    &-22 {font-size: 2.2em;}
+    &-25 {font-size: 2.5em;}
+    &-30 {font-size: 3em;}
+    &-35 {font-size: 3.5em;}
+    &-40 {font-size: 4em;}
+}
+.fw {
+    &-3 {font-weight: 300;}
+    &-4 {font-weight: 400;}
+    &-5 {font-weight: 500;}
+    &-6 {font-weight: 600;}
+    &-7 {font-weight: 700;}
+    &-8 {font-weight: 800;}
+    &-9 {font-weight: 900;}
+}
+
+/* Form elements */
+button {
+    background: none;
+    border: none;
+    padding: unset;
+    display: block;
+    font-family: inherit;
+    outline: none;
+    color: inherit;
+}
+.btn {
+    @include flex(row, center, center, nowrap);
+    padding: .55em 1.1em;
+    text-align: center;
+    transition: $transition;
+    width: fit-content;
+    border-radius: .5em;
+    font-weight: 600;
+    &-primary {
+        @extend .btn;
+        color: $white;
+        background-color: $blue;
+        border: 1px solid $blue;
+        // &:hover, &:focus, &:active, &.active {
+        //     color: $white;
+        //     background-color: $color-3;
+        //     border: 1px solid $color-3;
+        // }
+    }
+    &-info {
+        @extend .btn;
+        color: $black;
+        background-color: $white;
+        border: 1px solid $white;
+    }
+}
+
+
+
+body {
+  margin: 0;
+  padding: $indent 0px $indent*2;
+  font-family: $main-font, 'Arial', 'Tahoma', 'Verdana';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  font-weight: 400;
+  color: $black;
+  overflow-x: hidden;
+//   @include media-breakpoint-down(lg) {
+//     font-size: 13px;
+//   }
+}
+
+
+header {
+    background-color: $blue;
+    color: $white;
+    height: var(--h-height);
+    border-radius: $radius;
+    @include flex(row, space-between, center, nowrap);
+    padding: 0em 1em;
+    margin-bottom: $indent;
+    .logo {
+        max-width: 125px;
+        max-height: 30px;
+        object-fit: contain;
+        object-position: left center;
+    }
+    nav {
+        @include flex();
+        ul {
+            @include list();
+            @include flex();
+            li {
+                &:not(:first-child){
+                    margin-left: 3em;
+                }
+                a {
+                    font-size: 1em;
+                    font-weight: 600;
+                }
+            }
+        }
+        .phone {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin-left: 3.5em;
+        }
+    }
+}
+
+/* Section 1 */
+.sec-1 {
+    background-color: $blue;
+    border-radius: $radius;
+    color: $white;
+}
+
+main {
+    min-height: calc(100vh - $indent*3 - var(--h-height) - var(--f-height));
+}
+
+footer {
+    height: var(--f-height);
+    background-color: $blue;
+    border-radius: $radius;
+    padding: 0em 1em;
+    color: $white;
+    @include flex(column, center, center, nowrap);
+}
