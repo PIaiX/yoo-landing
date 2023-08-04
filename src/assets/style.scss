@@ -14,7 +14,9 @@ $main-font: "Open Sans";
 $radius: 1em;
 $indent: 0.625em;
 $blue: #4CA5F8;
+$deepblue: #0077FF;
 $light-blue: #CCE4FF;
+$pale-blue: #F4F9FF;
 $purpur: #9697E6;
 $light-purpur: #E9E9FF;
 $black: #242424;
@@ -23,6 +25,7 @@ $gray: #c2c2c2;
 $light-gray: #F4F6F8;
 $white: #fff;
 $red: #E31F0F;
+$divider: #919EAB;
 $transition: 300ms ease-in;
 
 
@@ -90,7 +93,6 @@ $transition: 300ms ease-in;
     border-radius: $rad;
     object-fit: $fit;
 }
-
 @mixin shadowEffect {
     /* очень эффектная тень */
     box-shadow: -10px 30px 40px 0px rgba(145, 158, 171, 0.10);
@@ -113,6 +115,24 @@ h1 {
     font-weight: 700;
     text-align: left;
     margin-bottom: 1em;
+}
+h2 {
+    font-size: 2.25em;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1em;
+}
+h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1em;
+}
+h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: .5em;
 }
 .fs {
     &-08 {font-size: 0.8em;}
@@ -144,6 +164,8 @@ h1 {
     &-9 {font-weight: 900;}
 }
 
+.deepblue {color: $deepblue;}
+
 /* Form elements */
 button {
     background: none;
@@ -156,7 +178,7 @@ button {
 }
 .btn {
     @include flex(row, center, center, nowrap);
-    padding: .55em 1.1em;
+    padding: .5em 1.15em;
     text-align: center;
     transition: $transition;
     width: fit-content;
@@ -173,14 +195,36 @@ button {
         //     border: 1px solid $color-3;
         // }
     }
+    &-secondary {
+        @extend .btn;
+        color: $deepblue;
+        background-color: $white;
+        border: 1px solid $deepblue;
+    }
     &-info {
         @extend .btn;
         color: $black;
         background-color: $white;
         border: 1px solid $white;
     }
+    &-light {
+        @extend .btn;
+        color: $white;
+        background-color: transparent;
+        border: 1px solid $white;
+    }
+    &-gray {
+        @extend .btn;
+        color: rgba($divider, 0.80);
+        background-color: rgba($divider, 0.24);
+        border: none;
+        font-weight: 700;
+    }
 }
 
+.mb-6 {
+    margin-bottom: 6em;
+}
 
 
 body {
@@ -193,6 +237,7 @@ body {
   font-weight: 400;
   color: $black;
   overflow-x: hidden;
+  
 //   @include media-breakpoint-down(lg) {
 //     font-size: 13px;
 //   }
@@ -236,15 +281,174 @@ header {
     }
 }
 
+main {
+    min-height: calc(100vh - $indent*3 - var(--h-height) - var(--f-height));
+}
+
 /* Section 1 */
 .sec-1 {
     background-color: $blue;
+    background-image: url(../assets/imgs/bg/bg1img.jpg), url(../assets/imgs/bg/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: auto 100%, cover;
+    background-position: 100% 50%, 50% 50%;
     border-radius: $radius;
     color: $white;
+    padding: 8%;
 }
 
-main {
-    min-height: calc(100vh - $indent*3 - var(--h-height) - var(--f-height));
+/* Section 3 */
+.sec-3 {
+    figure {
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1em;
+        }
+        figcaption {
+            text-align: center;
+            font-size: 1.25em;
+            font-weight: 600;
+            margin-top: 1em;
+        }
+    }
+}
+
+/* Section 4 */
+.top {
+    background-color: $blue;
+    padding: .8em 1.8em;
+    @include flex(row, space-between, center, nowrap);
+    color: $white;
+    border-radius: 1em;
+}
+.offer {
+    border: 1px solid $blue;
+    border-radius: 1em;
+    padding: 1.25em;
+    position: relative;
+    .link {
+        @include flex();
+        background-color: $blue;
+        color: $white;
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        margin-left: auto;
+        position: absolute;
+        bottom: .65em;
+        right: .65em;
+        svg {
+            font-size: 1.5em;
+        }
+    }
+}
+
+/* Section 5 */
+.sec-5 {
+    background: url(../assets/imgs/bg/bg1.jpg) no-repeat center;
+    background-size: cover;
+    color: $white;
+    padding: 8%;
+    border-radius: 1em;
+    position: relative;
+    &-img {
+        position: absolute;
+        z-index: 10;
+        top: 52%;
+        right: 2%;
+        transform: rotate(8deg) translateY(-50%);
+        transform-origin: 50% 50%;
+        width: 40%;
+        @include shadowEffect();
+    }
+    h2 {
+        font-weight: 600;
+        text-align: left;
+        span {
+            background-color: $red;
+            font-size: 0.67em;
+            font-weight: 400;
+            padding: .15em 1em;
+            border-radius: 1em;
+        }
+    }
+}
+
+/* Section 6 */
+.grayBlock {
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+    background-color: $light-gray;
+    padding: 1.25em;
+    &-1 {
+        @extend .grayBlock;
+        background-image: url(../assets/imgs/bg/woman.png);
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: contain;
+        position: relative;
+        .btnPulse {
+            position: absolute;
+            z-index: 10;
+            top: 11em;
+            left: 55%;
+            transform: translateX(-50%);
+        }
+    }
+    &-2 {
+        @extend .grayBlock;
+        background-image: url(../assets/imgs/bg/arrow1.png);
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-size: 40%;
+    }
+    &-3 {
+        @extend .grayBlock;
+        background-image: url(../assets/imgs/bg/arrow2.png);
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-size: 25%;
+    }
+    &-4 {
+        @extend .grayBlock;
+        background-image: url(../assets/imgs/bg/arrow4.png);
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-size: 30%;
+    }
+    &-5 {
+        @extend .grayBlock;
+        background-image: url(../assets/imgs/bg/arrow3.png);
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 42%;
+    }
+}
+
+
+/* Section 10 */
+.sec-10 {
+    img {
+        @include shadowEffect();
+        border-radius: 1em;
+        display: block;
+        margin: 3em auto 0em;
+    }
+}
+
+/* Section 12 */
+.sec-12 {
+    background-color: $pale-blue;
+    padding: 3em 0em;
+    .box {
+        background-color: $white;
+        padding: 1.25em;
+        border-radius: 1em;
+        border: 1px solid rgba($divider, 0.24);
+    }
 }
 
 footer {

@@ -1,10 +1,12 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom';
 import Logo from '../assets/imgs/logo.svg';
+import Container from 'react-bootstrap/Container';
 
 const Header = () => {
   return (
-    <header>
+    <Container>
+      <header>
         <Link to="">
             <img src={Logo} alt="logo" />
         </Link>
@@ -17,7 +19,8 @@ const Header = () => {
             </ul>
             <a className='phone' href="tel:+79879877878">+7 987 987-78-78</a>
         </nav>
-    </header>
+      </header>
+    </Container>
   )
 }
 
