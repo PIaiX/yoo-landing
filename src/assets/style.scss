@@ -167,6 +167,89 @@ h4 {
 .deepblue {color: $deepblue;}
 
 /* Form elements */
+input, textarea, .input {
+  background-color: $white;
+  border: 1px solid $gray;
+  border-radius: $radius*0.5;
+  padding: .7em 1.2em;
+  width: 100%;
+  outline: none;
+  display: block;
+  transition: $transition;
+  @include placeholder($dark-gray, 400);
+  &:hover, &:focus, &:active {
+    border: 1px solid $gray;
+  }
+}
+input {
+  &[type='checkbox'] {
+    @include no-appearance;
+    width: 1em;
+    height: 1em;
+    border: 1px solid $dark-gray;
+    background-color: $white;
+    background-image: url(imgs/icons/checkmark.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: 3px;
+    box-shadow: none;
+    &:checked {
+      background-color: $blue;
+      border: 1px solid $blue;
+    }
+  }
+  &[type='radio']{
+    @include no-appearance;
+    width: 1em;
+    height: 1em;
+    border: 1px solid $blue;
+    background-color: $white;
+    border-radius: 50%;
+    box-shadow: none;
+    transition: $transition;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: .5em;
+      width: .5em;
+      border-radius: 50%;
+      background-color: $blue;
+      transition: $transition;
+      opacity: 0;
+    }
+    &:checked::before {
+      opacity: 1;
+    }
+  }
+  &[type=number]{
+    appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      @include no-appearance();
+      margin: 0;
+    }
+  }
+}
+label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    span {flex:1;}
+}
+select {
+    @include no-appearance();
+    border: none;
+    background-image: url(imgs/icons/chevronDown.svg);
+    background-repeat: no-repeat;
+    padding-right: 1em;
+    background-position: right center;
+    background-size: .75em;
+}
 button {
     background: none;
     border: none;
@@ -178,12 +261,13 @@ button {
 }
 .btn {
     @include flex(row, center, center, nowrap);
-    padding: .5em 1.15em;
+    padding: 0em 1.25em;
     text-align: center;
     transition: $transition;
     width: fit-content;
     border-radius: .5em;
     font-weight: 600;
+    height: 2.5rem;
     &-primary {
         @extend .btn;
         color: $white;
@@ -221,7 +305,15 @@ button {
         font-weight: 700;
     }
 }
+.hmax{
+    height: 3rem;
+}
 
+.container.wide {
+    @media (min-width: 1300px) {
+        max-width: 1240px;
+    }
+}
 .mb-6 {
     margin-bottom: 6em;
 }
@@ -250,13 +342,14 @@ header {
     height: var(--h-height);
     border-radius: $radius;
     @include flex(row, space-between, center, nowrap);
-    padding: 0em 1em;
+    padding: 0em 1.8em !important;
     margin-bottom: $indent;
     .logo {
         max-width: 125px;
         max-height: 30px;
         object-fit: contain;
         object-position: left center;
+        margin-top: 0.25em;
     }
     nav {
         @include flex();
@@ -294,7 +387,44 @@ main {
     background-position: 100% 50%, 50% 50%;
     border-radius: $radius;
     color: $white;
-    padding: 8%;
+    padding: 9% 6%;
+}
+
+/* Section 2 */
+.sec-2 {
+    .pros {
+        border-radius: $radius;
+        padding: 1.875em;
+        height: 380px;
+        &-1 {
+            @extend .pros;
+            background-color: $light-gray;
+            background-image: url(imgs/bg/smartphone.png);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: contain;
+        }
+        &-2 {
+            @extend .pros;
+            background-color: $white;
+            border: 1px solid $blue;
+            @include flex(column, space-between, stretch, nowrap);
+            h4 {
+                line-height: 1.3em;
+                min-height: 3.9em;
+            }
+        }
+        &-3 {
+            @extend .pros;
+            background-color: $white;
+            @include shadowEffect();
+            @include flex(column, space-between, stretch, nowrap);
+            h4 {
+                line-height: 1.3em;
+                min-height: 3.9em;
+            }
+        }
+    }
 }
 
 /* Section 3 */
@@ -326,9 +456,10 @@ main {
 .offer {
     border: 1px solid $blue;
     border-radius: 1em;
-    padding: 1.25em;
+    padding: 1.25em 2em 2em 1.25em;
     position: relative;
-    .link {
+    height: 100%;
+    &-hover {
         @include flex();
         background-color: $blue;
         color: $white;
@@ -342,6 +473,19 @@ main {
         svg {
             font-size: 1.5em;
         }
+    }
+    &-img {
+        position: absolute;
+        z-index: 100;
+        top: 95%;
+        left: 50%;
+        width: 420px;
+        height: 275px;
+        border: 2px solid $light-blue;
+        border-radius: 10px;
+        background-color: $white;
+        object-fit: cover;
+        object-position: center top;
     }
 }
 
@@ -439,15 +583,110 @@ main {
     }
 }
 
+/* Section 11 */
+.grid-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 15px 30px;
+    grid-template-areas: 
+    "info1 info3 info4"
+    "info1 info3 info4"
+    "info1 info3 info4"
+    "info2 info3 info4"
+    "info2 info3 info4"
+    "info2 info3 info5";
+    &>div {
+        background-color: $pale-blue;
+        padding: 1.25em;
+        border-radius: $radius;
+    }
+    .info1 {
+        grid-area: info1;
+    }
+    .info2 {
+        grid-area: info2;
+    }
+    .info3 {
+        grid-area: info3;
+    }
+    .info4 {
+        grid-area: info4;
+    }
+    .info5 {
+        grid-area: info5;
+    }
+}
+
 /* Section 12 */
 .sec-12 {
     background-color: $pale-blue;
     padding: 3em 0em;
     .box {
         background-color: $white;
-        padding: 1.25em;
+        padding: 1.8em;
         border-radius: 1em;
         border: 1px solid rgba($divider, 0.24);
+    }
+    ul {
+        @include list();
+        margin-top: 1.25em;
+        li {
+            &:not(:last-child){margin-bottom: .75em;}
+            position: relative;
+            padding-left: 1em;
+            background: url(imgs/icons/checkmark.svg) no-repeat;
+            background-position: 0% 0.1em;
+            background-size: 1em;
+            @include flex(row, space-between, baseline, nowrap);
+            &::before {
+                content: "";
+                position: absolute;
+                top: .85em;
+                left: 1.5em;
+                width: calc(100% - 1.5em);
+                height: 1px;
+                background-color: rgba($color: #DFE2E5, $alpha: .6);
+            }
+            span {
+                font-size: .85em;
+                padding: 0 5px;
+                position: relative;
+                z-index: 10;
+                background-color: $white;
+                &:last-child {
+                    margin-left: 1em;
+                }
+            }
+        }
+    }
+}
+
+/* Section 13 */
+.sec-13 {
+    .diagram {
+        position: relative;
+        img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        .text {
+            position: absolute;
+            top: 1.875em;
+            bottom: 4.25em;
+            right: 1.875em;
+            z-index: 10;
+            width: 19%;
+            @include flex(column, space-between, stretch, nowrap);
+            p {
+                font-size: .9em;
+            }
+            button {
+                width: 100%;
+                margin-top: 1em;
+            }
+        }
     }
 }
 

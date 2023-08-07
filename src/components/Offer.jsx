@@ -1,16 +1,25 @@
-import React from 'react'
-import Start from './svg/Start'
+import React, {useState} from 'react';
+import Start from './svg/Start';
 
 const Offer = (props) => {
+  const [isShowImg, setIsShowImg] = useState(false);
+
   return (
     <div className="offer">
-        <h3>Мобильное приложение</h3>
-        <p>Стильный дизайн и мощный функционал позволит выделиться среди конкурентов и увеличить количество заказов.</p>
-        <a href="" className='link'>
-            <Start/>
-        </a>
+        <h3>{props.title}</h3>
+        <p>{props.text}</p>
+        <button 
+        className='offer-hover' 
+        onMouseEnter={()=>setIsShowImg(true)} 
+        onMouseLeave={()=>setIsShowImg(false)}>
+          <Start/>
+        </button>
+        <img 
+        src={props.img} 
+        alt={props.title} 
+        className={(isShowImg) ? 'offer-img' : 'offer-img d-none'}/>
     </div>
-  )
-}
+  );
+};
 
-export default Offer
+export default Offer;

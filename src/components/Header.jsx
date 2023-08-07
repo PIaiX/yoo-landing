@@ -1,14 +1,15 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import {Link} from 'react-router-dom';
 import Logo from '../assets/imgs/logo.svg';
-import Container from 'react-bootstrap/Container';
 
 const Header = () => {
   return (
-    <Container>
+    <Container className='wide'>
       <header>
         <Link to="">
-            <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" className='logo'/>
         </Link>
         <nav>
             <ul>
