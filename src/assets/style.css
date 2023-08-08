@@ -7514,6 +7514,11 @@ progress {
   --h-height: 51px;
   --f-height: 117px;
 }
+@media (max-width: 991.98px) {
+  :root {
+    --f-height: 50px;
+  }
+}
 
 /* mixins */
 /* Typography */
@@ -7534,6 +7539,11 @@ h1, .h1 {
   font-weight: 700;
   text-align: left;
   margin-bottom: 1em;
+}
+@media (max-width: 575.98px) {
+  h1, .h1 {
+    font-size: 1.35em;
+  }
 }
 
 h2, .h2 {
@@ -7785,8 +7795,8 @@ button {
 }
 .btn-primary {
   color: #fff;
-  background-color: #4CA5F8;
-  border: 1px solid #4CA5F8;
+  background-color: #0077FF;
+  border: 1px solid #0077FF;
 }
 .btn-secondary {
   color: #0077FF;
@@ -7823,7 +7833,22 @@ button {
 .mb-6 {
   margin-bottom: 6em;
 }
+@media (max-width: 991.98px) {
+  .mb-6 {
+    margin-bottom: 4.5em;
+  }
+}
+@media (max-width: 575.98px) {
+  .mb-6 {
+    margin-bottom: 3em;
+  }
+}
 
+@media (max-width: 575.98px) {
+  .w-xs-100 {
+    width: 100%;
+  }
+}
 body {
   margin: 0;
   padding: 0.625em 0px 1.25em;
@@ -7834,6 +7859,16 @@ body {
   font-weight: 400;
   color: #242424;
   overflow-x: hidden;
+}
+@media (max-width: 767.98px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 575.98px) {
+  body {
+    padding: 0.625em 0px 0px;
+  }
 }
 
 header {
@@ -7877,6 +7912,11 @@ header nav ul {
 header nav ul li:not(:first-child) {
   margin-left: 3em;
 }
+@media (max-width: 1199.98px) {
+  header nav ul li:not(:first-child) {
+    margin-left: 1.5em;
+  }
+}
 header nav ul li a {
   font-size: 1em;
   font-weight: 600;
@@ -7885,6 +7925,24 @@ header nav .phone {
   font-size: 1.25em;
   font-weight: 600;
   margin-left: 3.5em;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.mobile-menu ul li:not(:first-child) {
+  margin-top: 1em;
+}
+.mobile-menu ul li a {
+  font-size: 1em;
+  font-weight: 600;
+}
+.mobile-menu .phone {
+  display: block;
+  margin-top: 2em;
+  font-size: 1.25em;
+  font-weight: 600;
 }
 
 main {
@@ -7897,10 +7955,32 @@ main {
   background-image: url(../assets/imgs/bg/bg1img.jpg), url(../assets/imgs/bg/bg1.jpg);
   background-repeat: no-repeat;
   background-size: auto 100%, cover;
-  background-position: 100% 50%, 50% 50%;
+  background-position: right center, 50% 50%;
   border-radius: 1em;
   color: #fff;
   padding: 9% 6%;
+}
+@media (max-width: 1299px) {
+  .sec-1 {
+    padding: 5% 3%;
+  }
+}
+@media (max-width: 1199.98px) {
+  .sec-1 {
+    padding: 2em;
+  }
+}
+@media (max-width: 991.98px) {
+  .sec-1 {
+    background-image: url(../assets/imgs/bg/bg1.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+}
+@media (max-width: 575.98px) {
+  .sec-1 {
+    padding: 1em;
+  }
 }
 
 /* Section 2 */
@@ -7909,11 +7989,28 @@ main {
   padding: 1.875em;
   height: 380px;
 }
+@media (max-width: 1199.98px) {
+  .sec-2 .pros, .sec-2 .pros-3, .sec-2 .pros-2, .sec-2 .pros-1 {
+    height: 350px;
+  }
+}
+@media (max-width: 991.98px) {
+  .sec-2 .pros, .sec-2 .pros-3, .sec-2 .pros-2, .sec-2 .pros-1 {
+    height: 300px;
+    padding: 1em;
+    font-size: 0.9em;
+  }
+}
+@media (max-width: 767.98px) {
+  .sec-2 .pros, .sec-2 .pros-3, .sec-2 .pros-2, .sec-2 .pros-1 {
+    font-size: 1.2em;
+  }
+}
 .sec-2 .pros-1 {
   background-color: #F4F6F8;
   background-image: url(imgs/bg/smartphone.png);
   background-repeat: no-repeat;
-  background-position: left bottom;
+  background-position: right bottom;
   background-size: contain;
 }
 .sec-2 .pros-2 {
@@ -7929,6 +8026,9 @@ main {
   line-height: 1.3em;
   min-height: 3.9em;
 }
+.sec-2 .pros-2 img {
+  max-width: 70%;
+}
 .sec-2 .pros-3 {
   background-color: #fff;
   /* очень эффектная тень */
@@ -7942,6 +8042,9 @@ main {
 .sec-2 .pros-3 h4, .sec-2 .pros-3 .h4 {
   line-height: 1.3em;
   min-height: 3.9em;
+}
+.sec-2 .pros-3 img {
+  max-width: 70%;
 }
 
 /* Section 3 */
@@ -8093,6 +8196,102 @@ main {
   background-size: 42%;
 }
 
+/* Section 9 */
+.sec-9 .img {
+  position: relative;
+}
+.sec-9 .img-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 690px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1em;
+}
+.sec-9 .img-popup {
+  position: absolute;
+  z-index: 10;
+  right: 8%;
+  bottom: 10%;
+  width: 68%;
+  filter: drop-shadow(-10px 16px 40px rgba(0, 0, 0, 0.15));
+  transform: rotate(7deg);
+  opacity: 0;
+  transition: opacity 300ms ease-in 0.5s;
+}
+.sec-9 .img-popup[data-observing=true] {
+  opacity: 1;
+}
+.sec-9 .img2 {
+  position: relative;
+}
+.sec-9 .img2-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 690px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  border-radius: 1em;
+}
+.sec-9 .img2-popup {
+  position: absolute;
+  z-index: 10;
+  right: 8%;
+  bottom: 27%;
+  width: 85%;
+  filter: drop-shadow(-10px 16px 40px rgba(0, 0, 0, 0.15));
+  opacity: 0;
+  transition: opacity 300ms ease-in 0.5s;
+}
+.sec-9 .img2-popup[data-observing=true] {
+  opacity: 1;
+}
+.sec-9 .img3 {
+  position: relative;
+}
+.sec-9 .img3-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 690px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1em;
+}
+.sec-9 .img3-popup {
+  position: absolute;
+  z-index: 10;
+  left: 8%;
+  top: 10%;
+  width: 68%;
+  filter: drop-shadow(-10px 16px 40px rgba(0, 0, 0, 0.15));
+  opacity: 0;
+  transition: opacity 300ms ease-in 0.5s;
+}
+.sec-9 .img3-popup[data-observing=true] {
+  opacity: 1;
+}
+.sec-9 .textBox {
+  background-color: #F4F6F8;
+  border-radius: 1em;
+  height: 100%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.swiperFade .swiper-slide {
+  opacity: 0 !important;
+}
+.swiperFade .swiper-slide-active {
+  opacity: 1 !important;
+}
+
 /* Section 10 */
 .sec-10 img {
   /* очень эффектная тень */
@@ -8106,26 +8305,58 @@ main {
 .grid-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: 350px 215px 120px;
   gap: 15px 30px;
-  grid-template-areas: "info1 info3 info4" "info1 info3 info4" "info1 info3 info4" "info2 info3 info4" "info2 info3 info4" "info2 info3 info5";
+  grid-template-areas: "info1 info3 info4" "info2 info3 info4" "info2 info3 info5";
 }
 .grid-info > div {
   background-color: #F4F9FF;
   padding: 1.25em;
   border-radius: 1em;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  isolation: isolate;
+  transform: translateZ(0);
 }
 .grid-info .info1 {
   grid-area: info1;
 }
+.grid-info .info1 .logotip {
+  background-color: #fff;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 95px;
+}
 .grid-info .info2 {
   grid-area: info2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  padding-bottom: 0px;
 }
 .grid-info .info3 {
   grid-area: info3;
 }
+.grid-info .info3 img {
+  display: block;
+  max-width: 88%;
+}
 .grid-info .info4 {
   grid-area: info4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  padding-bottom: 0px;
+  padding-right: 0px;
 }
 .grid-info .info5 {
   grid-area: info5;
@@ -8214,13 +8445,29 @@ main {
 
 footer {
   height: var(--f-height);
+}
+footer.desktop .box {
+  height: 100%;
   background-color: #4CA5F8;
   border-radius: 1em;
-  padding: 0em 1em;
   color: #fff;
+  padding: 0em 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+}
+footer.mobile {
+  position: sticky;
+  z-index: 100;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: transparent;
+}
+footer.mobile button {
+  width: 100%;
+  font-size: 1rem;
+  flex-grow: 1;
 }/*# sourceMappingURL=style.css.map */

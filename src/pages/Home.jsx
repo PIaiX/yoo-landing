@@ -2,13 +2,18 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Tomato from '../assets/imgs/tomato.svg';
+
+import useObserver from '../hooks/useObserver';
+
+import Offer from '../components/Offer';
+
+/* icons & images */
 import Flash from '../components/svg/Flash';
 import Check from '../components/svg/Check';
 import DownloadFile from '../components/svg/DownloadFile';
 import Start from '../components/svg/Start';
-import Offer from '../components/Offer';
 import { BtnPuls } from '../components/svg/BtnPuls';
+import Tomato from '../assets/imgs/tomato.svg';
 import Icon1 from '../assets/imgs/icons/icon1.png';
 import Icon2 from '../assets/imgs/icons/icon2.png';
 import Icon3 from '../assets/imgs/icons/icon3.png';
@@ -19,28 +24,35 @@ import Site from '../assets/imgs/site.jpg';
 import Qrmenu from '../assets/imgs/qrmenu.jpg';
 import System from '../assets/imgs/yoo-system.jpg';
 
+import { EffectFade, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/autoplay';
 
 const Home = () => {
+  const [objRef, isVisible] = useObserver({threshold: 0.5});
+  const [objRef2, isVisible2] = useObserver({threshold: 0.5});
+  const [objRef3, isVisible3] = useObserver({threshold: 0.5});
+
   return (
     <main>
       <Container className='wide'>
         <section className='sec-1 mb-6'>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={10} lg={8} xl={6}>
               <div className="d-flex align-items-center mb-4">
                 <img src={Tomato} alt="tomato" />
-                <h1 className='mb-0 ms-3 '>Yoo Appc food — приложение для кафе и ресторанов</h1>
+                <h1 className='mb-0 ms-2 ms-sm-3'>Yoo Appc food — приложение для кафе и ресторанов</h1>
               </div>
               
-              <p>Получайте на 30% больше прибыли с помощью приложения для заказа, доставки и самовывоза готовой еды или товаров</p>
-              <div className="d-flex mt-5">
-                <button type='button' className='btn-info'>
+              <p>Получайте на 30% больше прибыли с помощью приложения <br/>для заказа, доставки и самовывоза готовой еды или товаров</p>
+              <div className="d-sm-flex mt-4 mt-lg-5">
+                <button type='button' className='btn-info w-xs-100'>
                   <Flash className="fs-12"/>
                   <span className='ms-2'>Пробовать бесплатно</span>
                 </button>
-                <a href="" className='btn-light ms-3'>
+                <a href="" className='btn-light w-xs-100 ms-sm-3 mt-3 mt-sm-0'>
                   <DownloadFile className="fs-12"/>
                   <span className='ms-2'>Скачать презентацию</span>
                 </a>
@@ -56,7 +68,7 @@ const Home = () => {
 
       <section className='sec-2 mb-6'>
         <Container>
-          <Row>
+          <Row xs={1} md={3} className='g-3 g-lg-4'>
             <Col>
               <div className="pros-1">
                 <h4>Увеличим количество заказов на 43% и выручку на 52%*</h4>
@@ -236,7 +248,69 @@ const Home = () => {
 
       <section className='sec-9 mb-6'>
         <Container>
-
+          <Swiper
+            className='swiperFade'
+            modules={[EffectFade, Autoplay]}
+            slidesPerView={1}
+            effect={"fade"}
+            rewind={true}
+            autoplay={{
+              delay: 10000,
+              pauseOnMouseEnter: false,
+            }}
+          >
+            <SwiperSlide>
+              <Row lg={2}>
+                <Col>
+                  <div className="img">
+                    <img src="/imgs/img6.png" alt="Система лояльности" className='img-main' ref={objRef}/>
+                    <img src="/imgs/img8.png" alt="Система лояльности" className='img-popup' data-observing={isVisible}/>
+                  </div>
+                </Col>
+                <Col>
+                  <div className='textBox'>
+                    <img src="/imgs/img7.png" alt="Система лояльности" className='mb-5'/>
+                    <h3>Система лояльности есть, <br/>даже если её нет</h3>
+                    <p>Мы продумали систему лояльности для заведений которые пользуются сервисами без системы лояльности.</p>
+                  </div>
+                </Col>
+              </Row>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Row lg={2}>
+                <Col>
+                  <div className="img2">
+                    <img src="/imgs/img9.png" alt="Таргетинг добрался и до Push" className='img2-main' ref={objRef2}/>
+                    <img src="/imgs/img11.png" alt="Таргетинг добрался и до Push" className='img2-popup' data-observing={isVisible2}/>
+                  </div>
+                </Col>
+                <Col>
+                  <div className='textBox'>
+                    <img src="/imgs/img10.png" alt="Таргетинг добрался и до Push" className='mb-5'/>
+                    <h3>Таргетинг добрался и до Push</h3>
+                    <p>Отсортируйте пользователей, по дню рождения, зоне доставки или любимому блюду, и отправьте им уведомление о ваших акциях.</p>
+                  </div>
+                </Col>
+              </Row>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Row lg={2}>
+                <Col>
+                  <div className="img3">
+                    <img src="/imgs/img12.png" alt="Настроим зоны доставок" className='img3-main' ref={objRef3}/>
+                    <img src="/imgs/img14.png" alt="Настроим зоны доставок" className='img3-popup' data-observing={isVisible3}/>
+                  </div>
+                </Col>
+                <Col>
+                  <div className='textBox'>
+                    <img src="/imgs/img13.png" alt="Настроим зоны доставок" className='mb-5'/>
+                    <h3>Настроим зоны доставок</h3>
+                    <p>С нами вы сможете разделить доставку по зонам, исходя из этого настроим автоматический расчёт стоимости доставки, суммы бесплатной доставки и минимального чека.</p>
+                  </div>
+                </Col>
+              </Row>
+            </SwiperSlide>
+          </Swiper>
         </Container>
       </section>
 
@@ -249,23 +323,60 @@ const Home = () => {
       </section>
 
       <section className='sec-11 mb-6'>
-        <Container className='wide'>
+        <Container>
           <div className="grid-info">
             <div className="info1">
               <h4>Онлайн-оплата без ограничнений</h4>
-              <p>Принимайте оплату в мобильном приложении и на сайте через популярные платёжные сервисы</p>
+              <p className='mb-3'>Принимайте оплату в мобильном приложении и на сайте через популярные платёжные сервисы</p>
+              <ul className="list-unstyled row row-cols-3 g-2">
+                <li>
+                  <div className='logotip'>
+                    <img src="/imgs/logotips/sber.svg" alt="sber"/>
+                  </div>
+                </li>
+                <li>
+                  <div className='logotip'>
+                    <img src="/imgs/logotips/tinkoff.svg" alt="tinkoff"/>
+                  </div>
+                </li>
+                <li>
+                  <div className='logotip'>
+                    <img src="/imgs/logotips/maybebank.svg" alt="maybebank"/>
+                  </div>
+                </li>
+                <li>
+                  <div className='logotip'>
+                    <img src="/imgs/logotips/alfa.svg" alt="alfa"/>
+                  </div>
+                </li>
+                <li>
+                  <div className='logotip'>
+                    <img src="/imgs/logotips/Yoomoney.svg" alt="Yoomoney"/>
+                  </div>
+                </li>
+                <li>
+                  <div className='logotip fw-6'>+ другие</div>
+                </li>
+              </ul>
             </div>
             <div className="info2">
-              <h4>Бонусная система</h4>
-              <p>Завоюйте лояльность клиентов, поощряя покупки бонусами на сайте и в приложении</p>
+              <div>
+                <h4>Бонусная система</h4>
+                <p>Завоюйте лояльность клиентов, поощряя покупки бонусами на сайте и в приложении</p>
+              </div>
+              <img src="/imgs/iPhone.png" alt="iPhone" className='mx-auto'/>
             </div>
             <div className="info3">
               <h4>Будьте всегда на связи с клиентом</h4>
-              <p>Внутренний чат экономит время клиента и деньги на содержании call-центра</p>
+              <p className='mb-3'>Внутренний чат экономит время клиента и деньги на содержании call-центра</p>
+              <img src="/imgs/iPhone2.png" alt="iPhone" className='mx-auto'/>
             </div>
             <div className="info4">
-              <h4>Не упустите ни одного клиента!</h4>
-              <p>Настройте бонусную систему под свои нужны — меняйте скидки в два клика, оповещайте об акциях и делитесь промокодами.</p>
+              <div>
+                <h4>Не упустите ни одного клиента!</h4>
+                <p>Настройте бонусную систему под свои нужны — меняйте скидки в два клика, оповещайте об акциях и делитесь промокодами.</p>
+              </div> 
+              <img src="/imgs/iPhone3.png" alt="iPhone" className='ms-auto'/>
             </div>
             <div className="info5">
               <h4>Все управление в одном месте</h4>
