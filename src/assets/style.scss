@@ -97,6 +97,10 @@ $transition: 300ms ease-in;
     /* очень эффектная тень */
     box-shadow: -10px 30px 40px 0px rgba(145, 158, 171, 0.10);
 }
+@mixin shadow {
+    /* просто тень */
+    box-shadow: 0px 15px 40px 0px rgba(145, 158, 171, 0.10);
+}
 @mixin dropShadow {
     filter: drop-shadow(-10px 16px 40px rgba(0, 0, 0, 0.15));
 }
@@ -127,12 +131,21 @@ h2 {
     font-weight: 400;
     text-align: center;
     margin-bottom: 1em;
+    @include media-breakpoint-down(md) {
+        font-size: 1.8em; 
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 1.4em; 
+    }
 }
 h3 {
     font-size: 1.5em;
     font-weight: 600;
     text-align: left;
     margin-bottom: 1em;
+    @include media-breakpoint-down(sm) {
+        font-size: 1.4em; 
+    }
 }
 h4 {
     font-size: 1.1em;
@@ -270,6 +283,7 @@ button {
     padding: 0em 1.25em;
     text-align: center;
     transition: $transition;
+    transition-property: color, background-color, border;
     width: fit-content;
     border-radius: .5em;
     font-weight: 600;
@@ -447,19 +461,24 @@ main {
 /* Section 2 */
 .sec-2 {
     .pros {
+        --height: 380px;
         border-radius: $radius;
         padding: 1.875em;
-        height: 380px;
+        height: var(--height);
         @include media-breakpoint-down(xl) {
-            height: 350px;
+            --height: 350px;
         }
         @include media-breakpoint-down(lg) {
-            height: 300px;
+            --height: 300px;
             padding: 1em;
             font-size: .9em;
         }
         @include media-breakpoint-down(md) {
             font-size: 1.2em;
+            --height: 380px;
+        }
+        @include media-breakpoint-down(sm) {
+            font-size: 1em;
         }
         &-1 {
             @extend .pros;
@@ -474,9 +493,16 @@ main {
             background-color: $white;
             border: 1px solid $blue;
             @include flex(column, space-between, stretch, nowrap);
+            @include media-breakpoint-down(md) {
+                height: auto;
+            }
             h4 {
                 line-height: 1.3em;
                 min-height: 3.9em;
+                @include media-breakpoint-down(md) {
+                    min-height: unset;
+                    margin-top: 1em;
+                }
             }
             img {
                 max-width: 70%;
@@ -487,9 +513,16 @@ main {
             background-color: $white;
             @include shadowEffect();
             @include flex(column, space-between, stretch, nowrap);
+            @include media-breakpoint-down(md) {
+                height: auto;
+            }
             h4 {
                 line-height: 1.3em;
                 min-height: 3.9em;
+                @include media-breakpoint-down(md) {
+                    min-height: unset;
+                    margin-top: 1em;
+                }
             }
             img {
                 max-width: 70%;
@@ -501,17 +534,32 @@ main {
 /* Section 3 */
 .sec-3 {
     figure {
+        padding: 1em 0.6em;
+        border-radius: $radius;
+        box-shadow: none;
+        transition: box-shadow $transition;
+        height: 100%;
+        &:hover {
+            @include shadow();
+            cursor: pointer;
+        }
         img {
             width: 100%;
             height: 300px;
             object-fit: cover;
             border-radius: 1em;
+            @include media-breakpoint-down(sm) {
+                height: 50vw;
+            }
         }
         figcaption {
             text-align: center;
             font-size: 1.25em;
             font-weight: 600;
             margin-top: 1em;
+            @include media-breakpoint-down(sm) {
+                font-size: 1em;
+            }
         }
     }
 }
@@ -523,6 +571,9 @@ main {
     @include flex(row, space-between, center, nowrap);
     color: $white;
     border-radius: 1em;
+    @include media-breakpoint-down(sm) {
+        padding: .8em 1.2em;
+    }
 }
 .offer {
     border: 1px solid $blue;
@@ -549,7 +600,7 @@ main {
         position: absolute;
         z-index: 100;
         top: 95%;
-        left: 50%;
+        right: 0%;
         width: 420px;
         height: 275px;
         border: 2px solid $light-blue;
@@ -557,6 +608,14 @@ main {
         background-color: $white;
         object-fit: cover;
         object-position: center top;
+        @include media-breakpoint-down(lg) {
+            width: 350px;
+            height: 230px;
+        }
+        @include media-breakpoint-down(md) {
+            width: 500px;
+            height: 330px;
+        }
     }
 }
 
@@ -568,6 +627,12 @@ main {
     padding: 8%;
     border-radius: 1em;
     position: relative;
+    @include media-breakpoint-down(xl) {
+        padding: 3em;
+    }
+    @include media-breakpoint-down(sm) {
+        padding: 1.5em;
+    }
     &-img {
         position: absolute;
         z-index: 10;
@@ -576,7 +641,39 @@ main {
         transform: rotate(8deg) translateY(-50%);
         transform-origin: 50% 50%;
         width: 40%;
-        @include shadowEffect();
+        @include media-breakpoint-down(xl) {
+            right: 0%;
+        }
+        @include media-breakpoint-down(lg) {
+            position: relative;
+            top: unset;
+            right: unset;
+            transform: rotate(8deg) translateY(0%);
+            margin-top: 2em;
+            width: 70%;
+        }
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            transform: rotate(8deg) translateY(0%) translateX(1em);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 1;
+            width: 93%;
+            height: 95%;
+            background-color: #11497A;
+            filter: blur(20px) opacity(0.5);
+            transform: rotate(-2deg);
+        }
+        img {
+            @include shadowEffect();
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
     }
     h2 {
         font-weight: 600;
@@ -598,6 +695,9 @@ main {
     border-radius: 1em;
     background-color: $light-gray;
     padding: 1.25em;
+    @include media-breakpoint-down(xl) {
+        padding: 1em;
+    }
     &-1 {
         @extend .grayBlock;
         background-image: url(../assets/imgs/bg/woman.png);
@@ -605,12 +705,41 @@ main {
         background-position: left bottom;
         background-size: contain;
         position: relative;
+        @include media-breakpoint-down(lg) {
+            padding-bottom: 23em;
+        }
+        @include media-breakpoint-down(sm) {
+            padding-bottom: 65%;
+        }
+        @media (max-width: 400px) {
+            padding-bottom: 70%;
+        }
         .btnPulse {
             position: absolute;
             z-index: 10;
-            top: 11em;
-            left: 55%;
+            bottom: 14em;
+            left: 63%;
             transform: translateX(-50%);
+            @include media-breakpoint-down(xl) {
+                bottom: 12em;
+            }
+            @include media-breakpoint-down(lg) {
+                left: 40%;
+                bottom: 12em;
+            }
+            @include media-breakpoint-down(md) {
+                left: 49%;
+            }
+            @include media-breakpoint-down(sm) {
+                left: 51%;
+                bottom: 37%;
+                width: 25%;
+                height: auto;
+            }
+            @media (max-width: 400px) {
+                left: 63%;
+                bottom: 40%;
+            }
         }
     }
     &-2 {
@@ -619,6 +748,9 @@ main {
         background-repeat: no-repeat;
         background-position: right top;
         background-size: 40%;
+        @include media-breakpoint-down(sm) {
+            background-image: none;
+        }
     }
     &-3 {
         @extend .grayBlock;
@@ -626,6 +758,9 @@ main {
         background-repeat: no-repeat;
         background-position: right bottom;
         background-size: 25%;
+        @include media-breakpoint-down(sm) {
+            background-image: none;
+        }
     }
     &-4 {
         @extend .grayBlock;
@@ -633,6 +768,9 @@ main {
         background-repeat: no-repeat;
         background-position: right top;
         background-size: 30%;
+        @include media-breakpoint-down(sm) {
+            background-image: none;
+        }
     }
     &-5 {
         @extend .grayBlock;
@@ -640,18 +778,37 @@ main {
         background-repeat: no-repeat;
         background-position: left top;
         background-size: 42%;
+        @include media-breakpoint-down(sm) {
+            background-image: none;
+        }
+    }
+    p {
+        font-size: 1em;
+        @include media-breakpoint-down(xl) {
+            font-size: .9em;
+        }
     }
 }
 
 /* Section 9 */
 .sec-9 {
+    --height: 690px;
+    @include media-breakpoint-down(xl) {
+        --height: 580px;
+    }
+    @include media-breakpoint-down(lg) {
+        --height: 460px;
+    }
+    @include media-breakpoint-down(md) {
+        --height: 600px;
+    }
     .img {
         position: relative;
         &-main {
             position: relative;
             z-index: 1;
             width: 100%;
-            height: 690px;
+            height: var(--height);
             object-fit: cover;
             border-radius: $radius;
         }
@@ -676,7 +833,7 @@ main {
             position: relative;
             z-index: 1;
             width: 100%;
-            height: 690px;
+            height: var(--height);
             object-fit: scale-down;
             border-radius: $radius;
         }
@@ -700,7 +857,7 @@ main {
             position: relative;
             z-index: 1;
             width: 100%;
-            height: 690px;
+            height: var(--height);
             object-fit: cover;
             border-radius: $radius;
         }
@@ -724,6 +881,13 @@ main {
         height: 100%;
         padding: 3em;
         @include flex(column, center, flex-start, nowrap);
+        @include media-breakpoint-down(lg) {
+            padding: 1.5em;
+        }
+        img {
+            max-width: 150px;
+            margin-bottom: 3em;
+        }
     }
 }
 .swiperFade {
@@ -755,6 +919,26 @@ main {
     "info1 info3 info4"
     "info2 info3 info4"
     "info2 info3 info5";
+    @include media-breakpoint-down(xl) {
+        gap: 15px 20px;
+        grid-template-rows: 370px 140px 165px;
+    }
+    @include media-breakpoint-down(lg) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 370px 570px 120px;
+        grid-template-areas: 
+        "info1 info2"
+        "info3 info4"
+        "info3 info5";
+    }
+    @include media-breakpoint-down(md) {
+        grid-template-rows: 315px 380px 140px;
+    }
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "info1" "info2" "info3" "info4" "info5";
+    }
     &>div {
         background-color: $pale-blue;
         padding: 1.25em;
@@ -769,12 +953,35 @@ main {
             border-radius: $radius;
             @include flex();
             height: 95px;
+            @include media-breakpoint-down(xl) {
+                height: 80px;
+            }
+            @include media-breakpoint-down(md) {
+                height: 65px;
+            }
+            @include media-breakpoint-down(sm) {
+                height: 23vw;
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: scale-down;
+            }
         }
     }
     .info2 {
         grid-area: info2;
         @include flex(column, space-between, stretch, nowrap);
         padding-bottom: 0px;
+        img {
+            max-width: 85%;
+            @include media-breakpoint-down(md) {
+                max-width: 95%;
+            }
+            @include media-breakpoint-down(sm) {
+                margin-top: 1em;
+            }
+        }
     }
     .info3 {
         grid-area: info3;
@@ -788,6 +995,16 @@ main {
         @include flex(column, space-between, stretch, nowrap);
         padding-bottom: 0px;
         padding-right: 0px;
+        img {
+            max-width: 90%;
+            @include media-breakpoint-down(md) {
+                max-width: 70%;
+            }
+            @include media-breakpoint-down(sm) {
+                max-width: 90%;
+                margin-top: 1em;
+            }
+        }
     }
     .info5 {
         grid-area: info5;
@@ -803,6 +1020,9 @@ main {
         padding: 1.8em;
         border-radius: 1em;
         border: 1px solid rgba($divider, 0.24);
+        @include media-breakpoint-down(xl) {
+            padding: 1em;
+        }
     }
     ul {
         @include list();
@@ -861,6 +1081,40 @@ main {
             button {
                 width: 100%;
                 margin-top: 1em;
+            }
+        }
+    }
+}
+
+/* Section 14 */
+.sec-14 {
+    .swiper {
+        &-slide {
+            @include media-breakpoint-down(md) {
+                width: 120px;
+            }
+        }
+    }
+    .company {
+        .imgLogo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 100px;
+            object-fit: scale-down;
+        }
+        .imgCover {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            margin-top: 1em;
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
+        }
+        .btn-secondary {
+            @include media-breakpoint-down(md) {
+                display: none;
             }
         }
     }
