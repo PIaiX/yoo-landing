@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/yoo-landing/static/css/main.d148ec00.css",
+    "main.js": "/yoo-landing/static/js/main.3a0b6646.js",
+    "static/media/mobile-app.png": "/yoo-landing/static/media/mobile-app.fedc08408f9bdbb0b922.png",
+    "static/media/bg1.jpg": "/yoo-landing/static/media/bg1.c314c2b815ba3a390fe1.jpg",
+    "static/media/bg1img.jpg": "/yoo-landing/static/media/bg1img.b9e757f6f2b7df77a204.jpg",
+    "static/media/diagram.png": "/yoo-landing/static/media/diagram.400b1139a0658c8e9f29.png",
+    "static/media/woman.png": "/yoo-landing/static/media/woman.1f7ec152dc755b10617b.png",
+    "static/media/site.jpg": "/yoo-landing/static/media/site.4a391b30cb0ab17f5a24.jpg",
+    "static/media/smartphone.png": "/yoo-landing/static/media/smartphone.a2ef9e958408a812606c.png",
+    "static/media/qrmenu.jpg": "/yoo-landing/static/media/qrmenu.2fb47bc8c7af14999b94.jpg",
+    "static/media/yoo-system.jpg": "/yoo-landing/static/media/yoo-system.5a99ca8ea893ff3b8e65.jpg",
+    "static/media/tomato.svg": "/yoo-landing/static/media/tomato.b9731966790e21424da76526c73112c3.svg",
+    "static/media/tomato2.svg": "/yoo-landing/static/media/tomato2.ea9cf913484f03559b3c478fd6c02d22.svg",
+    "static/media/logo.svg": "/yoo-landing/static/media/logo.03637dc5a8811df058f9e74f7572695f.svg",
+    "index.html": "/yoo-landing/index.html",
+    "static/media/checkmark.svg": "/yoo-landing/static/media/checkmark.9f056867891396a4991d.svg",
+    "static/media/chevronDown.svg": "/yoo-landing/static/media/chevronDown.d2f59aead4b4cec47522.svg",
+    "main.d148ec00.css.map": "/yoo-landing/static/css/main.d148ec00.css.map",
+    "main.3a0b6646.js.map": "/yoo-landing/static/js/main.3a0b6646.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d148ec00.css",
+    "static/js/main.3a0b6646.js"
+  ]
+}
