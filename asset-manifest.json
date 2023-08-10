@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/yoo-landing/static/css/main.d148ec00.css",
-    "main.js": "/yoo-landing/static/js/main.3a0b6646.js",
+    "main.js": "/yoo-landing/static/js/main.88f3d13e.js",
     "static/media/mobile-app.png": "/yoo-landing/static/media/mobile-app.fedc08408f9bdbb0b922.png",
     "static/media/bg1.jpg": "/yoo-landing/static/media/bg1.c314c2b815ba3a390fe1.jpg",
     "static/media/bg1img.jpg": "/yoo-landing/static/media/bg1img.b9e757f6f2b7df77a204.jpg",
@@ -18,10 +18,10 @@
     "static/media/checkmark.svg": "/yoo-landing/static/media/checkmark.9f056867891396a4991d.svg",
     "static/media/chevronDown.svg": "/yoo-landing/static/media/chevronDown.d2f59aead4b4cec47522.svg",
     "main.d148ec00.css.map": "/yoo-landing/static/css/main.d148ec00.css.map",
-    "main.3a0b6646.js.map": "/yoo-landing/static/js/main.3a0b6646.js.map"
+    "main.88f3d13e.js.map": "/yoo-landing/static/js/main.88f3d13e.js.map"
   },
   "entrypoints": [
     "static/css/main.d148ec00.css",
-    "static/js/main.3a0b6646.js"
+    "static/js/main.88f3d13e.js"
   ]
 }
