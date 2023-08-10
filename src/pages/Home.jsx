@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
 
 import useObserver from '../hooks/useObserver';
 
@@ -10,6 +11,7 @@ import Company from '../components/Company';
 
 /* icons & images */
 import Flash from '../components/svg/Flash';
+import Close from '../components/svg/Close';
 import Check from '../components/svg/Check';
 import DownloadFile from '../components/svg/DownloadFile';
 import Start from '../components/svg/Start';
@@ -31,11 +33,14 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
 
-
 const Home = () => {
   const [objRef, isVisible] = useObserver({threshold: 0.5});
   const [objRef2, isVisible2] = useObserver({threshold: 0.5});
   const [objRef3, isVisible3] = useObserver({threshold: 0.5});
+
+  const [showCallback, setShowCallback] = useState(false);
+  const handleCloseCallback = () => setShowCallback(false);
+  const handleShowCallback = () => setShowCallback(true);
 
   return (
     <main>
@@ -50,7 +55,7 @@ const Home = () => {
               
               <p>Получайте на 30% больше прибыли с помощью приложения <br/>для заказа, доставки и самовывоза готовой еды или товаров</p>
               <div className="d-sm-flex mt-4 mt-lg-5">
-                <button type='button' className='btn-info w-xs-100'>
+                <button type='button' onClick={handleShowCallback} className='btn-info w-xs-100'>
                   <Flash className="fs-12"/>
                   <span className='ms-2'>Пробовать бесплатно</span>
                 </button>
@@ -391,7 +396,7 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className='sec-12 mb-6'>
+      <section id="tarif" className='sec-12 mb-6'>
         <Container className='wide'>
           <Row className='g-3 g-xl-4'>
             <Col md={4}>
@@ -531,7 +536,7 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className='sec-14 mb-6'>
+      <section id="example" className='sec-14 mb-6'>
         <Container>
           <h2>Компании, которые уже пользуются сервисом</h2>
           <Swiper
@@ -550,31 +555,59 @@ const Home = () => {
           >
             <SwiperSlide>
               <Company
-                imgLogo="/imgs/companies/totos-logo.png"
-                imgCover="/imgs/companies/totos-cover.png"
+                imgLogo="imgs/companies/totos-logo.png"
+                imgCover="imgs/companies/totos-cover.png"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Company
-                imgLogo="/imgs/companies/yakinori-logo.png"
-                imgCover="/imgs/companies/yakinori-cover.png"
+                imgLogo="imgs/companies/yakinori-logo.png"
+                imgCover="imgs/companies/yakinori-cover.png"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Company
-                imgLogo="/imgs/companies/xiao-logo.png"
-                imgCover="/imgs/companies/xiao-cover.png"
+                imgLogo="imgs/companies/xiao-logo.png"
+                imgCover="imgs/companies/xiao-cover.png"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Company
-                imgLogo="/imgs/companies/dream-logo.png"
-                imgCover="/imgs/companies/dream-cover.png"
+                imgLogo="imgs/companies/dream-logo.png"
+                imgCover="imgs/companies/dream-cover.png"
               />
             </SwiperSlide>
           </Swiper>
         </Container>
       </section>
+
+      <Modal show={showCallback} size="xl" centered onHide={handleCloseCallback}>
+        <Modal.Body>
+          <button type='button' className='modal-close' onClick={handleCloseCallback}>
+            <Close/>
+          </button>
+          <Row>
+            <Col md={8}>
+              <h4>Вопрос-заголовок</h4>
+              <p className='fs-09 mb-4'>Оставьте заявку и мы перезвоним через 15 минут или раньше.</p>
+              <div className="fs-09 d-flex">
+                <label className='input-labeled'>
+                  <input type="text" placeholder='Имя'/>
+                  <span></span>
+                </label>
+                <label className='input-labeled ms-3'>
+                  <input type="tel" placeholder='+7-___-___-__-__' className=''/>
+                </label>
+                <button type='button' className='btn-primary ms-3'>Отправить</button>
+              </div>
+              <p className='fs-07 mt-2'>Нажимая кнопку «Отправить», вы даёте согласие на обработку персональных данных и соглашаетесь с Политикой конфиденциальности</p>
+            </Col>
+            <Col md={4}>
+              <img src="imgs/photo.jpg" alt="photo" className='img-fluid'/>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
     </main>
   )
 }

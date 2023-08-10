@@ -3,6 +3,7 @@ import Tomato2 from '../assets/imgs/tomato2.svg';
 import Container from 'react-bootstrap/Container';
 import Start from './svg/Start';
 import useIsMobile from '../hooks/useIsMobile';
+import Modal from 'react-bootstrap/Modal';
 
 const Footer = () => {
   const isMobileLG = useIsMobile('991px');

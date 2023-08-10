@@ -9,6 +9,7 @@
     }
 }
 
+//   "homepage": "https://ngf93.github.io/yoo-landing",
 
 $main-font: "Open Sans";
 $radius: 1em;
@@ -154,6 +155,7 @@ h4 {
     margin-bottom: .5em;
 }
 .fs {
+    &-07 {font-size: 0.7em;}
     &-08 {font-size: 0.8em;}
     &-09 {font-size: 0.9em;}
     &-10 {font-size: 1em;}
@@ -328,6 +330,13 @@ button {
 .hmax{
     height: 3rem;
 }
+.input-labeled {
+    position: relative;
+    input {
+        position: relative;
+        z-index: 1;
+    }
+}
 
 .container.wide {
     @media (min-width: 1300px) {
@@ -347,6 +356,9 @@ button {
     .w-xs-100 {width: 100%;}
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -368,13 +380,20 @@ body {
 
 
 header {
-    background-color: $blue;
-    color: $white;
-    height: var(--h-height);
-    border-radius: $radius;
-    @include flex(row, space-between, center, nowrap);
-    padding: 0em 1.8em !important;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
     margin-bottom: $indent;
+    .box {
+        width: 100%;
+        background-color: $blue;
+        color: $white;
+        height: var(--h-height);
+        @include flex(row, space-between, center, nowrap);
+        padding: 0em 1.8em !important;
+        border-radius: $radius;
+    }
     .logo {
         max-width: 125px;
         max-height: 30px;
@@ -1144,5 +1163,28 @@ footer {
             font-size: 1rem;
             flex-grow: 1;
         }
+    }
+}
+
+.modal {
+    &-xl {
+        --bs-modal-width: 900px;
+    }
+    &-content {
+        border: none;
+        border-radius: 1em;
+        background-color: $white;
+    }
+    &-body {
+        position: relative;
+        padding: 1.25em;
+    }
+    &-close {
+        position: absolute;
+        top: .15em;
+        right: .15em;
+        font-size: 1.25em;
+        z-index: 10;
+        @include flex();
     }
 }
