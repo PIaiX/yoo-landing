@@ -79,13 +79,13 @@ const Home = () => {
             </Col>
             <Col>
               <div className="pros-2">
-                <img src="/imgs/replacement1.png" alt="animate" className='d-block ms-auto' />
+                <img src="imgs/replacement1.png" alt="animate" className='d-block ms-auto' />
                 <h4>Сформируем максимально подробную статистику</h4>
               </div>
             </Col>
             <Col>
               <div className="pros-3">
-                <img src="/imgs/replacement2.png" alt="animate" className='d-block ms-auto' />
+                <img src="imgs/replacement2.png" alt="animate" className='d-block ms-auto' />
                 <h4>Автоматизируем процесс заказа на доставку и в заведениях</h4>
               </div>
             </Col>
@@ -99,25 +99,25 @@ const Home = () => {
           <Row xs={2} md={3} lg={4} className='justify-content-center g-2 g-sm-3 g-xl-5'>
             <Col>
               <figure>
-                <img src="/imgs/img1.png" alt="Кафе и ресторанам" />
+                <img src="imgs/img1.png" alt="Кафе и ресторанам" />
                 <figcaption>Кафе и ресторанам</figcaption>
               </figure>
             </Col>
             <Col>
               <figure>
-                <img src="/imgs/img2.png" alt="Сервисам доставки" />
+                <img src="imgs/img2.png" alt="Сервисам доставки" />
                 <figcaption>Сервисам доставки</figcaption>
               </figure>
             </Col>
             <Col>
               <figure>
-                <img src="/imgs/img3.png" alt="Пиццериям и суши-барам" />
+                <img src="imgs/img3.png" alt="Пиццериям и суши-барам" />
                 <figcaption>Пиццериям и суши-барам</figcaption>
               </figure>
             </Col>
             <Col>
               <figure>
-                <img src="/imgs/img4.jpg" alt="Пекарням и кондитерским" />
+                <img src="imgs/img4.jpg" alt="Пекарням и кондитерским" />
                 <figcaption>Пекарням и кондитерским</figcaption>
               </figure>
             </Col>
@@ -174,7 +174,7 @@ const Home = () => {
               <h2>Пройдите опрос и получите <br/>скидку <span>— 10 тыс. ₽</span> на запуск</h2>
               <p>Нужен ещё текст про условия акции или что‑то, что расказывает о выгодне прохождения этого опроса</p>
               <div className='sec-5-img'>
-                <img src="/imgs/img5.png" alt="img5"/>
+                <img src="imgs/img5.png" alt="img5"/>
               </div>
               <button type='button' className='btn-info w-xs-100 mt-4 mt-lg-5'>
                 <Flash className="fs-12"/>
@@ -236,14 +236,14 @@ const Home = () => {
       <section className='sec-7 mb-6'>
         <Container>
           <h2 className='text-start'>Сихронизируемся с любой системой по API</h2>
-          <img src="/imgs/scheme.png" alt="scheme" className='d-none d-md-block img-fluid mx-auto'/>
-          <img src="/imgs/schemeMobile.png" alt="scheme" className='d-block d-md-none img-fluid mx-auto'/>
+          <img src="imgs/scheme.png" alt="scheme" className='d-none d-md-block img-fluid mx-auto'/>
+          <img src="imgs/schemeMobile.png" alt="scheme" className='d-block d-md-none img-fluid mx-auto'/>
         </Container>
       </section>
 
       <section className='sec-8 mb-6'>
         <Container>
-          <h2>Управление заведением <br/>станет <img src="/imgs/eyes.png" alt="eyes"/> ещё проще</h2>
+          <h2>Управление заведением <br/>станет <img src="imgs/eyes.png" alt="eyes"/> ещё проще</h2>
           <p className="fs-09 text-center">Соберём все заказы, оцифруем работу сотрудников, напомним заказать <br/>продукты, подготовим необходимый отчёт</p>
           <button type='button' className='btn-secondary hmax mt-5 mx-auto'>
             <span className='fw-7'>Узнать больше о возможностях</span>
@@ -268,15 +268,15 @@ const Home = () => {
               <Row xs={1} md={2} className='flex-md-row-reverse g-4'>
                 <Col>
                   <div className='textBox'>
-                    <img src="/imgs/img7.png" alt="Система лояльности"/>
+                    <img src="imgs/img7.png" alt="Система лояльности"/>
                     <h3>Система лояльности есть, даже если её нет</h3>
                     <p>Мы продумали систему лояльности для заведений которые пользуются сервисами без системы лояльности.</p>
                   </div>
                 </Col>
                 <Col>
                   <div className="img">
-                    <img src="/imgs/img6.png" alt="Система лояльности" className='img-main' ref={objRef}/>
-                    <img src="/imgs/img8.png" alt="Система лояльности" className='img-popup' data-observing={isVisible}/>
+                    <img src="imgs/img6.png" alt="Система лояльности" className='img-main' ref={objRef}/>
+                    <img src="imgs/img8.png" alt="Система лояльности" className='img-popup' data-observing={isVisible}/>
                   </div>
                 </Col>
               </Row>
@@ -285,15 +285,15 @@ const Home = () => {
               <Row xs={1} md={2} className='flex-md-row-reverse g-4'>
                 <Col>
                   <div className='textBox'>
-                    <img src="/imgs/img10.png" alt="Таргетинг добрался и до Push"/>
+                    <img src="imgs/img10.png" alt="Таргетинг добрался и до Push"/>
                     <h3>Таргетинг добрался и до Push</h3>
                     <p>Отсортируйте пользователей, по дню рождения, зоне доставки или любимому блюду, и отправьте им уведомление о ваших акциях.</p>
                   </div>
                 </Col>
                 <Col>
                   <div className="img2">
-                    <img src="/imgs/img9.png" alt="Таргетинг добрался и до Push" className='img2-main' ref={objRef2}/>
-                    <img src="/imgs/img11.png" alt="Таргетинг добрался и до Push" className='img2-popup' data-observing={isVisible2}/>
+                    <img src="imgs/img9.png" alt="Таргетинг добрался и до Push" className='img2-main' ref={objRef2}/>
+                    <img src="imgs/img11.png" alt="Таргетинг добрался и до Push" className='img2-popup' data-observing={isVisible2}/>
                   </div>
                 </Col>
               </Row>
@@ -302,15 +302,15 @@ const Home = () => {
               <Row xs={1} md={2} className='flex-md-row-reverse g-4'>
                 <Col>
                   <div className='textBox'>
-                    <img src="/imgs/img13.png" alt="Настроим зоны доставок"/>
+                    <img src="imgs/img13.png" alt="Настроим зоны доставок"/>
                     <h3>Настроим зоны доставок</h3>
                     <p>С нами вы сможете разделить доставку по зонам, исходя из этого настроим автоматический расчёт стоимости доставки, суммы бесплатной доставки и минимального чека.</p>
                   </div>
                 </Col>
                 <Col>
                   <div className="img3">
-                    <img src="/imgs/img12.png" alt="Настроим зоны доставок" className='img3-main' ref={objRef3}/>
-                    <img src="/imgs/img14.png" alt="Настроим зоны доставок" className='img3-popup' data-observing={isVisible3}/>
+                    <img src="imgs/img12.png" alt="Настроим зоны доставок" className='img3-main' ref={objRef3}/>
+                    <img src="imgs/img14.png" alt="Настроим зоны доставок" className='img3-popup' data-observing={isVisible3}/>
                   </div>
                 </Col>
               </Row>
@@ -323,7 +323,7 @@ const Home = () => {
         <Container>
           <h2>Предоставляем полную статистику по заказам</h2>
           <p className="text-center">Отслеживайте ключевые показатели и формируйте <br/>отчеты, чтобы зарабатывать еще больше</p>
-          <img src="/imgs/stats.jpg" alt="statistics" className='img-fluid'/>
+          <img src="imgs/stats.jpg" alt="statistics" className='img-fluid'/>
         </Container>
       </section>
 
@@ -336,27 +336,27 @@ const Home = () => {
               <ul className="list-unstyled row row-cols-3 g-2">
                 <li>
                   <div className='logotip'>
-                    <img src="/imgs/logotips/sber.svg" alt="sber"/>
+                    <img src="imgs/logotips/sber.svg" alt="sber"/>
                   </div>
                 </li>
                 <li>
                   <div className='logotip'>
-                    <img src="/imgs/logotips/tinkoff.svg" alt="tinkoff"/>
+                    <img src="imgs/logotips/tinkoff.svg" alt="tinkoff"/>
                   </div>
                 </li>
                 <li>
                   <div className='logotip'>
-                    <img src="/imgs/logotips/maybebank.svg" alt="maybebank"/>
+                    <img src="imgs/logotips/maybebank.svg" alt="maybebank"/>
                   </div>
                 </li>
                 <li>
                   <div className='logotip'>
-                    <img src="/imgs/logotips/alfa.svg" alt="alfa"/>
+                    <img src="imgs/logotips/alfa.svg" alt="alfa"/>
                   </div>
                 </li>
                 <li>
                   <div className='logotip'>
-                    <img src="/imgs/logotips/Yoomoney.svg" alt="Yoomoney"/>
+                    <img src="imgs/logotips/Yoomoney.svg" alt="Yoomoney"/>
                   </div>
                 </li>
                 <li>
@@ -369,19 +369,19 @@ const Home = () => {
                 <h4>Бонусная система</h4>
                 <p>Завоюйте лояльность клиентов, поощряя покупки бонусами на сайте и в приложении</p>
               </div>
-              <img src="/imgs/iPhone.png" alt="iPhone" className='mx-auto'/>
+              <img src="imgs/iPhone.png" alt="iPhone" className='mx-auto'/>
             </div>
             <div className="info3">
               <h4>Будьте всегда на связи с клиентом</h4>
               <p className='mb-3'>Внутренний чат экономит время клиента и деньги на содержании call-центра</p>
-              <img src="/imgs/iPhone2.png" alt="iPhone" className='mx-auto'/>
+              <img src="imgs/iPhone2.png" alt="iPhone" className='mx-auto'/>
             </div>
             <div className="info4">
               <div>
                 <h4>Не упустите ни одного клиента!</h4>
                 <p>Настройте бонусную систему под свои нужны — меняйте скидки в два клика, оповещайте об акциях и делитесь промокодами.</p>
               </div> 
-              <img src="/imgs/iPhone3.png" alt="iPhone" className='ms-auto'/>
+              <img src="imgs/iPhone3.png" alt="iPhone" className='ms-auto'/>
             </div>
             <div className="info5">
               <h4>Все управление в одном месте</h4>
