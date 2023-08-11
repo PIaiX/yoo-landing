@@ -5,13 +5,14 @@ import {Link} from 'react-router-dom';
 import Logo from '../assets/imgs/logo.svg';
 import useIsMobile from '../hooks/useIsMobile';
 import MobileMenuIcon from './svg/MobileMenuIcon';
+import Close from './svg/Close';
 
 const Header = () => {
   const isMobileLG = useIsMobile('991px');
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const handleCloseMenu = () => setShowMenu(false);
+  const handleShowMenu = () => setShowMenu(true);
 
   return (
     <header>
@@ -20,12 +21,14 @@ const Header = () => {
           <Link to="">
             <img src={Logo} alt="logo" className='logo'/>
           </Link>
-          <button type='button' className='d-flex d-lg-none' onClick={handleShow}>
+          <button type='button' className='d-flex d-lg-none' onClick={handleShowMenu}>
             <MobileMenuIcon className="fs-18"/>
           </button>
-          <Offcanvas show={show} onHide={handleClose} placement={"end"} responsive="lg">
+          <Offcanvas show={showMenu} onHide={handleCloseMenu} placement={"end"} responsive="lg">
             <Offcanvas.Body>
-              <button className='d-lg-none'></button>
+              <button type='button' className='d-lg-none close' onClick={handleCloseMenu}>
+                <Close/>
+              </button>
               <nav className={(isMobileLG) ? 'mobile-menu' : ''}>
                 <ul>
                     <li><Link to="">Решения</Link></li>

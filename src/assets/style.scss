@@ -154,6 +154,12 @@ h4 {
     text-align: left;
     margin-bottom: .5em;
 }
+h4 {
+    font-size: 1em;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: .5em;
+}
 .fs {
     &-07 {font-size: 0.7em;}
     &-08 {font-size: 0.8em;}
@@ -224,11 +230,11 @@ input {
     @include no-appearance;
     width: 1em;
     height: 1em;
-    border: 1px solid $blue;
+    border: 1px solid $gray;
     background-color: $white;
     border-radius: 50%;
     box-shadow: none;
-    transition: $transition;
+    transition: border-color $transition;
     position: relative;
     &::before {
       content: '';
@@ -239,12 +245,15 @@ input {
       height: .5em;
       width: .5em;
       border-radius: 50%;
-      background-color: $blue;
-      transition: $transition;
+      background-color: $red;
+      transition: opacity $transition;
       opacity: 0;
     }
-    &:checked::before {
-      opacity: 1;
+    &:checked {
+        border-color: $red;
+        &::before {
+            opacity: 1;
+        }
     }
   }
   &[type=number]{
@@ -427,15 +436,27 @@ header {
     }
 }
 .mobile-menu {
+    @include media-breakpoint-down(lg) {
+        padding: 1em;
+    }
     ul {
         @include list();
         li {
             &:not(:first-child){
                 margin-top: 1em;
+                @include media-breakpoint-down(lg) {
+                    margin-top: 0.25em;
+                }
             }
             a {
                 font-size: 1em;
                 font-weight: 600;
+                @include media-breakpoint-down(lg) {
+                    display: block;
+                    text-align: center;
+                    padding: 0.75em;
+                    background-color: $pale-blue;
+                }
             }
         }
     }
@@ -444,6 +465,10 @@ header {
         margin-top: 2em;
         font-size: 1.25em;
         font-weight: 600;
+        @include media-breakpoint-down(lg) {
+            text-align: center;
+            color: $deepblue;
+        }
     }
 }
 
@@ -635,6 +660,10 @@ main {
             width: 500px;
             height: 330px;
         }
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            height: 55vw;
+        }
     }
 }
 
@@ -704,6 +733,93 @@ main {
             padding: .15em 1em;
             border-radius: 1em;
         }
+    }
+}
+.quiz {
+    &-img {
+        height: 380px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1em;
+        filter: contrast(70%) brightness(1.25);
+    }
+    &-page {
+        font-size: 3.75em;
+        line-height: 1em;
+        font-weight: 600;
+        color: $white;
+        text-shadow: 
+        1px 1px 0px $deepblue,
+        0px 1px 0px $deepblue,
+        1px 0px 0px $deepblue,
+        0px 0px 0px $deepblue, 
+        -1px -1px 0px $deepblue,
+        0px -1px 0px $deepblue,
+        -1px 0px 0px $deepblue;
+    }
+    .photo {
+        @include roundedImg(60px, 50%, cover);
+        margin-right: 1em;
+    }
+    fieldset {
+        legend {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 1.2em;
+            float: unset;
+            display: block;
+            margin-bottom: 1em;
+        }
+    }
+    blockquote {
+        border: 1px solid rgba($color: $deepblue, $alpha: 0.1);
+        padding: .65em;
+        border-radius: 1em;
+        margin-top: 1.5em;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 1.25em;
+            border-left: .6em solid transparent;
+            border-right: .6em solid transparent;
+            border-bottom: .75em solid $white;
+            filter: drop-shadow(0px -1px 0px rgba($color: $deepblue, $alpha: 0.15));
+
+        }
+        p {
+            font-size: .9em;
+        }
+    }
+    ul {
+        @include list();
+        li {
+            background-color: $light-gray;
+            padding: .6em 1.2em;
+            border-radius: .65em;
+            &:not(:last-child){
+                margin-bottom: .9em;
+            }
+            input[type="text"] {
+                padding: 0px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+    }
+    .btn-gray {
+        height: 2.25rem;
+        width: 2.25rem;
+        padding: 0px;
+        border-radius: 50%;
+        font-size: 1.3em;
+    }
+    .btn-primary {
+        height: 2.25rem;
+        font-size: .9em;
+        font-weight: 400;
+        border-radius: 1.5em;
     }
 }
 
@@ -1034,6 +1150,20 @@ main {
 .sec-12 {
     background-color: $pale-blue;
     padding: 3em 0em;
+    .swiperTarif {
+        .swiper-wrapper {
+            align-items: stretch;
+            .swiper-slide {
+                height: auto;
+                @include media-breakpoint-down(lg) {
+                    width: 280px;
+                }
+                @include media-breakpoint-down(md) {
+                    width: 260px;
+                }
+            }
+        }
+    }
     .box {
         background-color: $white;
         padding: 1.8em;
@@ -1069,6 +1199,9 @@ main {
                 position: relative;
                 z-index: 10;
                 background-color: $white;
+                @include media-breakpoint-down(md) {
+                    font-size: 1em;
+                }
                 &:last-child {
                     margin-left: 1em;
                 }
@@ -1167,9 +1300,6 @@ footer {
 }
 
 .modal {
-    &-xl {
-        --bs-modal-width: 900px;
-    }
     &-content {
         border: none;
         border-radius: 1em;
@@ -1179,12 +1309,26 @@ footer {
         position: relative;
         padding: 1.25em;
     }
-    &-close {
-        position: absolute;
-        top: .15em;
-        right: .15em;
-        font-size: 1.25em;
-        z-index: 10;
-        @include flex();
+}
+.modalCallback {
+    .modal-xl {
+        --bs-modal-width: 900px;
+        @include media-breakpoint-down(lg) {
+            --bs-modal-width: 700px;
+        }
+        @include media-breakpoint-down(md) {
+            --bs-modal-width: 500px;
+        }
+    }
+}
+.close {
+    position: absolute;
+    top: .15em;
+    right: .15em;
+    font-size: 1.25em;
+    z-index: 10;
+    @include flex();
+    @include media-breakpoint-down(lg) {
+        font-size: 1.75em;
     }
 }

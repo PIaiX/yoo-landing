@@ -32,6 +32,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
+import Return from '../components/svg/Return';
 
 const Home = () => {
   const [objRef, isVisible] = useObserver({threshold: 0.5});
@@ -41,6 +42,10 @@ const Home = () => {
   const [showCallback, setShowCallback] = useState(false);
   const handleCloseCallback = () => setShowCallback(false);
   const handleShowCallback = () => setShowCallback(true);
+
+  const [showQuiz, setShowQuiz] = useState(false);
+  const handleCloseQuiz = () => setShowQuiz(false);
+  const handleShowQuiz = () => setShowQuiz(true);
 
   return (
     <main>
@@ -181,7 +186,7 @@ const Home = () => {
               <div className='sec-5-img'>
                 <img src="imgs/img5.png" alt="img5"/>
               </div>
-              <button type='button' className='btn-info w-xs-100 mt-4 mt-lg-5'>
+              <button type='button' onClick={handleShowQuiz} className='btn-info w-xs-100 mt-4 mt-lg-5'>
                 <Flash className="fs-12"/>
                 <span className='ms-2'>Пройти опрос</span>
               </button>
@@ -399,122 +404,155 @@ const Home = () => {
       <section id="tarif" className='sec-12 mb-6'>
         <Container className='wide'>
           <Row className='g-3 g-xl-4'>
-            <Col md={4}>
+            <Col xs={12} md={4} className='order-1'>
               <h3>Выберите план развития вашего бизнеса</h3>
             </Col>
-            <Col md={8}>
+            <Col xs={12} md={8} className='order-3 order-md-2'>
               <div className="box d-flex align-items-center">
                 <img src={Icon1} alt="Icon1" />
                 <p className='ms-4'>Админ-панель, обновления приложения, техническая поддержка и система лояльности включены в стоимость тарифов.</p>
               </div>
             </Col>
-            <Col md={4}>
-              <div className="box h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <h4 className='fw-7 text-uppercase'>Аренда</h4>
-                  <p className='mb-3'>6 000 ₽/мес</p>
-                  <img src={Icon2} alt="Аренда" />
-                  <ul>
-                    <li>
-                      <span>Запуск</span>
-                      <span>30&nbsp;000&nbsp;₽</span>
-                    </li>
-                    <li>
-                      <span>Хостинг</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Подключение доп.&nbsp;точки</span>
-                      <span>1&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
-                    </li>
-                    <li>
-                      <span>Сайт</span>
-                      <span>2&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
-                    </li>
-                    <li>
-                      <span>Интеграция</span>
-                      <span>5-15&nbsp;тыс&nbsp;₽</span>
-                    </li>
-                  </ul>
-                </div>
-                <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="box h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <h4 className='fw-7 text-uppercase'>Выкуп</h4>
-                  <p className='mb-3'>240 000 ₽</p>
-                  <img src={Icon3} alt="Выкуп" />
-                  <ul>
-                    <li>
-                      <span>Запуск</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Хостинг</span>
-                      <span>4&nbsp;000&nbsp;₽&nbsp;/&nbsp;год</span>
-                    </li>
-                    <li>
-                      <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
-                      <span>15&nbsp;000&nbsp;₽</span>
-                    </li>
-                    <li>
-                      <span>Подключение доп.&nbsp;точки</span>
-                      <span>10&nbsp;000&nbsp;₽</span>
-                    </li>
-                    <li>
-                      <span>Сайт</span>
-                      <span>60&nbsp;000&nbsp;₽</span>
-                    </li>
-                    <li>
-                      <span>Интеграция</span>
-                      <span>5-15&nbsp;тыс&nbsp;₽</span>
-                    </li>
-                  </ul>
-                </div>
-                <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="box h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <h4 className='fw-7 text-uppercase'>Процент от выручки</h4>
-                  <p className='mb-3'>от 1 до 3%</p>
-                  <img src={Icon4} alt="Процент от выручки" />
-                  <ul>
-                    <li>
-                      <span>Запуск</span>
-                      <span>30&nbsp;000&nbsp;₽</span>
-                    </li>
-                    <li>
-                      <span>Хостинг</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Подключение доп.&nbsp;точки</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Сайт</span>
-                      <span>Бесплатно</span>
-                    </li>
-                    <li>
-                      <span>Интеграция</span>
-                      <span>5-15&nbsp;тыс&nbsp;₽</span>
-                    </li>
-                  </ul>
-                </div>
-                <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
-              </div>
+            <Col xs={12} className='order-2 order-md-3'>
+              <Swiper
+                className='swiperTarif'
+                spaceBetween={16}
+                slidesPerView={'auto'}
+                breakpoints={{
+                  992: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                  },
+                  1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                  },
+                }}
+              >
+                <SwiperSlide>
+                  <div className="box h-100 d-flex flex-column justify-content-between">
+                    <div>
+                      <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
+                        <div>
+                          <h4 className='fw-7 text-uppercase'>Аренда</h4>
+                          <p className='mb-lg-3'>6 000 ₽/мес</p>
+                        </div>
+                        <img src={Icon2} alt="Аренда" />
+                      </div>
+                      <ul>
+                        <li>
+                          <span>Запуск</span>
+                          <span>30&nbsp;000&nbsp;₽</span>
+                        </li>
+                        <li>
+                          <span>Хостинг</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li className='d-none d-lg-block'>
+                          <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li>
+                          <span className='d-none d-lg-block'>Подключение доп.&nbsp;точки</span>
+                          <span className='d-lg-none'>Доп.&nbsp;точки</span>
+                          <span>1&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
+                        </li>
+                        <li>
+                          <span>Сайт</span>
+                          <span>2&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
+                        </li>
+                        <li>
+                          <span>Интеграция</span>
+                          <span>5-15&nbsp;тыс&nbsp;₽</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="box h-100 d-flex flex-column justify-content-between">
+                    <div>
+                      <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
+                        <div>
+                          <h4 className='fw-7 text-uppercase'>Выкуп</h4>
+                          <p className='mb-lg-3'>240 000 ₽</p>
+                        </div>
+                        <img src={Icon3} alt="Выкуп" />
+                      </div>
+                      <ul>
+                        <li>
+                          <span>Запуск</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li>
+                          <span>Хостинг</span>
+                          <span>4&nbsp;000&nbsp;₽&nbsp;/&nbsp;год</span>
+                        </li>
+                        <li className='d-none d-lg-block'>
+                          <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
+                          <span>15&nbsp;000&nbsp;₽</span>
+                        </li>
+                        <li>
+                          <span className='d-none d-lg-block'>Подключение доп.&nbsp;точки</span>
+                          <span className='d-lg-none'>Доп.&nbsp;точки</span>
+                          <span>10&nbsp;000&nbsp;₽</span>
+                        </li>
+                        <li>
+                          <span>Сайт</span>
+                          <span>60&nbsp;000&nbsp;₽</span>
+                        </li>
+                        <li>
+                          <span>Интеграция</span>
+                          <span>5-15&nbsp;тыс&nbsp;₽</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="box h-100 d-flex flex-column justify-content-between">
+                    <div>
+                      <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
+                        <div>
+                          <h4 className='fw-7 text-uppercase'>Процент от выручки</h4>
+                          <p className='mb-lg-3'>от 1 до 3%</p>
+                        </div>
+                        <img src={Icon4} alt="Процент от выручки" />
+                      </div>
+                      <ul>
+                        <li>
+                          <span>Запуск</span>
+                          <span>30&nbsp;000&nbsp;₽</span>
+                        </li>
+                        <li>
+                          <span>Хостинг</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li className='d-none d-lg-block'>
+                          <span>Размещение <br/>в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li>
+                          <span className='d-none d-lg-block'>Подключение доп.&nbsp;точки</span>
+                          <span className='d-lg-none'>Доп.&nbsp;точки</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li>
+                          <span>Сайт</span>
+                          <span>Бесплатно</span>
+                        </li>
+                        <li>
+                          <span>Интеграция</span>
+                          <span>5-15&nbsp;тыс&nbsp;₽</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <button type='button' className='mt-4 w-100 btn-gray hmax'>Подробнее</button>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </Col>
           </Row>
         </Container>
@@ -581,32 +619,123 @@ const Home = () => {
         </Container>
       </section>
 
-      <Modal show={showCallback} size="xl" centered onHide={handleCloseCallback}>
+      <Modal className='modalCallback' show={showCallback} size="xl" centered onHide={handleCloseCallback}>
         <Modal.Body>
-          <button type='button' className='modal-close' onClick={handleCloseCallback}>
+          <button type='button' className='close' onClick={handleCloseCallback}>
             <Close/>
           </button>
           <Row>
-            <Col md={8}>
+            <Col xs={12} lg={8}>
               <h4>Вопрос-заголовок</h4>
               <p className='fs-09 mb-4'>Оставьте заявку и мы перезвоним через 15 минут или раньше.</p>
-              <div className="fs-09 d-flex">
-                <label className='input-labeled'>
+              <div className="fs-09 d-sm-flex">
+                <label className='input-labeled w-xs-100'>
                   <input type="text" placeholder='Имя'/>
                   <span></span>
                 </label>
-                <label className='input-labeled ms-3'>
+                <label className='input-labeled w-xs-100 ms-sm-3 mt-3 mt-sm-0'>
                   <input type="tel" placeholder='+7-___-___-__-__' className=''/>
                 </label>
-                <button type='button' className='btn-primary ms-3'>Отправить</button>
+                <button type='button' className='btn-primary  w-xs-100 ms-sm-3 mt-3 mt-sm-0'>Отправить</button>
               </div>
               <p className='fs-07 mt-2'>Нажимая кнопку «Отправить», вы даёте согласие на обработку персональных данных и соглашаетесь с Политикой конфиденциальности</p>
             </Col>
-            <Col md={4}>
-              <img src="imgs/photo.jpg" alt="photo" className='img-fluid'/>
+            <Col xs={12} lg={4} className='d-none d-lg-block'>
+              <img src="imgs/photo.jpg" alt="photo" className='img-fluid rounded-3'/>
             </Col>
           </Row>
-        </Modal.Body>
+        </Modal.Body> 
+      </Modal>
+
+      <Modal show={showQuiz} size="xl" centered onHide={handleCloseQuiz}>
+        <Modal.Body>
+          <button type='button' className='close' onClick={handleCloseQuiz}>
+            <Close/>
+          </button>
+          <form action="" className='quiz'>
+            <fieldset>
+              <legend>Какое у вас заведение?</legend>
+              <Row>
+                <Col lg={9}>
+                  <Row>
+                    <Col md={5}>
+                      <ul>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Кафе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Ресторан</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Суши-бар</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Пиццерия</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Пекарня</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name='type' />
+                            <span className='ms-2'>Сервис доставки</span>
+                          </label>
+                        </li>
+                        <li>
+                          <input type="text" placeholder='Другое'/>
+                        </li>
+                      </ul>
+                    </Col>
+                    <Col md={7}>
+                      <img src="imgs/img15.jpg" alt="cafe" className='quiz-img'/>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                  <div>
+                    <div className="d-flex">
+                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <div>
+                        <h5>Сирень</h5>
+                        <p className='fs-09'>Руковоитель</p>
+                      </div>
+                    </div>
+                    <blockquote>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque  accusamus et iusto odio dignissimos</p>
+                    </blockquote>
+                  </div>
+                  
+                  <div className="d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-gray'>
+                      <Return/>
+                    </button>
+                    <div className='text-center'>
+                      <p className='quiz-page'>1/5</p>
+                      <p className='deepblue fw-6'>вопрос</p>
+                    </div>
+                    <button type='button' className='btn-primary'>Далее</button>
+                  </div>
+                </Col>
+              </Row>
+            </fieldset>
+          </form>
+          
+        </Modal.Body> 
       </Modal>
     </main>
   )
