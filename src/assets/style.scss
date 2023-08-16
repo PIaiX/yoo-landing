@@ -1,10 +1,9 @@
-@import 'bootstrapCustom';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
     --h-height: 51px;
     --f-height: 117px;
-    @include media-breakpoint-down(lg) {
+    @media (max-width: 991.98px) {
       --f-height: 50px;
     }
 }
@@ -28,6 +27,12 @@ $white: #fff;
 $red: #E31F0F;
 $divider: #919EAB;
 $transition: 300ms ease-in;
+
+$bp-sm: 575.98px;
+$bp-md: 767.98px;
+$bp-lg: 991.98px;
+$bp-xl: 1199.98px;
+$bp-xxl: 1399.98px;
 
 
 /* mixins */
@@ -123,7 +128,7 @@ h1 {
     font-weight: 700;
     text-align: left;
     margin-bottom: 1em;
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         font-size: 1.35em;
     }
 }
@@ -132,10 +137,10 @@ h2 {
     font-weight: 400;
     text-align: center;
     margin-bottom: 1em;
-    @include media-breakpoint-down(md) {
+    @media (max-width: $bp-md) {
         font-size: 1.8em; 
     }
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         font-size: 1.4em; 
     }
 }
@@ -144,7 +149,7 @@ h3 {
     font-weight: 600;
     text-align: left;
     margin-bottom: 1em;
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         font-size: 1.4em; 
     }
 }
@@ -202,7 +207,7 @@ input, textarea, .input {
   width: 100%;
   outline: none;
   display: block;
-  transition: $transition;
+  transition: border-color $transition;
   @include placeholder($dark-gray, 400);
   &:hover, &:focus, &:active {
     border: 1px solid $gray;
@@ -210,27 +215,45 @@ input, textarea, .input {
 }
 input {
   &[type='checkbox'] {
+    position: relative;
     @include no-appearance;
     width: 1em;
     height: 1em;
-    border: 1px solid $dark-gray;
+    border: 2px solid $gray;
     background-color: $white;
-    background-image: url(imgs/icons/checkmark.svg);
+    background-image: url(imgs/icons/checkWhite.svg);
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    border-radius: 3px;
+    background-position: 50% 50%;
+    background-size: 125% 125%;
+    border-radius: 5px;
     box-shadow: none;
+    transition: border-color $transition, background-color $transition;
+    // &::before {
+    //     content: '';
+    //     z-index: 5;
+    //     position: absolute;
+    //     bottom: 40%;
+    //     left: 20%;
+    //     height: 40%;
+    //     width: 60%;
+    //     border-width: 0px 0px 2px 2px;
+    //     border-color: $white;
+    //     border-style: solid;
+    //     border-radius: 2px;
+    //     box-sizing: border-box;
+    //     transform: rotateZ(315deg);
+    //     transform-origin: 50% 50%;
+    // }
     &:checked {
-      background-color: $blue;
-      border: 1px solid $blue;
+      background-color: $red;
+      border-color: $red;
     }
   }
   &[type='radio']{
     @include no-appearance;
     width: 1em;
     height: 1em;
-    border: 1px solid $gray;
+    border: 2px solid $gray;
     background-color: $white;
     border-radius: 50%;
     box-shadow: none;
@@ -270,6 +293,45 @@ label {
     justify-content: flex-start;
     align-items: center;
     span {flex:1;}
+}
+.variant {
+    --var-img: 380px;
+    position: relative;
+    width: 100%;
+    figure {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        border: 3px solid transparent;
+        border-radius: 1em;
+        overflow: hidden;
+        @include safariFix();
+        transition: border $transition;
+        img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: var(--var-img);
+            object-fit: cover;
+        }
+        figcaption {
+            position: absolute;
+            z-index: 10;
+            left: 0px;
+            bottom: 1em;
+            width: 100%;
+            text-align: center;
+            color: $black;
+            @include clamp(2, 1.2em, true);
+        }
+    }
+    input {
+        opacity: 0;
+        @include absBG(10, 0px, 100%);
+        &:checked + figure{
+            border: 3px solid $deepblue;
+        }
+    }
 }
 select {
     @include no-appearance();
@@ -347,6 +409,11 @@ button {
     }
 }
 
+@media (min-width: 1400px){
+    .container {
+        max-width: 1140px;
+    }
+}
 .container.wide {
     @media (min-width: 1300px) {
         max-width: 1240px;
@@ -354,14 +421,14 @@ button {
 }
 .mb-6 {
     margin-bottom: 6em;
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $bp-lg) {
         margin-bottom: 4.5em;
     }
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         margin-bottom: 3em;
     }
 }
-@include media-breakpoint-down(sm) {
+@media (max-width: $bp-sm) {
     .w-xs-100 {width: 100%;}
 }
 
@@ -373,16 +440,14 @@ body {
   margin: 0;
   padding: $indent 0px $indent*2;
   font-family: $main-font, 'Arial', 'Tahoma', 'Verdana';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   font-weight: 400;
   color: $black;
   overflow-x: hidden;
-  @include media-breakpoint-down(md) {
+  @media (max-width: $bp-md) {
     font-size: 14px;
   }
-  @include media-breakpoint-down(sm) {
+  @media (max-width: $bp-sm) {
     padding: $indent 0px 0px;
   }
 }
@@ -418,7 +483,7 @@ header {
             li {
                 &:not(:first-child){
                     margin-left: 3em;
-                    @include media-breakpoint-down(xl){
+                    @media (max-width: $bp-xl){
                         margin-left: 1.5em;
                     }
                 }
@@ -436,7 +501,7 @@ header {
     }
 }
 .mobile-menu {
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $bp-lg) {
         padding: 1em;
     }
     ul {
@@ -444,14 +509,14 @@ header {
         li {
             &:not(:first-child){
                 margin-top: 1em;
-                @include media-breakpoint-down(lg) {
+                @media (max-width: $bp-lg) {
                     margin-top: 0.25em;
                 }
             }
             a {
                 font-size: 1em;
                 font-weight: 600;
-                @include media-breakpoint-down(lg) {
+                @media (max-width: $bp-lg) {
                     display: block;
                     text-align: center;
                     padding: 0.75em;
@@ -465,7 +530,7 @@ header {
         margin-top: 2em;
         font-size: 1.25em;
         font-weight: 600;
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             text-align: center;
             color: $deepblue;
         }
@@ -489,15 +554,15 @@ main {
     @media (max-width: 1299px) {
         padding: 5% 3%;
     }
-    @include media-breakpoint-down(xl){
+    @media (max-width: $bp-xl){
         padding: 2em;
     }
-    @include media-breakpoint-down(lg){
+    @media (max-width: $bp-lg){
         background-image: url(../assets/imgs/bg/bg1.jpg);
         background-size: cover;
         background-position: 50% 50%;
     }
-    @include media-breakpoint-down(sm){
+    @media (max-width: $bp-sm){
         padding: 1em;
     }
 }
@@ -509,19 +574,19 @@ main {
         border-radius: $radius;
         padding: 1.875em;
         height: var(--height);
-        @include media-breakpoint-down(xl) {
+        @media (max-width: $bp-xl) {
             --height: 350px;
         }
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             --height: 300px;
             padding: 1em;
             font-size: .9em;
         }
-        @include media-breakpoint-down(md) {
+        @media (max-width: $bp-md) {
             font-size: 1.2em;
             --height: 380px;
         }
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             font-size: 1em;
         }
         &-1 {
@@ -537,13 +602,13 @@ main {
             background-color: $white;
             border: 1px solid $blue;
             @include flex(column, space-between, stretch, nowrap);
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 height: auto;
             }
             h4 {
                 line-height: 1.3em;
                 min-height: 3.9em;
-                @include media-breakpoint-down(md) {
+                @media (max-width: $bp-md) {
                     min-height: unset;
                     margin-top: 1em;
                 }
@@ -557,13 +622,13 @@ main {
             background-color: $white;
             @include shadowEffect();
             @include flex(column, space-between, stretch, nowrap);
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 height: auto;
             }
             h4 {
                 line-height: 1.3em;
                 min-height: 3.9em;
-                @include media-breakpoint-down(md) {
+                @media (max-width: $bp-md) {
                     min-height: unset;
                     margin-top: 1em;
                 }
@@ -592,7 +657,7 @@ main {
             height: 300px;
             object-fit: cover;
             border-radius: 1em;
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 height: 50vw;
             }
         }
@@ -601,7 +666,7 @@ main {
             font-size: 1.25em;
             font-weight: 600;
             margin-top: 1em;
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 font-size: 1em;
             }
         }
@@ -615,7 +680,7 @@ main {
     @include flex(row, space-between, center, nowrap);
     color: $white;
     border-radius: 1em;
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         padding: .8em 1.2em;
     }
 }
@@ -652,15 +717,15 @@ main {
         background-color: $white;
         object-fit: cover;
         object-position: center top;
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             width: 350px;
             height: 230px;
         }
-        @include media-breakpoint-down(md) {
+        @media (max-width: $bp-md) {
             width: 500px;
             height: 330px;
         }
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             width: 100%;
             height: 55vw;
         }
@@ -675,10 +740,10 @@ main {
     padding: 8%;
     border-radius: 1em;
     position: relative;
-    @include media-breakpoint-down(xl) {
+    @media (max-width: $bp-xl) {
         padding: 3em;
     }
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         padding: 1.5em;
     }
     &-img {
@@ -689,10 +754,10 @@ main {
         transform: rotate(8deg) translateY(-50%);
         transform-origin: 50% 50%;
         width: 40%;
-        @include media-breakpoint-down(xl) {
+        @media (max-width: $bp-xl) {
             right: 0%;
         }
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             position: relative;
             top: unset;
             right: unset;
@@ -700,7 +765,7 @@ main {
             margin-top: 2em;
             width: 70%;
         }
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             width: 100%;
             transform: rotate(8deg) translateY(0%) translateX(1em);
         }
@@ -821,6 +886,16 @@ main {
         font-weight: 400;
         border-radius: 1.5em;
     }
+    .variant.mini {
+        --var-img: 150px;
+        figure {
+            figcaption {
+                bottom: .5em;
+                height: unset;
+                color: $white;
+            }
+        } 
+    }
 }
 
 /* Section 6 */
@@ -830,7 +905,7 @@ main {
     border-radius: 1em;
     background-color: $light-gray;
     padding: 1.25em;
-    @include media-breakpoint-down(xl) {
+    @media (max-width: $bp-xl) {
         padding: 1em;
     }
     &-1 {
@@ -840,10 +915,10 @@ main {
         background-position: left bottom;
         background-size: contain;
         position: relative;
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             padding-bottom: 23em;
         }
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             padding-bottom: 65%;
         }
         @media (max-width: 400px) {
@@ -855,17 +930,17 @@ main {
             bottom: 14em;
             left: 63%;
             transform: translateX(-50%);
-            @include media-breakpoint-down(xl) {
+            @media (max-width: $bp-xl) {
                 bottom: 12em;
             }
-            @include media-breakpoint-down(lg) {
+            @media (max-width: $bp-lg) {
                 left: 40%;
                 bottom: 12em;
             }
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 left: 49%;
             }
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 left: 51%;
                 bottom: 37%;
                 width: 25%;
@@ -883,7 +958,7 @@ main {
         background-repeat: no-repeat;
         background-position: right top;
         background-size: 40%;
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             background-image: none;
         }
     }
@@ -893,7 +968,7 @@ main {
         background-repeat: no-repeat;
         background-position: right bottom;
         background-size: 25%;
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             background-image: none;
         }
     }
@@ -903,7 +978,7 @@ main {
         background-repeat: no-repeat;
         background-position: right top;
         background-size: 30%;
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             background-image: none;
         }
     }
@@ -913,13 +988,13 @@ main {
         background-repeat: no-repeat;
         background-position: left top;
         background-size: 42%;
-        @include media-breakpoint-down(sm) {
+        @media (max-width: $bp-sm) {
             background-image: none;
         }
     }
     p {
         font-size: 1em;
-        @include media-breakpoint-down(xl) {
+        @media (max-width: $bp-xl) {
             font-size: .9em;
         }
     }
@@ -928,13 +1003,13 @@ main {
 /* Section 9 */
 .sec-9 {
     --height: 690px;
-    @include media-breakpoint-down(xl) {
+    @media (max-width: $bp-xl) {
         --height: 580px;
     }
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $bp-lg) {
         --height: 460px;
     }
-    @include media-breakpoint-down(md) {
+    @media (max-width: $bp-md) {
         --height: 600px;
     }
     .img {
@@ -1016,7 +1091,7 @@ main {
         height: 100%;
         padding: 3em;
         @include flex(column, center, flex-start, nowrap);
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             padding: 1.5em;
         }
         img {
@@ -1054,11 +1129,11 @@ main {
     "info1 info3 info4"
     "info2 info3 info4"
     "info2 info3 info5";
-    @include media-breakpoint-down(xl) {
+    @media (max-width: $bp-xl) {
         gap: 15px 20px;
         grid-template-rows: 370px 140px 165px;
     }
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $bp-lg) {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 370px 570px 120px;
         grid-template-areas: 
@@ -1066,10 +1141,10 @@ main {
         "info3 info4"
         "info3 info5";
     }
-    @include media-breakpoint-down(md) {
+    @media (max-width: $bp-md) {
         grid-template-rows: 315px 380px 140px;
     }
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $bp-sm) {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-template-areas: "info1" "info2" "info3" "info4" "info5";
@@ -1088,13 +1163,13 @@ main {
             border-radius: $radius;
             @include flex();
             height: 95px;
-            @include media-breakpoint-down(xl) {
+            @media (max-width: $bp-xl) {
                 height: 80px;
             }
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 height: 65px;
             }
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 height: 23vw;
             }
             img {
@@ -1110,10 +1185,10 @@ main {
         padding-bottom: 0px;
         img {
             max-width: 85%;
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 max-width: 95%;
             }
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 margin-top: 1em;
             }
         }
@@ -1132,10 +1207,10 @@ main {
         padding-right: 0px;
         img {
             max-width: 90%;
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 max-width: 70%;
             }
-            @include media-breakpoint-down(sm) {
+            @media (max-width: $bp-sm) {
                 max-width: 90%;
                 margin-top: 1em;
             }
@@ -1155,10 +1230,10 @@ main {
             align-items: stretch;
             .swiper-slide {
                 height: auto;
-                @include media-breakpoint-down(lg) {
+                @media (max-width: $bp-lg) {
                     width: 280px;
                 }
-                @include media-breakpoint-down(md) {
+                @media (max-width: $bp-md) {
                     width: 260px;
                 }
             }
@@ -1169,7 +1244,7 @@ main {
         padding: 1.8em;
         border-radius: 1em;
         border: 1px solid rgba($divider, 0.24);
-        @include media-breakpoint-down(xl) {
+        @media (max-width: $bp-xl) {
             padding: 1em;
         }
     }
@@ -1199,7 +1274,7 @@ main {
                 position: relative;
                 z-index: 10;
                 background-color: $white;
-                @include media-breakpoint-down(md) {
+                @media (max-width: $bp-md) {
                     font-size: 1em;
                 }
                 &:last-child {
@@ -1242,7 +1317,7 @@ main {
 .sec-14 {
     .swiper {
         &-slide {
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 width: 120px;
             }
         }
@@ -1260,12 +1335,12 @@ main {
             margin: 0 auto;
             max-width: 100%;
             margin-top: 1em;
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 display: none;
             }
         }
         .btn-secondary {
-            @include media-breakpoint-down(md) {
+            @media (max-width: $bp-md) {
                 display: none;
             }
         }
@@ -1313,10 +1388,10 @@ footer {
 .modalCallback {
     .modal-xl {
         --bs-modal-width: 900px;
-        @include media-breakpoint-down(lg) {
+        @media (max-width: $bp-lg) {
             --bs-modal-width: 700px;
         }
-        @include media-breakpoint-down(md) {
+        @media (max-width: $bp-md) {
             --bs-modal-width: 500px;
         }
     }
@@ -1328,7 +1403,7 @@ footer {
     font-size: 1.25em;
     z-index: 10;
     @include flex();
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $bp-lg) {
         font-size: 1.75em;
     }
 }

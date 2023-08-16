@@ -47,6 +47,8 @@ const Home = () => {
   const handleCloseQuiz = () => setShowQuiz(false);
   const handleShowQuiz = () => setShowQuiz(true);
 
+  const [quizPage, setQuizPage] = useState(1);
+
   return (
     <main>
       <Container className='wide'>
@@ -649,11 +651,8 @@ const Home = () => {
 
       <Modal show={showQuiz} size="xl" centered onHide={handleCloseQuiz}>
         <Modal.Body>
-          <button type='button' className='close' onClick={handleCloseQuiz}>
-            <Close/>
-          </button>
           <form action="" className='quiz'>
-            <fieldset>
+            <fieldset className={(quizPage === 1) ? '' : 'd-none'}>
               <legend>Какое у вас заведение?</legend>
               <Row>
                 <Col lg={9}>
@@ -712,7 +711,7 @@ const Home = () => {
                       <img src="imgs/photo.jpg" alt="photo" className='photo'/>
                       <div>
                         <h5>Сирень</h5>
-                        <p className='fs-09'>Руковоитель</p>
+                        <p className='fs-09'>Руководитель</p>
                       </div>
                     </div>
                     <blockquote>
@@ -721,11 +720,208 @@ const Home = () => {
                   </div>
                   
                   <div className="d-flex align-items-end justify-content-between">
-                    <button type='button' className='btn-gray'>
+                    <button type='button' className='btn-gray' onClick={handleCloseQuiz}>
                       <Return/>
                     </button>
                     <div className='text-center'>
                       <p className='quiz-page'>1/5</p>
+                      <p className='deepblue fw-6'>вопрос</p>
+                    </div>
+                    <button type='button' className='btn-primary' onClick={()=>setQuizPage(2)}>Далее</button>
+                  </div>
+                </Col>
+              </Row>
+            </fieldset>
+            <fieldset className={(quizPage === 2) ? '' : 'd-none'}>
+              <legend>Что вас заинтересовало больше всего ?</legend>
+              <Row>
+                <Col lg={9}>
+                  <Row>
+                    <Col md={5}>
+                      <ul>
+                        <li>
+                          <label>
+                            <input type="checkbox" name='product' />
+                            <span className='ms-2'>Мобильное приложение</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name='product' />
+                            <span className='ms-2'>Сайт</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name='product' />
+                            <span className='ms-2'>QR-меню</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name='product' />
+                            <span className='ms-2'>YooApp-система</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </Col>
+                    <Col md={7}>
+                      <img src="imgs/img15.jpg" alt="cafe" className='quiz-img'/>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                  <div>
+                    <div className="d-flex">
+                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <div>
+                        <h5>Сирень</h5>
+                        <p className='fs-09'>Руководитель</p>
+                      </div>
+                    </div>
+                    <blockquote>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque  accusamus et iusto odio dignissimos</p>
+                    </blockquote>
+                  </div>
+                  
+                  <div className="d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(1)}>
+                      <Return/>
+                    </button>
+                    <div className='text-center'>
+                      <p className='quiz-page'>2/5</p>
+                      <p className='deepblue fw-6'>вопрос</p>
+                    </div>
+                    <button type='button' className='btn-primary' onClick={()=>setQuizPage(3)}>Далее</button>
+                  </div>
+                </Col>
+              </Row>
+            </fieldset>
+            <fieldset className={(quizPage === 3) ? '' : 'd-none'}>
+              <legend>Сколько у вас точек (филиалов) ?</legend>
+              <Row>
+                <Col lg={9}>
+                  <Row md={3} className='gx-2'>
+                    <Col>
+                      <label htmlFor="" className='variant'>
+                        <input type="radio" name='filials' />
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement" className='img-fluid'/>
+                          <figcaption>один филиал</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="" className='variant'>
+                        <input type="radio" name='filials'/>
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement" className='img-fluid'/>
+                          <figcaption>больше одной точки  в одном городе</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="" className='variant'>
+                        <input type="radio" name='filials'/>
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement" className='img-fluid'/>
+                          <figcaption>больше одной точки в разных городах</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                  <div>
+                    <div className="d-flex">
+                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <div>
+                        <h5>Сирень</h5>
+                        <p className='fs-09'>Руководитель</p>
+                      </div>
+                    </div>
+                    <blockquote>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque  accusamus et iusto odio dignissimos</p>
+                    </blockquote>
+                  </div>
+                  
+                  <div className="d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(2)}>
+                      <Return/>
+                    </button>
+                    <div className='text-center'>
+                      <p className='quiz-page'>3/5</p>
+                      <p className='deepblue fw-6'>вопрос</p>
+                    </div>
+                    <button type='button' className='btn-primary' onClick={()=>setQuizPage(4)}>Далее</button>
+                  </div>
+                </Col>
+              </Row>
+            </fieldset>
+            <fieldset className={(quizPage === 4) ? '' : 'd-none'}>
+              <legend>С каким программным обеспечением работает ваше заведение?</legend>
+              <Row>
+                <Col lg={9}>
+                  <Row md={2} className='g-2'>
+                    <Col>
+                      <label htmlFor="" className='variant mini'>
+                        <input type="radio" name='software' />
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <figcaption>iiko</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="" className='variant mini'>
+                        <input type="radio" name='software'/>
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <figcaption>r_keeper</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="" className='variant mini'>
+                        <input type="radio" name='software'/>
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <figcaption>Frontpad</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="" className='variant mini'>
+                        <input type="radio" name='software'/>
+                        <figure>
+                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <figcaption>нет никакой</figcaption>
+                        </figure>
+                      </label>
+                    </Col>
+                  </Row>
+                  <input type="text" placeholder='Другое' className='mt-3' />
+                </Col>
+                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                  <div>
+                    <div className="d-flex">
+                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <div>
+                        <h5>Сирень</h5>
+                        <p className='fs-09'>Руководитель</p>
+                      </div>
+                    </div>
+                    <blockquote>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque  accusamus et iusto odio dignissimos</p>
+                    </blockquote>
+                  </div>
+                  
+                  <div className="d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(3)}>
+                      <Return/>
+                    </button>
+                    <div className='text-center'>
+                      <p className='quiz-page'>4/5</p>
                       <p className='deepblue fw-6'>вопрос</p>
                     </div>
                     <button type='button' className='btn-primary'>Далее</button>
@@ -734,7 +930,6 @@ const Home = () => {
               </Row>
             </fieldset>
           </form>
-          
         </Modal.Body> 
       </Modal>
     </main>
