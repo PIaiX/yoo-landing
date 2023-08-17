@@ -66,7 +66,7 @@ const Home = () => {
                   <Flash className="fs-12"/>
                   <span className='ms-2'>Пробовать бесплатно</span>
                 </button>
-                <a href="" className='btn-light w-xs-100 ms-sm-3 mt-3 mt-sm-0'>
+                <a href="/" className='btn-light w-xs-100 ms-sm-3 mt-3 mt-sm-0'>
                   <DownloadFile className="fs-12"/>
                   <span className='ms-2'>Скачать презентацию</span>
                 </a>
@@ -141,7 +141,7 @@ const Home = () => {
         <Container>
           <div className="top mb-2 mb-sm-4">
             <h3 className='fw-7 mb-0'>Заголовок о том, что входит в предложение</h3>
-            <a href="" className='d-none d-lg-flex align-items-center'>
+            <a href="/" className='d-none d-lg-flex align-items-center'>
               <Start className="fs-15"/>
               <span className='fs-11 ms-2'>Посмотреть демо-версию</span>
             </a>
@@ -643,7 +643,7 @@ const Home = () => {
               <p className='fs-07 mt-2'>Нажимая кнопку «Отправить», вы даёте согласие на обработку персональных данных и соглашаетесь с Политикой конфиденциальности</p>
             </Col>
             <Col xs={12} lg={4} className='d-none d-lg-block'>
-              <img src="imgs/photo.jpg" alt="photo" className='img-fluid rounded-3'/>
+              <img src="imgs/photo.jpg" alt="manager" className='img-fluid rounded-3'/>
             </Col>
           </Row>
         </Modal.Body> 
