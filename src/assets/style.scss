@@ -22,6 +22,7 @@ $light-purpur: #E9E9FF;
 $black: #242424;
 $dark-gray: #637381;
 $gray: #c2c2c2;
+$pale-gray: #eceded;
 $light-gray: #F4F6F8;
 $white: #fff;
 $red: #E31F0F;
@@ -199,16 +200,16 @@ h4 {
 .deepblue {color: $deepblue;}
 
 /* Form elements */
-input, textarea, .input {
-  background-color: $white;
-  border: 1px solid $gray;
+input, textarea {
+  background-color: $light-gray;
+  border: 1px solid $light-gray;
   border-radius: $radius*0.5;
   padding: .7em 1.2em;
   width: 100%;
   outline: none;
   display: block;
   transition: border-color $transition;
-  @include placeholder($dark-gray, 400);
+  @include placeholder($gray, 300);
   &:hover, &:focus, &:active {
     border: 1px solid $gray;
   }
@@ -298,15 +299,21 @@ label {
     --var-img: 380px;
     position: relative;
     width: 100%;
+    @media (max-width: $bp-xl) {
+        --var-img: 180px;
+    }
+    @media (max-width: $bp-sm) {
+        font-size: .85em;
+    }
     figure {
         width: 100%;
         position: relative;
         z-index: 1;
-        border: 3px solid transparent;
         border-radius: 1em;
         overflow: hidden;
         @include safariFix();
-        transition: border $transition;
+        filter: brightness(1) hue-rotate(0deg);
+        transition: filter $transition;
         img {
             position: relative;
             z-index: 1;
@@ -329,7 +336,7 @@ label {
         opacity: 0;
         @include absBG(10, 0px, 100%);
         &:checked + figure{
-            border: 3px solid $deepblue;
+            filter: brightness(1.1) hue-rotate(-40deg)
         }
     }
 }
@@ -403,9 +410,23 @@ button {
 }
 .input-labeled {
     position: relative;
-    input {
+    padding-top: .5em;
+    input, textarea {
         position: relative;
         z-index: 1;
+        background-color: $white;
+        border: 1px solid $pale-gray;
+    }
+    span {
+        position: absolute;
+        z-index: 10;
+        top: 0px;
+        left: 1em;
+        font-size: .9em;
+        line-height: 1em;
+        color: $dark-gray;
+        background-color: $white;
+        padding: 0px .25em;
     }
 }
 
@@ -801,6 +822,14 @@ main {
     }
 }
 .quiz {
+    padding: 1em;
+    min-height: 460px;
+    @media (max-width: $bp-lg) {
+        min-height: fit-content;
+    }
+    @media (max-width: $bp-sm) {
+        padding: 0em;
+    }
     &-img {
         height: 380px;
         width: 100%;
@@ -821,6 +850,12 @@ main {
         -1px -1px 0px $deepblue,
         0px -1px 0px $deepblue,
         -1px 0px 0px $deepblue;
+        @media (max-width: $bp-md) {
+            font-size: 2.75em;
+        }
+        @media (max-width: $bp-sm) {
+            font-size: 1.75em;
+        }
     }
     .photo {
         @include roundedImg(60px, 50%, cover);
@@ -834,6 +869,12 @@ main {
             float: unset;
             display: block;
             margin-bottom: 1em;
+            line-height: 1.5em;
+            min-height: 1.5em;
+            @media (max-width: $bp-lg) {
+                min-height: unset;
+                &:empty {display: none;}
+            }
         }
     }
     blockquote {
@@ -886,15 +927,51 @@ main {
         font-weight: 400;
         border-radius: 1.5em;
     }
-    .variant.mini {
-        --var-img: 150px;
+    .variant.logo {
+        --var-img: 151px;
+        @media (max-width: $bp-xl) {
+            --var-img: 130px;
+        }
+        @media (max-width: $bp-sm) {
+            --var-img: 25vw;
+        }
         figure {
+            background-image: url(imgs/bg/bg3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            @include safariFix();
             figcaption {
-                bottom: .5em;
+                bottom: .75em;
                 height: unset;
                 color: $white;
             }
         } 
+    }
+    .btn-return {
+        background-color: $pale-gray;
+        color: $dark-gray;
+        height: 2.25rem;
+        width: 2.25rem;
+        font-size: .9em;
+        font-weight: 400;
+        border-radius: 50%;
+        transition: color $transition, background-color $transition;
+        svg {
+            font-size: 1.4em;
+            color: inherit;
+        }
+        &:hover, &:focus, &:active {
+            background-color: $light-blue;
+            color: $deepblue;
+        }
+    }
+    .big-img {
+        width: 100%;
+        height: 325px;
+        object-fit: cover;
+        border-radius: 1em;
     }
 }
 

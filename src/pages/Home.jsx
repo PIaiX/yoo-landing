@@ -649,15 +649,15 @@ const Home = () => {
         </Modal.Body> 
       </Modal>
 
-      <Modal show={showQuiz} size="xl" centered onHide={handleCloseQuiz}>
+      <Modal show={showQuiz} size="xl" onHide={handleCloseQuiz}>
         <Modal.Body>
           <form action="" className='quiz'>
             <fieldset className={(quizPage === 1) ? '' : 'd-none'}>
               <legend>Какое у вас заведение?</legend>
               <Row>
-                <Col lg={9}>
+                <Col xs={12} lg={7} xl={9}>
                   <Row>
-                    <Col md={5}>
+                    <Col xs={12} xl={5}>
                       <ul>
                         <li>
                           <label>
@@ -700,15 +700,15 @@ const Home = () => {
                         </li>
                       </ul>
                     </Col>
-                    <Col md={7}>
+                    <Col className='d-none d-xl-block' xl={7}>
                       <img src="imgs/img15.jpg" alt="cafe" className='quiz-img'/>
                     </Col>
                   </Row>
                 </Col>
-                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                <Col xs={12} lg={5} xl={3} className='mt-4 mt-lg-0 d-flex flex-column justify-content-between'>
                   <div>
                     <div className="d-flex">
-                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <img src="imgs/photo.jpg" alt="replacement" className='photo'/>
                       <div>
                         <h5>Сирень</h5>
                         <p className='fs-09'>Руководитель</p>
@@ -719,8 +719,8 @@ const Home = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="d-flex align-items-end justify-content-between">
-                    <button type='button' className='btn-gray' onClick={handleCloseQuiz}>
+                  <div className="mt-3 mt-sm-4 d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-return' onClick={handleCloseQuiz}>
                       <Return/>
                     </button>
                     <div className='text-center'>
@@ -733,11 +733,11 @@ const Home = () => {
               </Row>
             </fieldset>
             <fieldset className={(quizPage === 2) ? '' : 'd-none'}>
-              <legend>Что вас заинтересовало больше всего ?</legend>
+              <legend>Что вас заинтересовало больше всего?</legend>
               <Row>
-                <Col lg={9}>
+                <Col xs={12} lg={7} xl={9}>
                   <Row>
-                    <Col md={5}>
+                    <Col xs={12} xl={5}>
                       <ul>
                         <li>
                           <label>
@@ -765,15 +765,15 @@ const Home = () => {
                         </li>
                       </ul>
                     </Col>
-                    <Col md={7}>
+                    <Col className='d-none d-xl-block' xl={7}>
                       <img src="imgs/img15.jpg" alt="cafe" className='quiz-img'/>
                     </Col>
                   </Row>
                 </Col>
-                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                <Col xs={12} lg={5} xl={3} className='mt-4 mt-lg-0 d-flex flex-column justify-content-between'>
                   <div>
                     <div className="d-flex">
-                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <img src="imgs/photo.jpg" alt="replacement" className='photo'/>
                       <div>
                         <h5>Сирень</h5>
                         <p className='fs-09'>Руководитель</p>
@@ -784,8 +784,8 @@ const Home = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="d-flex align-items-end justify-content-between">
-                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(1)}>
+                  <div className="mt-3 mt-sm-4 d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-return' onClick={()=>setQuizPage(1)}>
                       <Return/>
                     </button>
                     <div className='text-center'>
@@ -800,8 +800,8 @@ const Home = () => {
             <fieldset className={(quizPage === 3) ? '' : 'd-none'}>
               <legend>Сколько у вас точек (филиалов) ?</legend>
               <Row>
-                <Col lg={9}>
-                  <Row md={3} className='gx-2'>
+                <Col xs={12} lg={7} xl={9}>
+                  <Row xs={2} xl={3} className='g-2 g-sm-3'>
                     <Col>
                       <label htmlFor="" className='variant'>
                         <input type="radio" name='filials' />
@@ -831,10 +831,10 @@ const Home = () => {
                     </Col>
                   </Row>
                 </Col>
-                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                <Col xs={12} lg={5} xl={3} className='mt-4 mt-lg-0 d-flex flex-column justify-content-between'>
                   <div>
                     <div className="d-flex">
-                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <img src="imgs/photo.jpg" alt="replacement" className='photo'/>
                       <div>
                         <h5>Сирень</h5>
                         <p className='fs-09'>Руководитель</p>
@@ -845,8 +845,8 @@ const Home = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="d-flex align-items-end justify-content-between">
-                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(2)}>
+                  <div className="mt-3 mt-sm-4 d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-return' onClick={()=>setQuizPage(2)}>
                       <Return/>
                     </button>
                     <div className='text-center'>
@@ -861,40 +861,40 @@ const Home = () => {
             <fieldset className={(quizPage === 4) ? '' : 'd-none'}>
               <legend>С каким программным обеспечением работает ваше заведение?</legend>
               <Row>
-                <Col lg={9}>
-                  <Row md={2} className='g-2'>
+                <Col xs={12} lg={7} xl={9}>
+                  <Row xs={2} className='g-2 g-sm-3'>
                     <Col>
-                      <label htmlFor="" className='variant mini'>
+                      <label htmlFor="" className='variant logo'>
                         <input type="radio" name='software' />
                         <figure>
-                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <img src="imgs/iiko.jpg" alt="iiko"/>
                           <figcaption>iiko</figcaption>
                         </figure>
                       </label>
                     </Col>
                     <Col>
-                      <label htmlFor="" className='variant mini'>
-                        <input type="radio" name='software'/>
+                      <label htmlFor="" className='variant logo'>
+                        <input type="radio" name='software' />
                         <figure>
-                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <img src="imgs/r_keeper.jpg" alt="r_keeper"/>
                           <figcaption>r_keeper</figcaption>
                         </figure>
                       </label>
                     </Col>
                     <Col>
-                      <label htmlFor="" className='variant mini'>
+                      <label htmlFor="" className='variant logo'>
                         <input type="radio" name='software'/>
                         <figure>
-                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <img src="imgs/frontpad.jpg" alt="frontpad"/>
                           <figcaption>Frontpad</figcaption>
                         </figure>
                       </label>
                     </Col>
                     <Col>
-                      <label htmlFor="" className='variant mini'>
+                      <label htmlFor="" className='variant logo'>
                         <input type="radio" name='software'/>
                         <figure>
-                          <img src="imgs/replacement.jpg" alt="replacement"/>
+                          <img src="imgs/none.jpg" alt="replacement"/>
                           <figcaption>нет никакой</figcaption>
                         </figure>
                       </label>
@@ -902,10 +902,10 @@ const Home = () => {
                   </Row>
                   <input type="text" placeholder='Другое' className='mt-3' />
                 </Col>
-                <Col lg={3} className='d-flex flex-column justify-content-between'>
+                <Col xs={12} lg={5} xl={3} className='mt-4 mt-lg-0 d-flex flex-column justify-content-between'>
                   <div>
                     <div className="d-flex">
-                      <img src="imgs/photo.jpg" alt="photo" className='photo'/>
+                      <img src="imgs/photo.jpg" alt="replacement" className='photo'/>
                       <div>
                         <h5>Сирень</h5>
                         <p className='fs-09'>Руководитель</p>
@@ -916,15 +916,52 @@ const Home = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="d-flex align-items-end justify-content-between">
-                    <button type='button' className='btn-gray' onClick={()=>setQuizPage(3)}>
+                  <div className="mt-3 mt-sm-4 d-flex align-items-end justify-content-between">
+                    <button type='button' className='btn-return' onClick={()=>setQuizPage(3)}>
                       <Return/>
                     </button>
                     <div className='text-center'>
                       <p className='quiz-page'>4/5</p>
                       <p className='deepblue fw-6'>вопрос</p>
                     </div>
-                    <button type='button' className='btn-primary'>Далее</button>
+                    <button type='button' className='btn-primary' onClick={()=>setQuizPage(5)}>Далее</button>
+                  </div>
+                </Col>
+              </Row>
+            </fieldset>
+            <fieldset className={(quizPage === 5) ? '' : 'd-none'}>
+              <legend></legend>
+              <Row>
+                <Col className='d-none d-lg-block' xs={12} lg={7} xl={9}>
+                  <img src="imgs/replacement.jpg" alt="replacement" className='big-img'/>
+                  <button type='button' className='btn-return mt-3' onClick={()=>setQuizPage(4)}>
+                    <Return/>
+                  </button>
+                </Col>
+                <Col xs={12} lg={5} xl={3}>
+                  <p className='mb-3'>Завершите опрос и получите демо-доступ для демонстрации</p>
+                  <label className='input-labeled w-xs-100 mb-3'>
+                    <input type="text" placeholder='Имя'/>
+                    <span>Имя</span>
+                  </label>
+                  <label className='input-labeled w-xs-100 mb-3'>
+                    <input type="tel" placeholder='+ 7-(9__)-___-__-__'/>
+                    <span>Номер телефона</span>
+                  </label>
+                  <label className='input-labeled w-xs-100 mb-3'>
+                    <input type="text" placeholder=''/>
+                    <span>Город</span>
+                  </label>
+                  <label className='input-labeled w-xs-100 mb-3'>
+                    <input type="text" placeholder=''/>
+                    <span>Название заведения</span>
+                  </label>
+                  
+                  <div className="d-flex">
+                    <button type='button' className='d-lg-none btn-return me-3' onClick={()=>setQuizPage(4)}>
+                      <Return/>
+                    </button>
+                    <button type='submit' className='btn-primary'>отправить</button>
                   </div>
                 </Col>
               </Row>

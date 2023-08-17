@@ -164,9 +164,9 @@ h4 {
 }
 
 /* Form elements */
-input, textarea, .input {
-  background-color: #fff;
-  border: 1px solid #c2c2c2;
+input, textarea {
+  background-color: #F4F6F8;
+  border: 1px solid #F4F6F8;
   border-radius: 0.5em;
   padding: 0.7em 1.2em;
   width: 100%;
@@ -174,15 +174,15 @@ input, textarea, .input {
   display: block;
   transition: border-color 300ms ease-in;
 }
-input::-moz-placeholder, textarea::-moz-placeholder, .input::-moz-placeholder {
-  color: #637381;
-  font-weight: 400;
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #c2c2c2;
+  font-weight: 300;
 }
-input::placeholder, textarea::placeholder, .input::placeholder {
-  color: #637381;
-  font-weight: 400;
+input::placeholder, textarea::placeholder {
+  color: #c2c2c2;
+  font-weight: 300;
 }
-input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea:active, .input:hover, .input:focus, .input:active {
+input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea:active {
   border: 1px solid #c2c2c2;
 }
 
@@ -277,18 +277,28 @@ label span {
   position: relative;
   width: 100%;
 }
+@media (max-width: 1199.98px) {
+  .variant {
+    --var-img: 180px;
+  }
+}
+@media (max-width: 575.98px) {
+  .variant {
+    font-size: 0.85em;
+  }
+}
 .variant figure {
   width: 100%;
   position: relative;
   z-index: 1;
-  border: 3px solid transparent;
   border-radius: 1em;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   isolation: isolate;
   transform: translateZ(0);
-  transition: border 300ms ease-in;
+  filter: brightness(1) hue-rotate(0deg);
+  transition: filter 300ms ease-in;
 }
 .variant figure img {
   position: relative;
@@ -323,7 +333,7 @@ label span {
   z-index: 10;
 }
 .variant input:checked + figure {
-  border: 3px solid #0077FF;
+  filter: brightness(1.1) hue-rotate(-40deg);
 }
 
 select {
@@ -401,10 +411,24 @@ button {
 
 .input-labeled {
   position: relative;
+  padding-top: 0.5em;
 }
-.input-labeled input {
+.input-labeled input, .input-labeled textarea {
   position: relative;
   z-index: 1;
+  background-color: #fff;
+  border: 1px solid #eceded;
+}
+.input-labeled span {
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  left: 1em;
+  font-size: 0.9em;
+  line-height: 1em;
+  color: #637381;
+  background-color: #fff;
+  padding: 0px 0.25em;
 }
 
 @media (min-width: 1400px) {
@@ -892,6 +916,21 @@ main {
   border-radius: 1em;
 }
 
+.quiz {
+  padding: 1em;
+  min-height: 460px;
+}
+@media (max-width: 991.98px) {
+  .quiz {
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+  }
+}
+@media (max-width: 575.98px) {
+  .quiz {
+    padding: 0em;
+  }
+}
 .quiz-img {
   height: 380px;
   width: 100%;
@@ -906,6 +945,16 @@ main {
   font-weight: 600;
   color: #fff;
   text-shadow: 1px 1px 0px #0077FF, 0px 1px 0px #0077FF, 1px 0px 0px #0077FF, 0px 0px 0px #0077FF, -1px -1px 0px #0077FF, 0px -1px 0px #0077FF, -1px 0px 0px #0077FF;
+}
+@media (max-width: 767.98px) {
+  .quiz-page {
+    font-size: 2.75em;
+  }
+}
+@media (max-width: 575.98px) {
+  .quiz-page {
+    font-size: 1.75em;
+  }
 }
 .quiz .photo {
   width: 60px;
@@ -922,6 +971,16 @@ main {
   float: unset;
   display: block;
   margin-bottom: 1em;
+  line-height: 1.5em;
+  min-height: 1.5em;
+}
+@media (max-width: 991.98px) {
+  .quiz fieldset legend {
+    min-height: unset;
+  }
+  .quiz fieldset legend:empty {
+    display: none;
+  }
 }
 .quiz blockquote {
   border: 1px solid rgba(0, 119, 255, 0.1);
@@ -973,13 +1032,59 @@ main {
   font-weight: 400;
   border-radius: 1.5em;
 }
-.quiz .variant.mini {
-  --var-img: 150px;
+.quiz .variant.logo {
+  --var-img: 151px;
 }
-.quiz .variant.mini figure figcaption {
-  bottom: 0.5em;
+@media (max-width: 1199.98px) {
+  .quiz .variant.logo {
+    --var-img: 130px;
+  }
+}
+@media (max-width: 575.98px) {
+  .quiz .variant.logo {
+    --var-img: 25vw;
+  }
+}
+.quiz .variant.logo figure {
+  background-image: url(imgs/bg/bg3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  isolation: isolate;
+  transform: translateZ(0);
+}
+.quiz .variant.logo figure figcaption {
+  bottom: 0.75em;
   height: unset;
   color: #fff;
+}
+.quiz .btn-return {
+  background-color: #eceded;
+  color: #637381;
+  height: 2.25rem;
+  width: 2.25rem;
+  font-size: 0.9em;
+  font-weight: 400;
+  border-radius: 50%;
+  transition: color 300ms ease-in, background-color 300ms ease-in;
+}
+.quiz .btn-return svg {
+  font-size: 1.4em;
+  color: inherit;
+}
+.quiz .btn-return:hover, .quiz .btn-return:focus, .quiz .btn-return:active {
+  background-color: #CCE4FF;
+  color: #0077FF;
+}
+.quiz .big-img {
+  width: 100%;
+  height: 325px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1em;
 }
 
 /* Section 6 */
