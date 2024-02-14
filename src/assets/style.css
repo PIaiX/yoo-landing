@@ -178,6 +178,10 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   color: #c2c2c2;
   font-weight: 300;
 }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #c2c2c2;
+  font-weight: 300;
+}
 input::placeholder, textarea::placeholder {
   color: #c2c2c2;
   font-weight: 300;
@@ -372,6 +376,7 @@ button {
   text-align: center;
   transition: 300ms ease-in;
   transition-property: color, background-color, border;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 0.5em;
@@ -486,6 +491,7 @@ body {
 }
 
 header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0px;
   left: 0px;
@@ -922,6 +928,7 @@ main {
 }
 @media (max-width: 991.98px) {
   .quiz {
+    min-height: -webkit-fit-content;
     min-height: -moz-fit-content;
     min-height: fit-content;
   }
@@ -1632,6 +1639,7 @@ footer.desktop .box {
   flex-wrap: nowrap;
 }
 footer.mobile {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 100;
   bottom: 0px;
