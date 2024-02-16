@@ -786,7 +786,7 @@ const Home = () => {
                         <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
                           <div>
                             <h4 className="fw-7 text-uppercase">Аренда</h4>
-                            <p className="mb-lg-3">7 900 ₽/мес</p>
+                            <p className="mb-lg-3">8 900 ₽/мес</p>
                           </div>
                           <img src="/images/icons/icon2.png" alt="Аренда" />
                         </div>
@@ -815,7 +815,7 @@ const Home = () => {
                           </li>
                           <li>
                             <span>Сайт</span>
-                            <span>2&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
+                            <span>3&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
                           </li>
                           <li>
                             <span>Интеграция</span>
@@ -837,7 +837,7 @@ const Home = () => {
                         <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
                           <div>
                             <h4 className="fw-7 text-uppercase">Выкуп</h4>
-                            <p className="mb-lg-3">300 000 ₽</p>
+                            <p className="mb-lg-3">350 000 ₽</p>
                           </div>
                           <img src="/images/icons/icon3.png" alt="Выкуп" />
                         </div>
@@ -866,7 +866,7 @@ const Home = () => {
                           </li>
                           <li>
                             <span>Сайт</span>
-                            <span>70&nbsp;000&nbsp;₽</span>
+                            <span>80&nbsp;000&nbsp;₽</span>
                           </li>
                           <li>
                             <span>Интеграция</span>
