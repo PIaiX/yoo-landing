@@ -44,12 +44,12 @@ const Home = () => {
                 <div className="d-flex align-items-center mb-4">
                   <img src="/images/tomato.svg" alt="tomato" />
                   <h1 className="mb-0 ms-2 ms-sm-3">
-                    YooApp — сервис для кафе и ресторанов
+                    YooApp - Сайт и приложение для доставки еды
                   </h1>
                 </div>
                 <p>
                   Получайте на 30% больше прибыли с помощью приложения <br />
-                  для заказа, доставки и самовывоза готовой еды или товаров
+                  для заказа доставки или самовывоза готовой еды
                 </p>
                 <div className="d-sm-flex mt-4 mt-lg-5">
                   <a
@@ -127,7 +127,7 @@ const Home = () => {
                     />
                   </svg>
                   <p className="fs-08 fw-5 ms-2">
-                    Подходит для любого уровня заведений
+                    Запустите собственный сервис доставки за 10 дней
                   </p>
                 </div>
               </Col>
