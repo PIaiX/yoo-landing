@@ -1782,6 +1782,12 @@ main {
             }
         }
 
+        h3 {
+            @media (max-width: $bp-md) {
+                display: none;
+            }
+        }
+
         .btn-secondary {
             @media (max-width: $bp-md) {
                 display: none;

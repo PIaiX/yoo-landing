@@ -1651,6 +1651,11 @@ main {
   }
 }
 @media (max-width: 767.98px) {
+  .sec-14 .company h3 {
+    display: none;
+  }
+}
+@media (max-width: 767.98px) {
   .sec-14 .company .btn-secondary {
     display: none;
   }
