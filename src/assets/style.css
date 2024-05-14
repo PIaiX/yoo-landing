@@ -12,14 +12,45 @@
 
 /* mixins */
 /* Typography */
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:focus,
+a:active {
   color: inherit;
   outline: none;
   text-decoration: none;
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, select, input, textarea, button, div, blockquote, cite, figure, figcaption, table, ul, ol, dl, li, address {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+span,
+a,
+button,
+form,
+fieldset,
+legend,
+select,
+input,
+textarea,
+button,
+div,
+blockquote,
+cite,
+figure,
+figcaption,
+table,
+ul,
+ol,
+dl,
+li,
+address {
   line-height: normal;
   margin-bottom: 0px;
 }
@@ -164,7 +195,8 @@ h4 {
 }
 
 /* Form elements */
-input, textarea {
+input,
+textarea {
   background-color: #F4F6F8;
   border: 1px solid #F4F6F8;
   border-radius: 0.5em;
@@ -178,15 +210,15 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   color: #c2c2c2;
   font-weight: 300;
 }
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #c2c2c2;
   font-weight: 300;
 }
-input::placeholder, textarea::placeholder {
-  color: #c2c2c2;
-  font-weight: 300;
-}
-input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea:active {
+input:hover, input:focus, input:active,
+textarea:hover,
+textarea:focus,
+textarea:active {
   border: 1px solid #c2c2c2;
 }
 
@@ -376,7 +408,6 @@ button {
   text-align: center;
   transition: 300ms ease-in;
   transition-property: color, background-color, border;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 0.5em;
@@ -418,7 +449,8 @@ button {
   position: relative;
   padding-top: 0.5em;
 }
-.input-labeled input, .input-labeled textarea {
+.input-labeled input,
+.input-labeled textarea {
   position: relative;
   z-index: 1;
   background-color: #fff;
@@ -491,7 +523,6 @@ body {
 }
 
 header {
-  position: -webkit-sticky;
   position: sticky;
   top: 0px;
   left: 0px;
@@ -928,7 +959,6 @@ main {
 }
 @media (max-width: 991.98px) {
   .quiz {
-    min-height: -webkit-fit-content;
     min-height: -moz-fit-content;
     min-height: fit-content;
   }
@@ -1593,6 +1623,9 @@ main {
 }
 
 /* Section 14 */
+.sec-14 .swiper {
+  transition: 300ms ease-in;
+}
 @media (max-width: 767.98px) {
   .sec-14 .swiper-slide {
     width: 120px;
@@ -1639,7 +1672,6 @@ footer.desktop .box {
   flex-wrap: nowrap;
 }
 footer.mobile {
-  position: -webkit-sticky;
   position: sticky;
   z-index: 100;
   bottom: 0px;

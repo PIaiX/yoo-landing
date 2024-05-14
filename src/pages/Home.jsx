@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay, EffectFade, FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Company from "../components/Company";
 import Offer from "../components/Offer";
@@ -984,8 +984,16 @@ const Home = () => {
           <Container>
             <h2>Компании, которые уже пользуются сервисом</h2>
             <Swiper
+              loop={true}
               spaceBetween={11}
               slidesPerView={"auto"}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Mousewheel]}
+              freeMode={{
+                enabled: true,
+                sticky: true,
+              }}
+              mousewheel={true}
               breakpoints={{
                 768: {
                   slidesPerView: 3,
@@ -1001,24 +1009,91 @@ const Home = () => {
                 <Company
                   imgLogo="/images/companies/totos-logo.png"
                   imgCover="/images/companies/totos-cover.png"
+                  title="Totos Pizza"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <Company
                   imgLogo="/images/companies/yakinori-logo.png"
                   imgCover="/images/companies/yakinori-cover.png"
+                  title="Якинори"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <Company
                   imgLogo="/images/companies/xiao-logo.png"
                   imgCover="/images/companies/xiao-cover.png"
+                  title="Xiao"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <Company
                   imgLogo="/images/companies/dream-logo.png"
                   imgCover="/images/companies/dream-cover.png"
+                  title="Dream Sushi"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/seko-logo.png"
+                  imgCover="/images/companies/seko-cover.png"
+                  title="Сэко"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/akari-logo.png"
+                  imgCover="/images/companies/akari-cover.png"
+                  title="Akari"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/filadelfiya-logo.png"
+                  imgCover="/images/companies/filadelfiya-cover.png"
+                  title="Филадельфия"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/nyam-sushi-logo.png"
+                  imgCover="/images/companies/nyam-sushi-cover.png"
+                  title="Ням Суши"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/parfe-logo.png"
+                  imgCover="/images/companies/parfe-cover.png"
+                  title="Парфе"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/pizzart-logo.png"
+                  imgCover="/images/companies/pizzart-cover.png"
+                  title="Pizzart"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/refettorio-logo.png"
+                  imgCover="/images/companies/refettorio-cover.png"
+                  title="Refettorio"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/si-mama-logo.png"
+                  imgCover="/images/companies/si-mama-cover.png"
+                  title="Si Mama Sushi"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Company
+                  imgLogo="/images/companies/telon-logo.png"
+                  imgCover="/images/companies/telon-cover.png"
+                  title="Telon"
                 />
               </SwiperSlide>
             </Swiper>
