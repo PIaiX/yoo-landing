@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
@@ -33,6 +33,13 @@ const Home = () => {
   const handleShowQuiz = () => setShowQuiz(true);
 
   const [quizPage, setQuizPage] = useState(1);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(0, 0, false);
+    }
+  }, []);
 
   return (
     <>
@@ -984,9 +991,11 @@ const Home = () => {
           <Container>
             <h2>Компании, которые уже пользуются сервисом</h2>
             <Swiper
+              ref={swiperRef}
               loop={true}
               spaceBetween={11}
-              slidesPerView={"auto"}
+              slidesPerView={4.3}
+              centeredSlides={false}
               watchSlidesProgress={true}
               modules={[FreeMode, Mousewheel]}
               freeMode={{
@@ -996,11 +1005,11 @@ const Home = () => {
               mousewheel={true}
               breakpoints={{
                 768: {
-                  slidesPerView: 3,
+                  slidesPerView: 3.2,
                   spaceBetween: 11,
                 },
                 992: {
-                  slidesPerView: 4,
+                  slidesPerView: 4.3,
                   spaceBetween: 11,
                 },
               }}
@@ -1099,7 +1108,7 @@ const Home = () => {
             </Swiper>
           </Container>
         </section>
-      </main>
+      </main >
       <Modal
         className="home modalCallback"
         show={showCallback}
