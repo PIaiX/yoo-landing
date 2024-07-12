@@ -602,6 +602,16 @@ header nav .phone {
     margin-top: 0.25em;
   }
 }
+.mobile-menu ul li.lang {
+  display: flex;
+  background-color: #F4F9FF;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.mobile-menu ul li.lang a {
+  margin-right: 1em;
+}
 .mobile-menu ul li a {
   font-size: 1em;
   font-weight: 600;
@@ -1678,6 +1688,11 @@ main {
   align-items: center;
   flex-wrap: nowrap;
   transition: border-radius 0.1s linear;
+}
+@media (max-width: 991.98px) {
+  .lang-switcher > button {
+    padding: 0.1em 0.6em;
+  }
 }
 .lang-switcher > button svg {
   margin-left: 0.5em;

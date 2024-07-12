@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import Tomato2 from '../assets/imgs/tomato2.svg';
 import Container from 'react-bootstrap/Container';
@@ -6,6 +7,7 @@ import useIsMobile from '../hooks/useIsMobile';
 import Modal from 'react-bootstrap/Modal';
 
 const Footer = () => {
+const {t} = useTranslation();
   const isMobileLG = useIsMobile('991px');
   
   return (
@@ -13,11 +15,11 @@ const Footer = () => {
     ? <footer className='mobile'>
       <Container className='d-flex gap-2'>
         <button type='button' className='btn-primary px-2'>
-          <span>Связаться</span>
+          <span>{t('Связаться')}</span>
           <Start className="fs-15 ms-2"/>
         </button>
         <button type='button' className='btn-secondary px-2'>
-          <span>Войти</span>
+          <span>{t('Войти')}</span>
         </button>
       </Container>
     </footer>

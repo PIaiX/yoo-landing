@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState, memo } from "react";
 import { Dropdown } from "react-bootstrap";
 import { IoChevronDownOutline } from "react-icons/io5";
@@ -5,6 +6,7 @@ import Input from "./Input";
 
 const Select = memo(
   ({ value, title, search, data, label, className, onClick, disabled }) => {
+const {t} = useTranslation();
     const [searchData, setSearchData] = useState([]);
 
     const onSearch = useCallback(
@@ -29,7 +31,7 @@ const Select = memo(
 
     const CustomToggle = React.forwardRef(({ onClick }, ref) => {
       let item = data.find((e) => e.value === value || e.title === value);
-      let titleFind = item?.title ?? title ?? "Выберите элемент";
+      let titleFind = item?.title ?? title ?? {t('Выберите элемент')};
 
       return (
         <a
@@ -73,7 +75,7 @@ const Select = memo(
             <div className="mb-2 bg-body position-sticky top-0">
               <Input
                 autofocus
-                placeholder="Поиск..."
+                placeholder={t('Поиск...')}
                 onChange={(e) => onSearch(e)}
               />
             </div>

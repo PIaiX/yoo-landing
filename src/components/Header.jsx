@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -7,6 +8,7 @@ import { Link as LinkRoute } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
 
   const [showMenu, setShowMenu] = useState(false);
@@ -86,7 +88,7 @@ const Header = () => {
                   {/* <li>
                   <a href="/#resh">Решения</a>
                 </li> */}
-                  <li>
+                  <li className={(isMobileLG ? "lang" : "")} >
                     <LinkRoute to="/">
                       <svg
                         className="logo"
@@ -126,19 +128,20 @@ const Header = () => {
                         />
                       </svg>
                     </LinkRoute>
+                    {isMobileLG && <LanguageSwitcher />}
                   </li>
                   <li>
-                    <Link to="voz">Возможности</Link>
+                    <Link to="voz">{t('Возможности')}</Link>
                   </li>
                   <li>
-                    <Link to="tarif">Тарифы</Link>
+                    <Link to="tarif">{t('Тарифы')}</Link>
                   </li>
                   <li>
-                    <Link to="example">Примеры</Link>
+                    <Link to="example">{t('Примеры')}</Link>
                   </li>
                   <li>
                     <a href="https://lk.yooapp.ru/" target="_blank">
-                      Войти
+                      {t('Войти')}
                     </a>
                   </li>
                   <li>
@@ -151,16 +154,16 @@ const Header = () => {
                       +7(917)255-50-60
                     </a>
                   </li>
-                  <li>
+                  {!isMobileLG && <li>
                     <LanguageSwitcher />
-                  </li>
+                  </li>}
                 </ul>
               </nav>
             </Offcanvas.Body>
           </Offcanvas>
         </div>
       </Container>
-    </header>
+    </header >
   );
 };
 

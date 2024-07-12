@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useLayoutEffect } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +10,7 @@ import Input from "../../components/UI/Input";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+const {t} = useTranslation();
   const auth = useSelector((state) => state?.auth);
   const navigate = useNavigate();
 
@@ -32,59 +34,59 @@ const Login = () => {
 
   return (
     <>
-      <Meta title="Войти" />
+      <Meta title={t('Войти')} />
       <Row className="gx-0 hv-100-important">
         <Col lg={8} md={7} className="login-info d-none d-md-flex">
           <div className="flex-column d-flex align-self-center justify-content-center align-items-center">
             <img src="/logo.png" height={80} />
-            <h2 className="my-4 text-center">С возвращением!</h2>
+            <h2 className="my-4 text-center">{t('С возвращением!')}</h2>
             <img src="./images/auth/login.svg" width="80%" />
           </div>
         </Col>
         <Col lg={4} md={5}>
           <div className="login">
             <Form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-              <h3 className="mb-3 h5 fw-7 w-100">Войдите в свой профиль</h3>
+              <h3 className="mb-3 h5 fw-7 w-100">{t('Войдите в свой профиль')}</h3>
               <p className="mb-4 text-muted fs-08">
-                Нет профиля?{" "}
+                {t('Нет профиля?')}{" "}
                 <Link className="text-success" to="/reg">
-                  Зарегистрироваться
+                  {t('Зарегистрироваться')}
                 </Link>
               </p>
               <Input
                 autoFocus={true}
-                label="Логин"
+                label={t('Логин')}
                 name="login"
                 errors={errors}
                 register={register}
                 validation={{
-                  required: "Введите логин",
+                  required: {t('Введите логин')},
                   maxLength: {
                     value: 250,
-                    message: "Максимально 250 символов",
+                    message: {t('Максимально 250 символов')},
                   },
                 }}
               />
               <div className="mt-4">
                 <Input
-                  label="Пароль"
+                  label={t('Пароль')}
                   type="password"
                   name="password"
                   errors={errors}
                   register={register}
                   validation={{
-                    required: "Введите пароль",
+                    required: {t('Введите пароль')},
                     minLength: {
                       value: 4,
                       message:
-                        "Минимальный пароль должен состоять из 4-ех символов",
+                        {t('Минимальный пароль должен состоять из 4-ех символов')},
                     },
                   }}
                 />
               </div>
               <p className="mt-3 d-flex justify-content-end">
                 <Link to="/recovery" className="text-muted fs-08">
-                  Забыли пароль?
+                  {t('Забыли пароль?')}
                 </Link>
               </p>
               <Button
@@ -92,7 +94,7 @@ const Login = () => {
                 className="btn-primary mt-3 w-100"
                 disabled={!isValid}
               >
-                Войти
+                {t('Войти')}
               </Button>
             </Form>
           </div>

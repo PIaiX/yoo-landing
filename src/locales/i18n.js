@@ -1,26 +1,20 @@
+import en from './translate/en.json';
+import ru from './translate/ru.json';
 
 import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
 
-  // "EN": {
-  //   translation: en
-  // },
+  "EN": {
+    translation: en
+  },
 
-  // "ES": {
-  //   translation: es
-  // },
-
-  // "FR": {
-  //   translation: fr
-  // },
-
-  // "RU": {
-  //   translation: ru
-  // },
+  "RU": {
+    translation: ru
+  },
 
 };
 
@@ -30,7 +24,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'ru',
+    fallbackLng: 'RU',
     interpolation: {
       escapeValue: false
     }

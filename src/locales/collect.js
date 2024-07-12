@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 
-const directoryPath = './src/layouts'; // Укажите путь к директории с файлами
+const directoryPath = './src'; // Укажите путь к директории с файлами
 
 let i18nContent = {};
 

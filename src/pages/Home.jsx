@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useEffect, useRef, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -14,6 +15,7 @@ import useIsMobile from "../hooks/useIsMobile";
 import useObserver from "../hooks/useObserver";
 
 const Home = () => {
+  const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
 
   const [showMenu, setShowMenu] = useState(false);
@@ -51,12 +53,12 @@ const Home = () => {
                 <div className="d-flex align-items-center mb-4">
                   <img src="/images/tomato.svg" alt="tomato" />
                   <h1 className="mb-0 ms-2 ms-sm-3">
-                    YooApp - Сайт и приложение для доставки еды
+                    YooApp - {t('Сайт и приложение для доставки еды')}
                   </h1>
                 </div>
                 <p>
-                  Получайте на 30% больше прибыли с помощью приложения <br />
-                  для заказа доставки или самовывоза готовой еды
+                  {t('Получайте на 30% больше прибыли с помощью приложения')} <br />
+                  {t('для заказа доставки или самовывоза готовой еды')}
                 </p>
                 <div className="d-sm-flex mt-4 mt-lg-5">
                   <a
@@ -78,7 +80,7 @@ const Home = () => {
                         fill="currentColor"
                       />
                     </svg>
-                    <span className="ms-2">Попробовать бесплатно</span>
+                    <span className="ms-2">{t('Попробовать бесплатно')}</span>
                   </a>
                   {/* <a
                     href="/pdf/previewyooapp.pdf"
@@ -134,7 +136,7 @@ const Home = () => {
                     />
                   </svg>
                   <p className="fs-08 fw-5 ms-2">
-                    Запустите собственный сервис доставки за 10 дней
+                    {t('Запустите собственный сервис доставки за 10 дней')}
                   </p>
                 </div>
               </Col>
@@ -147,9 +149,9 @@ const Home = () => {
             <Row xs={1} md={3} className="g-3 g-lg-4">
               <Col>
                 <div className="pros-1">
-                  <h4>Увеличим количество заказов на 43% и выручку на 52%*</h4>
+                  <h4>{t('Увеличим количество заказов на 43% и выручку на 52%*')}</h4>
                 </div>
-                <p className="fs-08 mt-1">*статистика действующего клиента</p>
+                <p className="fs-08 mt-1">{t('*статистика действующего клиента')}</p>
               </Col>
               <Col>
                 <div className="pros-2">
@@ -158,7 +160,7 @@ const Home = () => {
                     alt="animate"
                     className="d-block ms-auto"
                   />
-                  <h4>Сформируем максимально подробную статистику</h4>
+                  <h4>{t('Сформируем максимально подробную статистику')}</h4>
                 </div>
               </Col>
               <Col>
@@ -169,7 +171,7 @@ const Home = () => {
                     className="d-block ms-auto"
                   />
                   <h4>
-                    Автоматизируем процесс заказа на доставку и в заведениях
+                    {t('Автоматизируем процесс заказа на доставку и в заведениях')}
                   </h4>
                 </div>
               </Col>
@@ -179,7 +181,7 @@ const Home = () => {
 
         <section id="resh" className="sec-3 mb-6">
           <Container>
-            <h2>Кому подойдёт сервис?</h2>
+            <h2>{t('Кому подойдёт сервис?')}</h2>
             <Row
               xs={2}
               md={3}
@@ -188,26 +190,26 @@ const Home = () => {
             >
               <Col>
                 <figure>
-                  <img src="/images/img1.png" alt="Кафе и ресторанам" />
-                  <figcaption>Кафе и ресторанам</figcaption>
+                  <img src="/images/img1.png" alt={t('Кафе и ресторанам')} />
+                  <figcaption>{t('Кафе и ресторанам')}</figcaption>
                 </figure>
               </Col>
               <Col>
                 <figure>
-                  <img src="/images/img2.png" alt="Сервисам доставки" />
-                  <figcaption>Сервисам доставки</figcaption>
+                  <img src="/images/img2.png" alt={t('Сервисам доставки')} />
+                  <figcaption>{t('Сервисам доставки')}</figcaption>
                 </figure>
               </Col>
               <Col>
                 <figure>
-                  <img src="/images/img3.png" alt="Пиццериям и суши-барам" />
-                  <figcaption>Пиццериям и суши-барам</figcaption>
+                  <img src="/images/img3.png" alt={t('Пиццериям и суши-барам')} />
+                  <figcaption>{t('Пиццериям и суши-барам')}</figcaption>
                 </figure>
               </Col>
               <Col>
                 <figure>
-                  <img src="/images/img4.jpg" alt="Пекарням и кондитерским" />
-                  <figcaption>Пекарням и кондитерским</figcaption>
+                  <img src="/images/img4.jpg" alt={t('Пекарням и кондитерским')} />
+                  <figcaption>{t('Пекарням и кондитерским')}</figcaption>
                 </figure>
               </Col>
             </Row>
@@ -217,7 +219,7 @@ const Home = () => {
         <section className="sec-4 mb-6">
           <Container>
             <div className="top mb-2 mb-sm-4">
-              <h3 className="fw-7 mb-0">В сервис YooApp входит:</h3>
+              <h3 className="fw-7 mb-0">{t('В сервис YooApp входит:')}</h3>
               {/* <a href="/" className="d-none d-lg-flex align-items-center">
                 <svg
                   className="fs-15"
@@ -242,29 +244,29 @@ const Home = () => {
             <ul className="list-unstyled row row-cols-1 row-cols-md-2 g-2 g-sm-4">
               <li>
                 <Offer
-                  title="Мобильное приложение"
-                  text="Стильный дизайн и мощный функционал позволит выделиться среди конкурентов и увеличить количество заказов."
+                  title={t('Мобильное приложение')}
+                  text={t('Стильный дизайн и мощный функционал позволит выделиться среди конкурентов и увеличить количество заказов.')}
                   img="/images/mobile-app.png"
                 />
               </li>
               <li>
                 <Offer
-                  title="Сайт"
-                  text="Максимально удобен как с компьютера так и с телефона. Поможет легко набрать базу постоянных клиентов."
+                  title={t('Сайт')}
+                  text={t('Максимально удобен как с компьютера так и с телефона. Поможет легко набрать базу постоянных клиентов.')}
                   img="/images/site.jpg"
                 />
               </li>
               <li>
                 <Offer
-                  title="QR-меню"
-                  text="Упростим процедуру заказа в заведениях. Получайте заказы уже с номером стола, меняйте статусы и выставляйте чек."
+                  title={t('QR-меню')}
+                  text={t('Упростим процедуру заказа в заведениях. Получайте заказы уже с номером стола, меняйте статусы и выставляйте чек.')}
                   img="/images/qrmenu.jpg"
                 />
               </li>
               <li>
                 <Offer
-                  title="Система учета"
-                  text="Приём заказов, ведение склада, управление каталогом, акциями, рассылками, полная статистика и многое другое что должно быть в системе управления заведением."
+                  title={t('Система учета')}
+                  text={t('Приём заказов, ведение склада, управление каталогом, акциями, рассылками, полная статистика и многое другое что должно быть в системе управления заведением.')}
                   img="/images/yoo-system.jpg"
                 />
               </li>
@@ -314,16 +316,16 @@ const Home = () => {
 
         <section className="sec-6 mb-6">
           <Container className="wide">
-            <h2 className="text-start">Принцип работы</h2>
+            <h2 className="text-start">{t('Принцип работы')}</h2>
             <Row className="g-2 g-xl-4">
               <Col xs={12} lg={5}>
                 <div className="grayBlock-1">
-                  <h3 className="text-uppercase deepblue mb-2">старт</h3>
-                  <h4>Подключение YooApp</h4>
+                  <h3 className="text-uppercase deepblue mb-2">{t('старт')}</h3>
+                  <h4>{t('Подключение YooApp')}</h4>
                   <p>
-                    Внедрим сайт и мобильное приложение за 2 недели. Интегрируем
-                    с системой управления заведением, настроим зоны доставки и
-                    подключим к онлайн-оплате.
+                    {t('Внедрим сайт и мобильное приложение за 2 недели. Интегрируем')}
+                    {t('с системой управления заведением, настроим зоны доставки и')}
+                    {t('подключим к онлайн-оплате.')}
                   </p>
                   <svg
                     className="btnPulse"
@@ -448,46 +450,46 @@ const Home = () => {
                   <Col>
                     <div className="grayBlock-2">
                       <h3 className="text-uppercase deepblue mb-2">01</h3>
-                      <h4>Клиент совершает заказ</h4>
+                      <h4>{t('Клиент совершает заказ')}</h4>
                       <p>
-                        Удобное меню и простота оформления обеспечат быстрый
-                        заказ как на доставку, так и в заведении. А умная
-                        корзина и функционал модификации товаров повысят средний
-                        чек.
+                        {t('Удобное меню и простота оформления обеспечат быстрый')}
+                        {t('заказ как на доставку, так и в заведении. А умная')}
+                        {t('корзина и функционал модификации товаров повысят средний')}
+                        {t('чек.')}
                       </p>
                     </div>
                   </Col>
                   <Col>
                     <div className="grayBlock-3">
                       <h3 className="text-uppercase deepblue mb-2">02</h3>
-                      <h4>Заказ поступает в систему управления заведением</h4>
+                      <h4>{t('Заказ поступает в систему управления заведением')}</h4>
                       <p>
-                        iiko, r_keeper, frontpad и т.д. Если у вас нет подобной
-                        системы, то мы настроим управление через админ-панель
-                        YooApp или поможем внедрить.
+                        iiko, r_keeper, frontpad {t('и т.')}д. {t('Если у вас нет подобной')}
+                        {t('системы, то мы настроим управление через админ-панель')}
+                        YooApp {t('или поможем внедрить.')}
                       </p>
                     </div>
                   </Col>
                   <Col>
                     <div className="grayBlock-4">
                       <h3 className="text-uppercase deepblue mb-2">04</h3>
-                      <h4>Один раз клиент — всегда клиент</h4>
+                      <h4>{t('Один раз клиент — всегда клиент')}</h4>
                       <p>
-                        Отправьте клиенту персональное предложение на основе его
-                        заказов, управляйте акциями и скидками, и он придёт к
-                        вам снова.
+                        {t('Отправьте клиенту персональное предложение на основе его')}
+                        {t('заказов, управляйте акциями и скидками, и он придёт к')}
+                        {t('вам снова.')}
                       </p>
                     </div>
                   </Col>
                   <Col>
                     <div className="grayBlock-5">
                       <h3 className="text-uppercase deepblue mb-2">03</h3>
-                      <h4>Взаимодействие с пользователем</h4>
+                      <h4>{t('Взаимодействие с пользователем')}</h4>
                       <p>
-                        Клиент будет получать уведомления о каждой смене статуса
-                        заказа. Если доставка задерживается, система уведомит
-                        его, сохранив лояльность. А после завершения соберёт
-                        обратную связь и попросит оставить отзыв.
+                        {t('Клиент будет получать уведомления о каждой смене статуса')}
+                        {t('заказа. Если доставка задерживается, система уведомит')}
+                        {t('его, сохранив лояльность. А после завершения соберёт')}
+                        {t('обратную связь и попросит оставить отзыв.')}
                       </p>
                     </div>
                   </Col>
@@ -500,7 +502,7 @@ const Home = () => {
         <section className="sec-7 mb-6">
           <Container>
             <h2 className="text-start">
-              Сихронизируемся с любой системой по API
+              {t('Сихронизируемся с любой системой по API')}
             </h2>
             <img
               src="/images/scheme.png"
@@ -518,13 +520,13 @@ const Home = () => {
         <section className="sec-8 mb-6">
           <Container>
             <h2>
-              Управление заведением <br />
-              станет <img src="/images/eyes.png" alt="eyes" /> ещё проще
+              {t('Управление заведением ')} <br />
+              {t('станет')} <img src="/images/eyes.png" alt="eyes" /> {t('ещё проще')}
             </h2>
             <p className="fs-09 text-center">
-              Соберём все заказы, оцифруем работу сотрудников, напомним заказать{" "}
+              {t('Соберём все заказы, оцифруем работу сотрудников, напомним')} {t('заказать')}{" "}
               <br />
-              продукты, подготовим необходимый отчёт
+              {t('продукты, подготовим необходимый отчёт')}
             </p>
             {/* <button type="button" className="btn-secondary hmax mt-5 mx-auto">
               <span className="fw-7">Узнать больше о возможностях</span>
@@ -549,11 +551,11 @@ const Home = () => {
                 <Row xs={1} md={2} className="flex-md-row-reverse g-4">
                   <Col>
                     <div className="textBox">
-                      <img src="/images/img7.png" alt="Система лояльности" />
-                      <h3>Система лояльности есть, даже если её нет</h3>
+                      <img src="/images/img7.png" alt={t('Система лояльности')} />
+                      <h3>{t('Система лояльности есть, даже если её нет')}</h3>
                       <p>
-                        Мы продумали систему лояльности для заведений которые
-                        пользуются сервисами без системы лояльности.
+                        {t('Мы продумали систему лояльности для заведений которые')}
+                        {t('пользуются сервисами без системы лояльности.')}
                       </p>
                     </div>
                   </Col>
@@ -561,13 +563,13 @@ const Home = () => {
                     <div className="img">
                       <img
                         src="/images/img6.png"
-                        alt="Система лояльности"
+                        alt={t('Система лояльности')}
                         className="img-main"
                         ref={objRef}
                       />
                       <img
                         src="/images/img8.png"
-                        alt="Система лояльности"
+                        alt={t('Система лояльности')}
                         className="img-popup"
                         data-observing={isVisible}
                       />
@@ -581,13 +583,13 @@ const Home = () => {
                     <div className="textBox">
                       <img
                         src="/images/img10.png"
-                        alt="Таргетинг добрался и до Push"
+                        alt={t('Таргетинг добрался и до Push')}
                       />
-                      <h3>Таргетинг добрался и до Push</h3>
+                      <h3>{t('Таргетинг добрался и до Push')}</h3>
                       <p>
-                        Отсортируйте пользователей, по дню рождения, зоне
-                        доставки или любимому блюду, и отправьте им уведомление
-                        о ваших акциях.
+                        {t('Отсортируйте пользователей, по дню рождения, зоне')}
+                        {t('доставки или любимому блюду, и отправьте им уведомление')}
+                        {t('о ваших акциях.')}
                       </p>
                     </div>
                   </Col>
@@ -595,13 +597,13 @@ const Home = () => {
                     <div className="img2">
                       <img
                         src="/images/img9.png"
-                        alt="Таргетинг добрался и до Push"
+                        alt={t('Таргетинг добрался и до Push')}
                         className="img2-main"
                         ref={objRef2}
                       />
                       <img
                         src="/images/img11.png"
-                        alt="Таргетинг добрался и до Push"
+                        alt={t('Таргетинг добрался и до Push')}
                         className="img2-popup"
                         data-observing={isVisible2}
                       />
@@ -615,13 +617,13 @@ const Home = () => {
                     <div className="textBox">
                       <img
                         src="/images/img13.png"
-                        alt="Настроим зоны доставок"
+                        alt={t('Настроим зоны доставок')}
                       />
-                      <h3>Настроим зоны доставок</h3>
+                      <h3>{t('Настроим зоны доставок')}</h3>
                       <p>
-                        С нами вы сможете разделить доставку по зонам, исходя из
-                        этого настроим автоматический расчёт стоимости доставки,
-                        суммы бесплатной доставки и минимального чека.
+                        {t('С нами вы сможете разделить доставку по зонам, исходя из')}
+                        {t('этого настроим автоматический расчёт стоимости доставки,')}
+                        {t('суммы бесплатной доставки и минимального чека.')}
                       </p>
                     </div>
                   </Col>
@@ -629,13 +631,13 @@ const Home = () => {
                     <div className="img3">
                       <img
                         src="/images/img12.png"
-                        alt="Настроим зоны доставок"
+                        alt={t('Настроим зоны доставок')}
                         className="img3-main"
                         ref={objRef3}
                       />
                       <img
                         src="/images/img14.png"
-                        alt="Настроим зоны доставок"
+                        alt={t('Настроим зоны доставок')}
                         className="img3-popup"
                         data-observing={isVisible3}
                       />
@@ -649,10 +651,10 @@ const Home = () => {
 
         <section id="voz" className="sec-10 mb-6">
           <Container>
-            <h2>Предоставляем полную статистику по заказам</h2>
+            <h2>{t('Предоставляем полную статистику по заказам')}</h2>
             <p className="text-center">
-              Отслеживайте ключевые показатели и формируйте <br />
-              отчеты, чтобы зарабатывать еще больше
+              {t('Отслеживайте ключевые показатели и формируйте ')} <br />
+              {t('отчеты, чтобы зарабатывать еще больше')}
             </p>
             <img
               src="/images/stats.jpg"
@@ -666,10 +668,10 @@ const Home = () => {
           <Container>
             <div className="grid-info">
               <div className="info1">
-                <h4>Онлайн-оплата без ограничнений</h4>
+                <h4>{t('Онлайн-оплата без ограничнений')}</h4>
                 <p className="mb-3">
-                  Принимайте оплату в мобильном приложении и на сайте через
-                  популярные платёжные сервисы
+                  {t('Принимайте оплату в мобильном приложении и на сайте через')}
+                  {t('популярные платёжные сервисы')}
                 </p>
                 <ul className="list-unstyled row row-cols-3 g-2">
                   <li>
@@ -701,16 +703,16 @@ const Home = () => {
                     </div>
                   </li>
                   <li>
-                    <div className="logotip fw-6">+ другие</div>
+                    <div className="logotip fw-6">{t('+ другие')}</div>
                   </li>
                 </ul>
               </div>
               <div className="info2">
                 <div>
-                  <h4>Бонусная система</h4>
+                  <h4>{t('Бонусная система')}</h4>
                   <p>
-                    Завоюйте лояльность клиентов, поощряя покупки бонусами на
-                    сайте и в приложении
+                    {t('Завоюйте лояльность клиентов, поощряя покупки бонусами на')}
+                    {t('сайте и в приложении')}
                   </p>
                 </div>
                 <img
@@ -720,10 +722,10 @@ const Home = () => {
                 />
               </div>
               <div className="info3">
-                <h4>Будьте всегда на связи с клиентом</h4>
+                <h4>{t('Будьте всегда на связи с клиентом')}</h4>
                 <p className="mb-3">
-                  Внутренний чат экономит время клиента и деньги на содержании
-                  call-центра
+                  {t('Внутренний чат экономит время клиента и деньги на содержании')}
+                  call-{t('центра')}
                 </p>
                 <img
                   src="/images/iPhone2.png"
@@ -733,10 +735,10 @@ const Home = () => {
               </div>
               <div className="info4">
                 <div>
-                  <h4>Не упустите ни одного клиента!</h4>
+                  <h4>{t('Не упустите ни одного клиента!')}</h4>
                   <p>
-                    Настройте бонусную систему под свои нужны — меняйте скидки в
-                    два клика, оповещайте об акциях и делитесь промокодами.
+                    {t('Настройте бонусную систему под свои нужны')} — {t('меняйте скидки')} {t('в')}
+                    {t('два клика, оповещайте об акциях и делитесь промокодами.')}
                   </p>
                 </div>
                 <img
@@ -746,10 +748,10 @@ const Home = () => {
                 />
               </div>
               <div className="info5">
-                <h4>Все управление в одном месте</h4>
+                <h4>{t('Все управление в одном месте')}</h4>
                 <p>
-                  Объедините с YooApp все заведения, или даже бренды, в одном
-                  кабинете
+                  {t('Объедините с YooApp все заведения, или даже бренды, в одном')}
+                  {t('кабинете')}
                 </p>
               </div>
             </div>
@@ -760,14 +762,14 @@ const Home = () => {
           <Container className="wide">
             <Row className="g-3 g-xl-4">
               <Col xs={12} md={4} className="order-1">
-                <h3>Выберите план развития вашего бизнеса</h3>
+                <h3>{t('Выберите план развития вашего бизнеса')}</h3>
               </Col>
               <Col xs={12} md={8} className="order-3 order-md-2">
                 <div className="box d-flex align-items-center">
                   <img src="/images/icons/icon1.png" alt="Icon1" />
                   <p className="ms-4">
-                    Админ-панель, обновления приложения, техническая поддержка и
-                    система лояльности включены в стоимость тарифов.
+                    {t('Админ-панель, обновления приложения, техническая поддержка')} {t('и')}
+                    {t('система лояльности включены в стоимость тарифов.')}
                   </p>
                 </div>
               </Col>
@@ -792,41 +794,41 @@ const Home = () => {
                       <div>
                         <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
                           <div>
-                            <h4 className="fw-7 text-uppercase">Аренда</h4>
-                            <p className="mb-lg-3">8 900 ₽/мес</p>
+                            <h4 className="fw-7 text-uppercase">{t('Аренда')}</h4>
+                            <p className="mb-lg-3">{t('8 900 ₽/мес')}</p>
                           </div>
-                          <img src="/images/icons/icon2.png" alt="Аренда" />
+                          <img src="/images/icons/icon2.png" alt={t('Аренда')} />
                         </div>
                         <ul>
                           <li>
-                            <span>Запуск</span>
-                            <span>20&nbsp;000&nbsp;₽</span>
+                            <span>{t('Запуск')}</span>
+                            <span>20 000 ₽</span>
                           </li>
                           <li>
-                            <span>Хостинг</span>
-                            <span>Бесплатно</span>
+                            <span>{t('Хостинг')}</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li className="d-none justify-content-between d-lg-flex">
                             <span>
-                              Размещение <br />
-                              в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store
+                              {t('Размещение ')} <br />
+                              в Google Play и App Store
                             </span>
-                            <span>Бесплатно</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li>
                             <span className="d-none d-lg-block">
-                              Подключение доп.&nbsp;точки
+                              {t('Подключение доп.')} {t('точки')}
                             </span>
-                            <span className="d-lg-none">Доп.&nbsp;точки</span>
-                            <span>1&nbsp;290&nbsp;₽&nbsp;/&nbsp;мес</span>
+                            <span className="d-lg-none">{t('Доп. точки')}</span>
+                            <span>{t('1 290 ₽ / мес')}</span>
                           </li>
                           <li>
-                            <span>Сайт</span>
-                            <span>3&nbsp;000&nbsp;₽&nbsp;/&nbsp;мес</span>
+                            <span>{t('Сайт')}</span>
+                            <span>{t('3 000 ₽ / мес')}</span>
                           </li>
                           <li>
-                            <span>Интеграция</span>
-                            <span>5-15&nbsp;тыс&nbsp;₽</span>
+                            <span>{t('Интеграция')}</span>
+                            <span>{t('5-15 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
@@ -843,41 +845,41 @@ const Home = () => {
                       <div>
                         <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
                           <div>
-                            <h4 className="fw-7 text-uppercase">Выкуп</h4>
+                            <h4 className="fw-7 text-uppercase">{t('Выкуп')}</h4>
                             <p className="mb-lg-3">350 000 ₽</p>
                           </div>
-                          <img src="/images/icons/icon3.png" alt="Выкуп" />
+                          <img src="/images/icons/icon3.png" alt={t('Выкуп')} />
                         </div>
                         <ul>
                           <li>
-                            <span>Запуск</span>
-                            <span>Бесплатно</span>
+                            <span>{t('Запуск')}</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li>
-                            <span>Хостинг</span>
-                            <span>4&nbsp;000&nbsp;₽&nbsp;/&nbsp;год</span>
+                            <span>{t('Хостинг')}</span>
+                            <span>{t('4 000 ₽ / год')}</span>
                           </li>
                           <li className="d-none justify-content-between d-lg-flex">
                             <span>
-                              Размещение <br />
-                              в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store
+                              {t('Размещение ')} <br />
+                              в Google Play и App Store
                             </span>
-                            <span>15&nbsp;000&nbsp;₽</span>
+                            <span>15 000 ₽</span>
                           </li>
                           <li>
                             <span className="d-none d-lg-block">
-                              Подключение доп.&nbsp;точки
+                              {t('Подключение доп.')} {t('точки')}
                             </span>
-                            <span className="d-lg-none">Доп.&nbsp;точки</span>
-                            <span>15&nbsp;000&nbsp;₽</span>
+                            <span className="d-lg-none">{t('Доп. точки')}</span>
+                            <span>15 000 ₽</span>
                           </li>
                           <li>
-                            <span>Сайт</span>
-                            <span>80&nbsp;000&nbsp;₽</span>
+                            <span>{t('Сайт')}</span>
+                            <span>80 000 ₽</span>
                           </li>
                           <li>
-                            <span>Интеграция</span>
-                            <span>5-15&nbsp;тыс&nbsp;₽</span>
+                            <span>{t('Интеграция')}</span>
+                            <span>{t('5-15 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
@@ -895,45 +897,45 @@ const Home = () => {
                         <div className="d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start">
                           <div>
                             <h4 className="fw-7 text-uppercase">
-                              Процент от оборота через <br />
-                              сервис <span className="fw-4">от 1 до 3%</span>
+                              {t('Процент от оборота через')} <br />
+                              {t('сервис')} <span className="fw-4">{t('от 1 до 3%')}</span>
                             </h4>
                           </div>
                           <img
                             src="/images/icons/icon4.png"
-                            alt="Процент от выручки"
+                            alt={t('Процент от выручки')}
                           />
                         </div>
                         <ul>
                           <li>
-                            <span>Запуск</span>
-                            <span>20&nbsp;000&nbsp;₽</span>
+                            <span>{t('Запуск')}</span>
+                            <span>20 000 ₽</span>
                           </li>
                           <li>
-                            <span>Хостинг</span>
-                            <span>Бесплатно</span>
+                            <span>{t('Хостинг')}</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li className="d-none justify-content-between d-lg-flex">
                             <span>
-                              Размещение <br />
-                              в&nbsp;Google&nbsp;Play и&nbsp;App&nbsp;Store
+                              {t('Размещение')} <br />
+                              в Google Play и App Store
                             </span>
-                            <span>Бесплатно</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li>
                             <span className="d-none d-lg-block">
-                              Подключение доп.&nbsp;точки
+                              {t('Подключение доп.')} {t('точки')}
                             </span>
-                            <span className="d-lg-none">Доп.&nbsp;точки</span>
-                            <span>Бесплатно</span>
+                            <span className="d-lg-none">{t('Доп. точки')}</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li>
-                            <span>Сайт</span>
-                            <span>Бесплатно</span>
+                            <span>{t('Сайт')}</span>
+                            <span>{t('Бесплатно')}</span>
                           </li>
                           <li>
-                            <span>Интеграция</span>
-                            <span>5-15&nbsp;тыс&nbsp;₽</span>
+                            <span>{t('Интеграция')}</span>
+                            <span>{t('5-15 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
@@ -953,14 +955,14 @@ const Home = () => {
 
         <section className="d-none d-lg-block sec-13 mb-6">
           <Container>
-            <h2 className="text-start ps-5">Результат реального клиента</h2>
+            <h2 className="text-start ps-5">{t('Результат реального клиента')}</h2>
             <div className="diagram">
               <img src="/images/diagram.png" alt="Diagram" />
               <div className="text">
                 <p>
-                  Увеличение прибыли происходит за счёт индивидуальных акций,
-                  удобной push-рассылки, умной корзины и уникального функционала
-                  приложения.
+                  {t('Увеличение прибыли происходит за счёт индивидуальных акций,')}
+                  {t('удобной push-рассылки, умной корзины и уникального функционала')}
+                  {t('приложения.')}
                 </p>
                 {/* <button type="button" className="btn-secondary hmax">
                   <svg
@@ -989,7 +991,7 @@ const Home = () => {
 
         <section id="example" className="sec-14 mb-6">
           <Container>
-            <h2>Компании, которые уже пользуются сервисом</h2>
+            <h2>{t('Компании, которые уже пользуются сервисом')}</h2>
             <Swiper
               ref={swiperRef}
               loop={true}
@@ -1025,7 +1027,7 @@ const Home = () => {
                 <Company
                   imgLogo="/images/companies/yakinori-logo.png"
                   imgCover="/images/companies/yakinori-cover.png"
-                  title="Якинори"
+                  title={t('Якинори')}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1046,7 +1048,7 @@ const Home = () => {
                 <Company
                   imgLogo="/images/companies/seko-logo.png"
                   imgCover="/images/companies/seko-cover.png"
-                  title="Сэко"
+                  title={t('Сэко')}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1060,21 +1062,21 @@ const Home = () => {
                 <Company
                   imgLogo="/images/companies/filadelfiya-logo.png"
                   imgCover="/images/companies/filadelfiya-cover.png"
-                  title="Филадельфия"
+                  title={t('Филадельфия')}
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <Company
                   imgLogo="/images/companies/nyam-sushi-logo.png"
                   imgCover="/images/companies/nyam-sushi-cover.png"
-                  title="Ням Суши"
+                  title={t('Ням Суши')}
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <Company
                   imgLogo="/images/companies/parfe-logo.png"
                   imgCover="/images/companies/parfe-cover.png"
-                  title="Парфе"
+                  title={t('Парфе')}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1132,13 +1134,13 @@ const Home = () => {
           </button>
           <Row>
             <Col xs={12} lg={8}>
-              <h4>Вопрос-заголовок</h4>
+              <h4>{t('Вопрос-заголовок')}</h4>
               <p className="fs-09 mb-4">
-                Оставьте заявку и мы перезвоним через 15 минут или раньше.
+                {t('Оставьте заявку и мы перезвоним через 15 минут или раньше.')}
               </p>
               <div className="fs-09 d-sm-flex">
                 <label className="input-labeled w-xs-100">
-                  <input type="text" placeholder="Имя" />
+                  <input type="text" placeholder={t('Имя')} />
                   <span></span>
                 </label>
                 <label className="input-labeled w-xs-100 ms-sm-3 mt-3 mt-sm-0">
@@ -1152,13 +1154,13 @@ const Home = () => {
                   type="button"
                   className="btn-primary  w-xs-100 ms-sm-3 mt-3 mt-sm-0"
                 >
-                  Отправить
+                  {t('Отправить')}
                 </button>
               </div>
               <p className="fs-07 mt-2">
-                Нажимая кнопку «Отправить», вы даёте согласие на обработку
-                персональных данных и соглашаетесь с Политикой
-                конфиденциальности
+                {t('Нажимая кнопку «Отправить», вы даёте согласие на обработку')}
+                {t('персональных данных и соглашаетесь с Политикой')}
+                {t('конфиденциальности')}
               </p>
             </Col>
             <Col xs={12} lg={4} className="d-none d-lg-block">
@@ -1181,7 +1183,7 @@ const Home = () => {
         <Modal.Body>
           <form action="" className="quiz">
             <fieldset className={quizPage === 1 ? "" : "d-none"}>
-              <legend>Какое у вас заведение?</legend>
+              <legend>{t('Какое у вас заведение?')}</legend>
               <Row>
                 <Col xs={12} lg={7} xl={9}>
                   <Row>
@@ -1190,41 +1192,41 @@ const Home = () => {
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Кафе</span>
+                            <span className="ms-2">{t('Кафе')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Ресторан</span>
+                            <span className="ms-2">{t('Ресторан')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Суши-бар</span>
+                            <span className="ms-2">{t('Суши-бар')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Пиццерия</span>
+                            <span className="ms-2">{t('Пиццерия')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Пекарня</span>
+                            <span className="ms-2">{t('Пекарня')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="radio" name="type" />
-                            <span className="ms-2">Сервис доставки</span>
+                            <span className="ms-2">{t('Сервис доставки')}</span>
                           </label>
                         </li>
                         <li>
-                          <input type="text" placeholder="Другое" />
+                          <input type="text" placeholder={t('Другое')} />
                         </li>
                       </ul>
                     </Col>
@@ -1251,8 +1253,8 @@ const Home = () => {
                         className="photo"
                       />
                       <div>
-                        <h5>Сирень</h5>
-                        <p className="fs-09">Руководитель</p>
+                        <h5>{t('Сирень')}</h5>
+                        <p className="fs-09">{t('Руководитель')}</p>
                       </div>
                     </div>
                     <blockquote>
@@ -1302,21 +1304,21 @@ const Home = () => {
                     </button>
                     <div className="text-center">
                       <p className="quiz-page">1/5</p>
-                      <p className="deepblue fw-6">вопрос</p>
+                      <p className="deepblue fw-6">{t('вопрос')}</p>
                     </div>
                     <button
                       type="button"
                       className="btn-primary"
                       onClick={() => setQuizPage(2)}
                     >
-                      Далее
+                      {t('Далее')}
                     </button>
                   </div>
                 </Col>
               </Row>
             </fieldset>
             <fieldset className={quizPage === 2 ? "" : "d-none"}>
-              <legend>Что вас заинтересовало больше всего?</legend>
+              <legend>{t('Что вас заинтересовало больше всего?')}</legend>
               <Row>
                 <Col xs={12} lg={7} xl={9}>
                   <Row>
@@ -1325,25 +1327,25 @@ const Home = () => {
                         <li>
                           <label>
                             <input type="checkbox" name="product" />
-                            <span className="ms-2">Мобильное приложение</span>
+                            <span className="ms-2">{t('Мобильное приложение')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="checkbox" name="product" />
-                            <span className="ms-2">Сайт</span>
+                            <span className="ms-2">{t('Сайт')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="checkbox" name="product" />
-                            <span className="ms-2">QR-меню</span>
+                            <span className="ms-2">{t('QR-меню')}</span>
                           </label>
                         </li>
                         <li>
                           <label>
                             <input type="checkbox" name="product" />
-                            <span className="ms-2">YooApp-система</span>
+                            <span className="ms-2">{t('YooApp-система')}</span>
                           </label>
                         </li>
                       </ul>
@@ -1371,8 +1373,8 @@ const Home = () => {
                         className="photo"
                       />
                       <div>
-                        <h5>Сирень</h5>
-                        <p className="fs-09">Руководитель</p>
+                        <h5>{t('Сирень')}</h5>
+                        <p className="fs-09">{t('Руководитель')}</p>
                       </div>
                     </div>
                     <blockquote>
@@ -1422,21 +1424,21 @@ const Home = () => {
                     </button>
                     <div className="text-center">
                       <p className="quiz-page">2/5</p>
-                      <p className="deepblue fw-6">вопрос</p>
+                      <p className="deepblue fw-6">{t('вопрос')}</p>
                     </div>
                     <button
                       type="button"
                       className="btn-primary"
                       onClick={() => setQuizPage(3)}
                     >
-                      Далее
+                      {t('Далее')}
                     </button>
                   </div>
                 </Col>
               </Row>
             </fieldset>
             <fieldset className={quizPage === 3 ? "" : "d-none"}>
-              <legend>Сколько у вас точек (филиалов) ?</legend>
+              <legend>{t('Сколько у вас точек (филиалов) ?')}</legend>
               <Row>
                 <Col xs={12} lg={7} xl={9}>
                   <Row xs={2} xl={3} className="g-2 g-sm-3">
@@ -1449,7 +1451,7 @@ const Home = () => {
                             alt="replacement"
                             className="img-fluid"
                           />
-                          <figcaption>один филиал</figcaption>
+                          <figcaption>{t('один филиал')}</figcaption>
                         </figure>
                       </label>
                     </Col>
@@ -1463,7 +1465,7 @@ const Home = () => {
                             className="img-fluid"
                           />
                           <figcaption>
-                            больше одной точки в одном городе
+                            {t('больше одной точки в одном городе')}
                           </figcaption>
                         </figure>
                       </label>
@@ -1478,7 +1480,7 @@ const Home = () => {
                             className="img-fluid"
                           />
                           <figcaption>
-                            больше одной точки в разных городах
+                            {t('больше одной точки в разных городах')}
                           </figcaption>
                         </figure>
                       </label>
@@ -1499,8 +1501,8 @@ const Home = () => {
                         className="photo"
                       />
                       <div>
-                        <h5>Сирень</h5>
-                        <p className="fs-09">Руководитель</p>
+                        <h5>{t('Сирень')}</h5>
+                        <p className="fs-09">{t('Руководитель')}</p>
                       </div>
                     </div>
                     <blockquote>
@@ -1550,14 +1552,14 @@ const Home = () => {
                     </button>
                     <div className="text-center">
                       <p className="quiz-page">3/5</p>
-                      <p className="deepblue fw-6">вопрос</p>
+                      <p className="deepblue fw-6">{t('вопрос')}</p>
                     </div>
                     <button
                       type="button"
                       className="btn-primary"
                       onClick={() => setQuizPage(4)}
                     >
-                      Далее
+                      {t('Далее')}
                     </button>
                   </div>
                 </Col>
@@ -1565,7 +1567,7 @@ const Home = () => {
             </fieldset>
             <fieldset className={quizPage === 4 ? "" : "d-none"}>
               <legend>
-                С каким программным обеспечением работает ваше заведение?
+                {t('С каким программным обеспечением работает ваше заведение?')}
               </legend>
               <Row>
                 <Col xs={12} lg={7} xl={9}>
@@ -1602,12 +1604,12 @@ const Home = () => {
                         <input type="radio" name="software" />
                         <figure>
                           <img src="/images/none.jpg" alt="replacement" />
-                          <figcaption>нет никакой</figcaption>
+                          <figcaption>{t('нет никакой')}</figcaption>
                         </figure>
                       </label>
                     </Col>
                   </Row>
-                  <input type="text" placeholder="Другое" className="mt-3" />
+                  <input type="text" placeholder={t('Другое')} className="mt-3" />
                 </Col>
                 <Col
                   xs={12}
@@ -1623,8 +1625,8 @@ const Home = () => {
                         className="photo"
                       />
                       <div>
-                        <h5>Сирень</h5>
-                        <p className="fs-09">Руководитель</p>
+                        <h5>{t('Сирень')}</h5>
+                        <p className="fs-09">{t('Руководитель')}</p>
                       </div>
                     </div>
                     <blockquote>
@@ -1674,14 +1676,14 @@ const Home = () => {
                     </button>
                     <div className="text-center">
                       <p className="quiz-page">4/5</p>
-                      <p className="deepblue fw-6">вопрос</p>
+                      <p className="deepblue fw-6">{t('вопрос')}</p>
                     </div>
                     <button
                       type="button"
                       className="btn-primary"
                       onClick={() => setQuizPage(5)}
                     >
-                      Далее
+                      {t('Далее')}
                     </button>
                   </div>
                 </Col>
@@ -1734,23 +1736,23 @@ const Home = () => {
                 </Col>
                 <Col xs={12} lg={5} xl={3}>
                   <p className="mb-3">
-                    Завершите опрос и получите демо-доступ для демонстрации
+                    {t('Завершите опрос и получите демо-доступ для демонстрации')}
                   </p>
                   <label className="input-labeled w-xs-100 mb-3">
-                    <input type="text" placeholder="Имя" />
-                    <span>Имя</span>
+                    <input type="text" placeholder={t('Имя')} />
+                    <span>{t('Имя')}</span>
                   </label>
                   <label className="input-labeled w-xs-100 mb-3">
                     <input type="tel" placeholder="+ 7-(9__)-___-__-__" />
-                    <span>Номер телефона</span>
+                    <span>{t('Номер телефона')}</span>
                   </label>
                   <label className="input-labeled w-xs-100 mb-3">
                     <input type="text" placeholder="" />
-                    <span>Город</span>
+                    <span>{t('Город')}</span>
                   </label>
                   <label className="input-labeled w-xs-100 mb-3">
                     <input type="text" placeholder="" />
-                    <span>Название заведения</span>
+                    <span>{t('Название заведения')}</span>
                   </label>
 
                   <div className="d-flex">
@@ -1790,7 +1792,7 @@ const Home = () => {
                       </svg>
                     </button>
                     <button type="submit" className="btn-primary">
-                      отправить
+                      {t('отправить')}
                     </button>
                   </div>
                 </Col>

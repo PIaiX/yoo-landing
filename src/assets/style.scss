@@ -733,6 +733,18 @@ header {
                 }
             }
 
+            &.lang {
+                display: flex;
+                background-color: $pale-blue;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+
+                a {
+                    margin-right: 1em;
+                }
+            }
+
             a {
                 font-size: 1em;
                 font-weight: 600;
@@ -1800,6 +1812,7 @@ main {
     position: relative;
     width: 5em;
 
+
     &>button {
         background-color: $blue;
         color: #fff;
@@ -1808,6 +1821,10 @@ main {
         padding: .3em .6em;
         border-radius: 1em;
         @include flex(row, space-between, center, nowrap);
+
+        @media (max-width: $bp-lg) {
+            padding: .1em .6em;
+        }
 
         svg {
             margin-left: .5em;
