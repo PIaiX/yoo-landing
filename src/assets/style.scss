@@ -1796,6 +1796,65 @@ main {
     }
 }
 
+.lang-switcher {
+    position: relative;
+    width: 5em;
+
+    &>button {
+        background-color: $blue;
+        color: #fff;
+        width: 100%;
+        font-size: 1.25em;
+        padding: .3em .6em;
+        border-radius: 1em;
+        @include flex(row, space-between, center, nowrap);
+
+        svg {
+            margin-left: .5em;
+        }
+
+        transition: border-radius .1s linear;
+    }
+
+    ul {
+        @include list();
+        background-color: $blue;
+        position: absolute;
+        z-index: 2;
+        top: 100%;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        @include flex(column, flex-start, stretch, nowrap);
+        border-radius: 0 0 1em 1em;
+
+        li {
+            width: 100%;
+            margin: 0px !important;
+
+            button {
+                @include flex(row, space-between, center, nowrap);
+                padding: .3em .6em;
+                font-size: 1.25em !important;
+                width: 100%;
+
+                img {
+                    width: .75em;
+                    height: .75em;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    &.opened {
+        &>button {
+            border-radius: 1em 1em 0 0;
+        }
+    }
+}
+
 footer {
     height: var(--f-height);
 

@@ -4,6 +4,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-scroll";
 import useIsMobile from "../hooks/useIsMobile";
 import { Link as LinkRoute } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const isMobileLG = useIsMobile("991px");
@@ -149,6 +150,9 @@ const Header = () => {
                     <a className="fw-7" href="tel:+79172555060">
                       +7(917)255-50-60
                     </a>
+                  </li>
+                  <li>
+                    <LanguageSwitcher />
                   </li>
                 </ul>
               </nav>
