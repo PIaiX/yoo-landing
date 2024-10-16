@@ -824,11 +824,11 @@ const Home = () => {
                           </li>
                           <li>
                             <span>{t('Сайт')}</span>
-                            <span>{t('3 000 ₽ / мес')}</span>
+                            <span>{t('3 500 ₽ / мес')}</span>
                           </li>
                           <li>
                             <span>{t('Интеграция')}</span>
-                            <span>{t('5-15 тыс ₽')}</span>
+                            <span>{t('10-20 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
@@ -879,7 +879,7 @@ const Home = () => {
                           </li>
                           <li>
                             <span>{t('Интеграция')}</span>
-                            <span>{t('5-15 тыс ₽')}</span>
+                            <span>{t('10-20 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
@@ -935,7 +935,7 @@ const Home = () => {
                           </li>
                           <li>
                             <span>{t('Интеграция')}</span>
-                            <span>{t('5-15 тыс ₽')}</span>
+                            <span>{t('10-20 тыс ₽')}</span>
                           </li>
                         </ul>
                       </div>
