@@ -946,7 +946,7 @@ const Home = () => {
                               {t("Подключение доп.")} {t("точки")}
                             </span>
                             <span className="d-lg-none">{t("Доп. точки")}</span>
-                            <span>15 000 ₽</span>
+                            <span>20 000 ₽</span>
                           </li>
                           <li>
                             <span>{t("Сайт")}</span>
