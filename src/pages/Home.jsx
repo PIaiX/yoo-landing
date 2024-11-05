@@ -1,29 +1,25 @@
-import { useTranslation } from "react-i18next";
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
+import { useTranslation } from "react-i18next";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade, FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import data from "../assets/data.json";
 import Company from "../components/Company";
 import Offer from "../components/Offer";
 import useIsMobile from "../hooks/useIsMobile";
 import useObserver from "../hooks/useObserver";
-import { useParams } from "react-router-dom";
-import data from "../assets/data.json";
 
 const Home = () => {
   const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
-  const { value } = useParams();
 
-  const [showMenu, setShowMenu] = useState(false);
-  const handleCloseMenu = () => setShowMenu(false);
-  const handleShowMenu = () => setShowMenu(true);
+  const { hostname } = window.location;
 
   const [objRef, isVisible] = useObserver({ threshold: 0.5 });
   const [objRef2, isVisible2] = useObserver({ threshold: 0.5 });
@@ -31,22 +27,20 @@ const Home = () => {
 
   const [showCallback, setShowCallback] = useState(false);
   const handleCloseCallback = () => setShowCallback(false);
-  const handleShowCallback = () => setShowCallback(true);
 
   const [showQuiz, setShowQuiz] = useState(false);
   const handleCloseQuiz = () => setShowQuiz(false);
-  const handleShowQuiz = () => setShowQuiz(true);
 
   const [quizPage, setQuizPage] = useState(1);
   const swiperRef = useRef(null);
 
   useLayoutEffect(() => {
-    const phones = value ? data.find((e) => e.value === value) : false;
+    const phones = hostname ? data.find((e) => e.value === hostname) : false;
 
     if (phones?.phone) {
       localStorage.setItem("data", JSON.stringify(phones));
     }
-  }, []);
+  }, [hostname]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {

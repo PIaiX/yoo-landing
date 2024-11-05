@@ -9,11 +9,11 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import data from "../assets/data.json";
 
 const Header = () => {
-  const { value } = useParams();
+  const { hostname } = window.location;
   const phones = localStorage.getItem("data")
     ? JSON.parse(localStorage.getItem("data"))
-    : value
-    ? data.find((e) => e.value === value)
+    : hostname
+    ? data.find((e) => e.value === hostname)
     : false;
 
   const { t } = useTranslation();
