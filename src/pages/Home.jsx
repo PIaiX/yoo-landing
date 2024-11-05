@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
@@ -13,10 +13,13 @@ import Company from "../components/Company";
 import Offer from "../components/Offer";
 import useIsMobile from "../hooks/useIsMobile";
 import useObserver from "../hooks/useObserver";
+import { useParams } from "react-router-dom";
+import data from "../assets/data.json";
 
 const Home = () => {
   const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
+  const { value } = useParams();
 
   const [showMenu, setShowMenu] = useState(false);
   const handleCloseMenu = () => setShowMenu(false);
@@ -36,6 +39,14 @@ const Home = () => {
 
   const [quizPage, setQuizPage] = useState(1);
   const swiperRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const phones = value ? data.find((e) => e.value === value) : false;
+
+    if (phones?.phone) {
+      localStorage.setItem("data", JSON.stringify(phones));
+    }
+  }, []);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -64,7 +75,7 @@ const Home = () => {
                 <div className="d-sm-flex mt-4 mt-lg-5">
                   <a
                     type="button"
-                    href="https://t.me/app_plaix"
+                    href="https://lk.yooapp.ru/reg"
                     target="_blank"
                     className="btn-light w-xs-100"
                   >

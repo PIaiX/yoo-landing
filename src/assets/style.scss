@@ -694,10 +694,10 @@ header {
 
             li {
                 &:not(:first-child) {
-                    margin-left: 3em;
+                    margin-left: 0.8em;
 
                     @media (max-width: $bp-xl) {
-                        margin-left: 1.5em;
+                        margin-left: 0.5em;
                     }
                 }
 
