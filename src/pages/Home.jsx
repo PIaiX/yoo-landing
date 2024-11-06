@@ -18,7 +18,7 @@ import useObserver from "../hooks/useObserver";
 const Home = () => {
   const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
-
+  const referrer = document.referrer;
   const { hostname } = window.location;
 
   const [objRef, isVisible] = useObserver({ threshold: 0.5 });
@@ -35,12 +35,13 @@ const Home = () => {
   const swiperRef = useRef(null);
 
   useLayoutEffect(() => {
-    const phones = hostname ? data.find((e) => e.value === hostname) : false;
+    var phones = hostname ? data.find((e) => e.value === hostname) ?? {} : {};
 
-    if (phones?.phone) {
+    if (phones) {
+      phones.source = referrer;
       localStorage.setItem("data", JSON.stringify(phones));
     }
-  }, [hostname]);
+  }, [hostname, referrer]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -69,7 +70,10 @@ const Home = () => {
                 <div className="d-sm-flex mt-4 mt-lg-5">
                   <a
                     type="button"
-                    href="https://lk.yooapp.ru/reg"
+                    href={
+                      "https://lk.yooapp.ru/reg" +
+                      (referrer ? "?source=" + new URL(referrer) : "")
+                    }
                     target="_blank"
                     className="btn-light w-xs-100"
                   >

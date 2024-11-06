@@ -190,7 +190,13 @@ const Header = () => {
                     <Link to="example">{t("Примеры")}</Link>
                   </li>
                   <li>
-                    <a href="https://lk.yooapp.ru/" target="_blank">
+                    <a
+                      href={
+                        "https://lk.yooapp.ru/" +
+                        (phones?.source ? "?source=" + new URL(phones.source) : "")
+                      }
+                      target="_blank"
+                    >
                       {t("Войти")}
                     </a>
                   </li>
