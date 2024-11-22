@@ -1112,6 +1112,9 @@ const Home = () => {
                   imgLogo="/images/companies/totos-logo.png"
                   imgCover="/images/companies/totos-cover.png"
                   title="Totos Pizza"
+                  ios="https://apps.apple.com/ru/app/totos-pizza-%D1%82%D0%BE%D1%82%D0%BE%D1%81-%D0%BF%D0%B8%D1%86%D1%86%D0%B0/id6450983877"
+                  android="https://play.google.com/store/apps/details?id=ru.totos.app"
+                  web="https://new.totospizza.ru/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1119,13 +1122,9 @@ const Home = () => {
                   imgLogo="/images/companies/yakinori-logo.png"
                   imgCover="/images/companies/yakinori-cover.png"
                   title={t("Якинори")}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Company
-                  imgLogo="/images/companies/xiao-logo.png"
-                  imgCover="/images/companies/xiao-cover.png"
-                  title="Xiao"
+                  ios="https://apps.apple.com/ru/app/%D1%8F%D0%BA%D0%B8%D0%BD%D0%BE%D1%80%D0%B8/id1671795711"
+                  android="https://play.google.com/store/apps/details?id=com.gikami.foodapp"
+                  web="https://yakinori.ru"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1133,6 +1132,9 @@ const Home = () => {
                   imgLogo="/images/companies/dream-logo.png"
                   imgCover="/images/companies/dream-cover.png"
                   title="Dream Sushi"
+                  ios="https://apps.apple.com/ru/app/dreamsushi/id6462661474"
+                  android="https://play.google.com/store/apps/details?id=ru.dreamsushi.app"
+                  web="https://dreamsushi.ru/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1140,6 +1142,9 @@ const Home = () => {
                   imgLogo="/images/companies/seko-logo.png"
                   imgCover="/images/companies/seko-cover.png"
                   title={t("Сэко")}
+                  ios="https://apps.apple.com/ru/app/%D1%81%D1%8D%D0%BA%D0%BE/id6461823402"
+                  android="https://play.google.com/store/apps/details?id=ru.seko.app"
+                  web="https://ceko.su/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1147,6 +1152,9 @@ const Home = () => {
                   imgLogo="/images/companies/akari-logo.png"
                   imgCover="/images/companies/akari-cover.png"
                   title="Akari"
+                  ios="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B0%D1%80%D0%B8/id6470714448"
+                  android="https://play.google.com/store/apps/details?id=ru.akari.app"
+                  web="https://akari116.ru/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1154,6 +1162,9 @@ const Home = () => {
                   imgLogo="/images/companies/filadelfiya-logo.png"
                   imgCover="/images/companies/filadelfiya-cover.png"
                   title={t("Филадельфия")}
+                  ios="https://apps.apple.com/ru/app/%D1%84%D0%B8%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C%D1%84%D0%B8%D1%8F/id6446284742"
+                  android="https://play.google.com/store/apps/details?id=ru.file.app"
+                  web="https://phila-roll.ru/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1161,6 +1172,9 @@ const Home = () => {
                   imgLogo="/images/companies/nyam-sushi-logo.png"
                   imgCover="/images/companies/nyam-sushi-cover.png"
                   title={t("Ням Суши")}
+                  ios="https://apps.apple.com/ru/app/%D0%BD%D1%8F%D0%BC-%D1%81%D1%83%D1%88%D0%B8/id6504171451"
+                  android="https://play.google.com/store/apps/details?id=ru.nyamsushi.app"
+                  web=""
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1168,6 +1182,9 @@ const Home = () => {
                   imgLogo="/images/companies/parfe-logo.png"
                   imgCover="/images/companies/parfe-cover.png"
                   title={t("Парфе")}
+                  ios="https://apps.apple.com/ru/app/parfe/id6479529906"
+                  android="https://play.google.com/store/apps/details?id=ru.cafeparfe.app"
+                  web="https://cafe-parfe.ru/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1175,6 +1192,9 @@ const Home = () => {
                   imgLogo="/images/companies/pizzart-logo.png"
                   imgCover="/images/companies/pizzart-cover.png"
                   title="Pizzart"
+                  ios="https://apps.apple.com/ru/app/pizzart/id6470825610"
+                  android="https://play.google.com/store/apps/details?id=ru.pizzart.app"
+                  web="https://xn--80apugkva.xn--p1ai/"
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -1182,20 +1202,9 @@ const Home = () => {
                   imgLogo="/images/companies/refettorio-logo.png"
                   imgCover="/images/companies/refettorio-cover.png"
                   title="Refettorio"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Company
-                  imgLogo="/images/companies/si-mama-logo.png"
-                  imgCover="/images/companies/si-mama-cover.png"
-                  title="Si Mama Sushi"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Company
-                  imgLogo="/images/companies/telon-logo.png"
-                  imgCover="/images/companies/telon-cover.png"
-                  title="Telon"
+                  ios="https://apps.apple.com/ru/app/refettorio-%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7-%D0%BF%D0%B8%D1%86%D1%86%D1%8B/id1636478969"
+                  android="https://play.google.com/store/apps/details?id=cafe.refettorio.app"
+                  web="https://refettorio.cafe/"
                 />
               </SwiperSlide>
             </Swiper>
