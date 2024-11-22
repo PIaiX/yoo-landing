@@ -356,6 +356,7 @@ const Home = () => {
                     {t(
                       "Внедрим сайт и мобильное приложение за 2 недели. Интегрируем"
                     )}
+                    {" "}
                     {t(
                       "с системой управления заведением, настроим зоны доставки и"
                     )}
@@ -1086,7 +1087,7 @@ const Home = () => {
               ref={swiperRef}
               loop={true}
               spaceBetween={11}
-              slidesPerView={4.3}
+              slidesPerView={6.3}
               centeredSlides={false}
               watchSlidesProgress={true}
               modules={[FreeMode, Mousewheel]}
@@ -1101,7 +1102,7 @@ const Home = () => {
                   spaceBetween: 11,
                 },
                 992: {
-                  slidesPerView: 4.3,
+                  slidesPerView: 6.3,
                   spaceBetween: 11,
                 },
               }}
