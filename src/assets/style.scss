@@ -1794,10 +1794,28 @@ main {
             }
         }
 
+        .content {
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            gap: 10px;
+            align-items: center;
+
+            @media (max-width: $bp-md) {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
         h3 {
             @media (max-width: $bp-md) {
                 display: none;
             }
+
+            @media (max-width: $bp-xl) {
+                font-size: 1.4em;
+            }
+
         }
 
         .btn-secondary {
