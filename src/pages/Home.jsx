@@ -14,6 +14,7 @@ import Company from "../components/Company";
 import Offer from "../components/Offer";
 import useIsMobile from "../hooks/useIsMobile";
 import useObserver from "../hooks/useObserver";
+import NewsBlock from "../components/NewsBlock";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -1210,6 +1211,7 @@ const Home = () => {
             </Swiper>
           </Container>
         </section>
+        <NewsBlock />
       </main>
       <Modal
         className="home modalCallback"

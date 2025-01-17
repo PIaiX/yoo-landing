@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "title": "The hype around dating apps. ",
+        "text": "Despite the fact that several months have passed since the departure of the most popular platforms, the demand for the development of such applications is not falling. During this time ...",
+        "imgLink": "/images/articles/article1.webp",
+        "date": "09/15/2023"
+    },
+    {
+        "id": 1,
+        "title": "Investing our experience in an online shopping platform.",
+        "text": "After launching the platform for catering applications, we faced a demand for a similar service for creating an online store application. Of course ...",
+        "imgLink": "/images/articles/article3.webp",
+        "date": "08/28/2023"
+    },
+    {
+        "id": 2,
+        "title": "Back to work on «Online»",
+        "text": "Many people know that at the time of nelzyagram's departure from the Russian Federation, we launched our own analogue of the popular social network, which we called «Online». Launched in May ...",
+        "imgLink": "/images/articles/article2.webp",
+        "date": "08/02/2023"
+    }
+]
