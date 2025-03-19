@@ -59,7 +59,7 @@ const Home = () => {
                 <div className="d-flex align-items-center mb-4">
                   <img src="/images/tomato.svg" alt="tomato" />
                   <h1 className="mb-0 ms-2 ms-sm-3">
-                    YooApp - {t("Сайт и приложение для доставки еды")}
+                    YooEda - {t("Сайт и приложение для доставки еды")}
                   </h1>
                 </div>
                 <p>
@@ -241,7 +241,7 @@ const Home = () => {
         <section className="sec-4 mb-6">
           <Container>
             <div className="top mb-2 mb-sm-4">
-              <h3 className="fw-7 mb-0">{t("В сервис YooApp входит:")}</h3>
+              <h3 className="fw-7 mb-0">{t("В сервис YooEda входит:")}</h3>
               {/* <a href="/" className="d-none d-lg-flex align-items-center">
                 <svg
                   className="fs-15"
@@ -351,7 +351,7 @@ const Home = () => {
               <Col xs={12} lg={5}>
                 <div className="grayBlock-1">
                   <h3 className="text-uppercase deepblue mb-2">{t("старт")}</h3>
-                  <h4>{t("Подключение YooApp")}</h4>
+                  <h4>{t("Подключение YooEda")}</h4>
                   <p>
                     {t(
                       "Внедрим сайт и мобильное приложение за 2 недели. Интегрируем"
@@ -510,7 +510,7 @@ const Home = () => {
                         {t(
                           "системы, то мы настроим управление через админ-панель"
                         )}
-                        YooApp {t("или поможем внедрить.")}
+                        YooEda {t("или поможем внедрить.")}
                       </p>
                     </div>
                   </Col>
@@ -826,7 +826,7 @@ const Home = () => {
                 <h4>{t("Все управление в одном месте")}</h4>
                 <p>
                   {t(
-                    "Объедините с YooApp все заведения, или даже бренды, в одном"
+                    "Объедините с YooEda все заведения, или даже бренды, в одном"
                   )}{" "}
                   {t("кабинете")}
                 </p>
@@ -1451,7 +1451,7 @@ const Home = () => {
                         <li>
                           <label>
                             <input type="checkbox" name="product" />
-                            <span className="ms-2">{t("YooApp-система")}</span>
+                            <span className="ms-2">{t("YooEda-система")}</span>
                           </label>
                         </li>
                       </ul>
