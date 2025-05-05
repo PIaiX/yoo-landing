@@ -1023,6 +1023,10 @@ const Home = () => {
                             <span>{t("Интеграция")}</span>
                             <span>{t("10-20 тыс ₽")}</span>
                           </li>
+                          <li>
+                            <span>{t("Минимальная оплата")}</span>
+                            <span>{t("6 тыс ₽ / мес")}</span>
+                          </li>
                         </ul>
                       </div>
                       {/* <button
