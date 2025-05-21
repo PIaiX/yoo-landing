@@ -1215,7 +1215,7 @@ const Home = () => {
             </Swiper>
           </Container>
         </section>
-        <NewsBlock />
+        {/* <NewsBlock /> */}
       </main>
       <Modal
         className="home modalCallback"
