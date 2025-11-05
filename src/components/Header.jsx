@@ -213,11 +213,11 @@ const Header = () => {
                           +7(927)429-99-03
                         </a>
                       </li>
-                      <li>
+                      {/* <li>
                         <a className="fw-7" href="tel:+79172555060">
                           +7(917)255-50-60
                         </a>
-                      </li>
+                      </li> */}
                     </>
                   )}
                   {!isMobileLG && (
