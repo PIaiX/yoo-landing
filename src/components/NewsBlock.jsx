@@ -1,73 +1,156 @@
-import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
-import Row from "react-bootstrap/Row";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import { useTranslation } from "react-i18next";
+import { HiOutlineCalendar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Arrow from "./svg/Arrow";
-import ArticlePreview from "./ArticlePreview";
-import { Container } from "react-bootstrap";
 
 const NewsBlock = () => {
   const { t, i18n } = useTranslation();
   const selectedLanguage = i18n.resolvedLanguage;
+  const [jsonData, setJsonData] = useState([]);
+  const [activeNews, setActiveNews] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  let jsonData;
-  if (selectedLanguage === "RU") {
-    jsonData = require("../data/articlesRu.json");
-  } else if (selectedLanguage === "EN") {
-    jsonData = require("../data/articlesEn.json");
+  // Загрузка данных
+  useEffect(() => {
+    try {
+      let data;
+      if (selectedLanguage === "RU") {
+        data = require("../data/articlesRu.json");
+      } else if (selectedLanguage === "EN") {
+        data = require("../data/articlesEn.json");
+      } else {
+        data = require("../data/articlesRu.json");
+      }
+
+      // Проверяем, что data - массив и не пустой
+      if (Array.isArray(data) && data.length > 0) {
+        // Берем только последние 5 статей для блока новостей
+        const sortedData = [...data].sort((a, b) => {
+          // Безопасное сравнение дат
+          const dateA = a.date ? new Date(a.date) : new Date(0);
+          const dateB = b.date ? new Date(b.date) : new Date(0);
+          return dateB - dateA;
+        });
+        const latestData = sortedData.slice(0, 3);
+
+        setJsonData(latestData);
+        if (latestData.length > 0 && latestData[0]?.id) {
+          setActiveNews(latestData[0].id);
+        }
+      } else {
+        setJsonData([]);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Ошибка загрузки статей:", error);
+      setJsonData([]);
+      setIsLoading(false);
+    }
+  }, [selectedLanguage]);
+
+  // Функция для получения превью текста (без HTML)
+  const getPreviewText = (article) => {
+    if (!article) return "";
+
+    if (article.content) {
+      try {
+        const tmp = document.createElement("div");
+        tmp.innerHTML = article.content;
+        return tmp.textContent || tmp.innerText || "";
+      } catch (e) {
+        return article.content.substring(0, 100) || "";
+      }
+    }
+    return article.text || "";
+  };
+
+  // Функция для безопасного получения описания
+  const getDescription = (article) => {
+    if (!article) return "";
+    if (article.description) return article.description;
+
+    // Если нет description, используем превью текста
+    const previewText = getPreviewText(article);
+    return (
+      previewText.substring(0, 100) + (previewText.length > 100 ? "..." : "")
+    );
+  };
+
+  if (isLoading) {
+    return null;
   }
-  const [activeNews, setActiveNews] = useState(jsonData[0]?.id);
+
+  if (!jsonData || jsonData.length === 0) {
+    return null; // Не показываем блок, если нет новостей
+  }
 
   return (
-    <section className="sec-15 mb-6">
+    <section className="mb-6">
       <Container>
-        <Row className="justify-content-between">
-          <Col xs={12} lg={6}>
-            <h3>{t("Новости")}</h3>
-            <ul>
-              {jsonData?.length > 0 &&
-                jsonData.map((obj) => {
-                  return (
-                    <li key={obj.id}>
-                      <Link
-                        to={"/article/" + obj.id}
-                        className={activeNews === obj.id ? "active" : ""}
-                        onMouseEnter={() => setActiveNews(obj.id)}
-                      >
-                        <h4>{obj.title}</h4>
+        <Row className="g-5 align-items-start">
+          <Col xs={12} lg={12}>
+            <div className="news-header mb-4">
+              <h3 className="display-6 fw-bold mb-2">
+                {t("Последние новости")}
+              </h3>
+              <p className="text-muted">
+                {t("Будьте в курсе последних событий и обновлений")}
+              </p>
+            </div>
+
+            <ul className="news-list">
+              {jsonData.map((article, index) => {
+                if (!article) return null;
+
+                return (
+                  <li key={article.id || index} className="news-item">
+                    <Link
+                      to={article.id ? "/article/" + article.id : "#"}
+                      className={`news-link ${
+                        activeNews === article.id ? "active" : ""
+                      }`}
+                      onMouseEnter={() =>
+                        article.id && setActiveNews(article.id)
+                      }
+                    >
+                      <div className="news-content">
+                        <div className="news-meta d-flex align-items-center gap-3 mb-2">
+                          <span className="meta-date d-flex align-items-center small text-muted">
+                            <HiOutlineCalendar className="me-1" />
+                            {article.date || t("Дата неизвестна")}
+                          </span>
+                          {article.readTime && (
+                            <span className="meta-read small text-muted">
+                              {article.readTime}
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="news-title mb-2">
+                          {article.title || t("Без названия")}
+                        </h4>
+                        <p className="news-description text-muted small">
+                          {getDescription(article).substring(0, 80)}
+                          {getDescription(article).length > 80 ? "..." : ""}
+                        </p>
+                      </div>
+                      <div className="news-arrow">
                         <Arrow className="icon" />
-                      </Link>
-                    </li>
-                  );
-                })}
+                      </div>
+                    </Link>
+                    {index < jsonData.length - 1 && (
+                      <div className="news-divider" />
+                    )}
+                  </li>
+                );
+              })}
             </ul>
-            {/* <ul>
-            <li>
-              <Link to='/' className={(activeNews === 0)?'active':''} onMouseEnter={()=>setActiveNews(0)}>
-                <h4>GitHub сокращает 10% штата</h4>
-                <Arrow className='icon'/>
-              </Link>
-            </li>
-            <li>
-              <Link to='/' className={(activeNews === 1)?'active':''} onMouseEnter={()=>setActiveNews(1)}>
-                <h4>Процесс развития сотрудников – системный путь к совершенству</h4>
-                <Arrow className='icon'/>
-              </Link>
-            </li>
-            <li>
-              <Link to='/' className={(activeNews === 2)?'active':''} onMouseEnter={()=>setActiveNews(2)}>
-                <h4>5 неочевидных возможностей FastAPI</h4>
-                <Arrow className='icon'/>
-              </Link>
-            </li>
-          </ul> */}
-            <Link to="/article" className="btn-3 mt-4 mt-md-5">
+            <Link to="/article" className="btn-3 mt-2">
               {t("Перейти в блог")}
             </Link>
-          </Col>
-          <Col xs={12} lg={6} xxl={5} className="d-none d-lg-block">
-            <ArticlePreview data={jsonData[activeNews]} />
           </Col>
         </Row>
       </Container>

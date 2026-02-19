@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,8 @@ import data from "../assets/data.json";
 
 const Header = () => {
   const { hostname } = window.location;
+  const referrer = document.referrer;
+
   const phones = localStorage.getItem("data")
     ? JSON.parse(localStorage.getItem("data"))
     : hostname
@@ -18,13 +20,34 @@ const Header = () => {
 
   const { t } = useTranslation();
   const isMobileLG = useIsMobile("991px");
+  const [sticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const [showMenu, setShowMenu] = useState(false);
   const handleCloseMenu = () => setShowMenu(false);
   const handleShowMenu = () => setShowMenu(true);
 
+  // Безопасное получение source из referrer
+  const getSourceFromReferrer = () => {
+    if (!referrer) return "";
+    try {
+      return new URL(referrer).hostname;
+    } catch (e) {
+      console.warn("Invalid referrer URL:", referrer);
+      return "";
+    }
+  };
+
+  const source = getSourceFromReferrer();
   return (
-    <header>
+    <header className={sticky ? "sticky" : ""}>
       <Container className="wide">
         <div className="box d-flex justify-content-between">
           {isMobileLG && (
@@ -181,21 +204,33 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <Link to="voz">{t("Возможности")}</Link>
+                    <Link to="voz" smooth={true} duration={300}>
+                      {t("Возможности")}
+                    </Link>
                   </li>
                   <li>
-                    <Link to="tarif">{t("Тарифы")}</Link>
+                    <Link to="tarif" smooth={true} duration={300}>
+                      {t("Тарифы")}
+                    </Link>
                   </li>
                   <li>
-                    <Link to="example">{t("Примеры")}</Link>
+                    <Link to="example" smooth={true} duration={300}>
+                      {t("Примеры")}
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="/article" target="_blank">
+                      {t("Блог")}
+                    </a>
                   </li>
                   <li>
                     <a
                       href={
                         "https://lk.yooapp.ru/" +
-                        (phones?.source ? "?source=" + new URL(phones.source) : "")
+                        (source ? "?source=" + source : "")
                       }
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {t("Войти")}
                     </a>
@@ -213,11 +248,6 @@ const Header = () => {
                           +7(927)429-99-03
                         </a>
                       </li>
-                      {/* <li>
-                        <a className="fw-7" href="tel:+79172555060">
-                          +7(917)255-50-60
-                        </a>
-                      </li> */}
                     </>
                   )}
                   {!isMobileLG && (

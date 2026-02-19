@@ -1,38 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import React from 'react';
-import Tomato2 from '../assets/imgs/tomato2.svg';
-import Container from 'react-bootstrap/Container';
-import Start from './svg/Start';
-import useIsMobile from '../hooks/useIsMobile';
-import Modal from 'react-bootstrap/Modal';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-const {t} = useTranslation();
-  const isMobileLG = useIsMobile('991px');
-  
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
   return (
-    (isMobileLG)
-    ? <footer className='mobile'>
-      <Container className='d-flex gap-2'>
-        <button type='button' className='btn-primary px-2'>
-          <span>{t('Связаться')}</span>
-          <Start className="fs-15 ms-2"/>
-        </button>
-        <button type='button' className='btn-secondary px-2'>
-          <span>{t('Войти')}</span>
-        </button>
-      </Container>
-    </footer>
-    : <footer className='desktop'>
-      <Container>
-        <div className="box">
-          <img src={Tomato2} alt="Tomato2" className='mb-2'/>
-          <p className='fs-08 text-center'>© All rights reserved<br/>
-          made by minimals.cc</p>
+    <footer className="desktop">
+      <Container className="wide">
+        <div className="box py-3">
+          &copy; {currentYear} YooApp. {t("Все права защищены.")}
         </div>
       </Container>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
