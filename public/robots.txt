@@ -1,1 +1,6 @@
 User-agent: *
+Allow: /
+Disallow: /success/
+Disallow: /error/
+
+Sitemap: https://yooapp.ru/sitemap.xml
