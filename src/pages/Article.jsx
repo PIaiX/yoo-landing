@@ -33,7 +33,7 @@ const Article = () => {
     jsonData = [];
   }
 
-  const articleIdNum = parseInt(articleId);
+  const articleIdNum = articleId;
   const thisArticle = jsonData?.find((e) => e.id === articleIdNum) || false;
 
   // Если статья не найдена
@@ -187,7 +187,7 @@ const Article = () => {
           {/* Изображение статьи с подписью */}
           <figure className="article-figure">
             <img
-              src={thisArticle.imgLink}
+              src={thisArticle.coverLink || thisArticle.imgLink}
               alt={thisArticle.title}
               className="img-fluid"
               loading="lazy"
@@ -326,8 +326,8 @@ const Article = () => {
 
                 {/* CTA блок */}
                 <div className="sidebar-cta mt-5 p-3 bg-light rounded">
-                  <h6 className="mb-3">{t("Запустите доставку с YooApp")}</h6>
-                  <p className="fs-09 mb-3">
+                  <h6 className="mb-3 text-center">{t("Запустите доставку с YooApp")}</h6>
+                  <p className="fs-09 mb-3 text-center">
                     {t("Получите бесплатную консультацию и расчет стоимости")}
                   </p>
                   <Link to="/#tarif" className="btn-primary w-100 text-center">

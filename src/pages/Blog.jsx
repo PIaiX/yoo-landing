@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import Container from "react-bootstrap/Container";
@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import ArticleMidi from "../components/ArticleMidi";
-import { HiOutlineSearch, HiOutlineFilter } from "react-icons/hi";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const Blog = () => {
   const { t, i18n } = useTranslation();
@@ -20,6 +20,26 @@ const Blog = () => {
   const [sortBy, setSortBy] = useState("date");
   const articlesPerPage = 6;
 
+  // Функция для парсинга даты в формате DD.MM.YYYY
+  const parseDate = (dateString) => {
+    if (!dateString) return new Date(0);
+    
+    // Проверяем, если дата уже в формате ISO или другом стандартном формате
+    if (dateString.includes('-')) {
+      return new Date(dateString);
+    }
+    
+    // Парсим формат DD.MM.YYYY
+    const parts = dateString.split('.');
+    if (parts.length === 3) {
+      const [day, month, year] = parts;
+      // Внимание: month - 1, так как в JS месяцы от 0 до 11
+      return new Date(year, month - 1, day);
+    }
+    
+    return new Date(0);
+  };
+
   // Загрузка данных
   useEffect(() => {
     try {
@@ -31,8 +51,16 @@ const Blog = () => {
       } else {
         data = require("../data/articlesRu.json");
       }
-      setJsonData(data);
-      setFilteredData(data);
+      
+      // Сортируем данные сразу после загрузки по дате (новые сверху)
+      const sortedData = [...data].sort((a, b) => {
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+        return dateB - dateA; // Сортировка по убыванию (новые сверху)
+      });
+      
+      setJsonData(sortedData);
+      setFilteredData(sortedData);
     } catch (error) {
       console.error("Ошибка загрузки статей:", error);
       setJsonData([]);
@@ -41,7 +69,7 @@ const Blog = () => {
   }, [selectedLanguage]);
 
   // Собираем все уникальные теги из всех статей
-  const allTags = React.useMemo(() => {
+  const allTags = useMemo(() => {
     const tags = new Set();
     jsonData.forEach((article) => {
       if (article.keywords && Array.isArray(article.keywords)) {
@@ -55,12 +83,12 @@ const Blog = () => {
   useEffect(() => {
     let filtered = [...jsonData];
 
-    // Поиск по заголовку и контенту
+    // Поиск по заголовку, описанию и контенту
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(
         (article) =>
-          article.title.toLowerCase().includes(term) ||
+          (article.title && article.title.toLowerCase().includes(term)) ||
           (article.description &&
             article.description.toLowerCase().includes(term)) ||
           (article.content && article.content.toLowerCase().includes(term)),
@@ -74,18 +102,44 @@ const Blog = () => {
       );
     }
 
-    // Сортировка
-    if (sortBy === "date") {
-      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (sortBy === "title") {
-      filtered.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortBy === "views") {
-      filtered.sort((a, b) => (b.views || 0) - (a.views || 0));
-    }
+    // Применяем сортировку
+    filtered = sortArticles(filtered, sortBy);
 
     setFilteredData(filtered);
     setCurrentPage(1);
   }, [searchTerm, selectedTag, jsonData, sortBy]);
+
+  // Функция сортировки статей
+  const sortArticles = (articles, sortType) => {
+    const sorted = [...articles];
+    
+    switch (sortType) {
+      case "date":
+        sorted.sort((a, b) => {
+          const dateA = parseDate(a.date);
+          const dateB = parseDate(b.date);
+          return dateB - dateA; // Сортировка по убыванию (новые сверху)
+        });
+        break;
+        
+      case "title":
+        sorted.sort((a, b) => {
+          if (!a.title) return 1;
+          if (!b.title) return -1;
+          return a.title.localeCompare(b.title);
+        });
+        break;
+        
+      case "views":
+        sorted.sort((a, b) => (b.views || 0) - (a.views || 0));
+        break;
+        
+      default:
+        break;
+    }
+    
+    return sorted;
+  };
 
   // Пагинация
   const indexOfLastArticle = currentPage * articlesPerPage;
@@ -166,7 +220,6 @@ const Blog = () => {
 
       <Container>
         <section className="page-articles mb-5">
-          {/* Сайдбар с тегами и подпиской */}
           <Row className="gx-5 mt-5">
             <Col lg={8}>
               {/* Поиск и фильтры */}
@@ -355,7 +408,9 @@ const Blog = () => {
                             />
                             <div>
                               <h6 className="mb-1">
-                                {article.title.substring(0, 40)}…
+                                {article.title.length > 40 
+                                  ? article.title.substring(0, 40) + "…" 
+                                  : article.title}
                               </h6>
                               <small className="text-muted">
                                 {article.views || 0} {t("просмотров")}

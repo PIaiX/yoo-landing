@@ -14,6 +14,26 @@ const NewsBlock = () => {
   const [activeNews, setActiveNews] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Функция для парсинга даты в формате DD.MM.YYYY
+  const parseDate = (dateString) => {
+    if (!dateString) return new Date(0);
+    
+    // Проверяем, если дата уже в формате ISO или другом стандартном формате
+    if (dateString.includes('-')) {
+      return new Date(dateString);
+    }
+    
+    // Парсим формат DD.MM.YYYY
+    const parts = dateString.split('.');
+    if (parts.length === 3) {
+      const [day, month, year] = parts;
+      // Внимание: month - 1, так как в JS месяцы от 0 до 11
+      return new Date(year, month - 1, day);
+    }
+    
+    return new Date(0);
+  };
+
   // Загрузка данных
   useEffect(() => {
     try {
@@ -28,13 +48,14 @@ const NewsBlock = () => {
 
       // Проверяем, что data - массив и не пустой
       if (Array.isArray(data) && data.length > 0) {
-        // Берем только последние 5 статей для блока новостей
+        // Сортируем все статьи по дате (новые сверху) с помощью parseDate
         const sortedData = [...data].sort((a, b) => {
-          // Безопасное сравнение дат
-          const dateA = a.date ? new Date(a.date) : new Date(0);
-          const dateB = b.date ? new Date(b.date) : new Date(0);
-          return dateB - dateA;
+          const dateA = parseDate(a.date);
+          const dateB = parseDate(b.date);
+          return dateB - dateA; // Сортировка по убыванию (новые сверху)
         });
+        
+        // Берем только последние 3 статьи для блока новостей
         const latestData = sortedData.slice(0, 3);
 
         setJsonData(latestData);
