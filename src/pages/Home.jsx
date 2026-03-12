@@ -949,7 +949,7 @@ const Home = () => {
                               <h4 className="fw-7 text-uppercase">
                                 {t("Выкуп")}
                               </h4>
-                              <p className="mb-lg-3">400 000 ₽</p>
+                              <p className="mb-lg-3">600 000 ₽</p>
                             </div>
                             <img
                               src="/images/icons/icon3.png"
