@@ -575,7 +575,7 @@ const Redirect = () => {
             }}
           >
             {/* Кнопка Google Play */}
-            {availability.appAvailable &&
+            {/*availability.appAvailable &&
               links?.androidPackage &&
               !deviceInfo.isDesktop && (
                 <button
@@ -632,10 +632,10 @@ const Redirect = () => {
                     Play Store
                   </div>
                 </button>
-              )}
+              )*/}
 
             {/* Кнопка App Store */}
-            {availability.appAvailable &&
+            {/*availability.appAvailable &&
               links?.iosAppId &&
               !deviceInfo.isDesktop && (
                 <button
@@ -692,10 +692,10 @@ const Redirect = () => {
                     App Store
                   </div>
                 </button>
-              )}
+              )*/}
 
             {/* Кнопка сайта для всех устройств */}
-            {availability.siteAvailable && (
+            {/*availability.siteAvailable && (
               <button
                 onClick={() => handleManualRedirect("website", links)}
                 style={{
@@ -748,7 +748,7 @@ const Redirect = () => {
                   Веб-сайт
                 </div>
               </button>
-            )}
+            )*/}
           </div>
         </div>
       </div>
