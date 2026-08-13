@@ -1,10 +1,14 @@
+// Redirect.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
 
 const Redirect = () => {
-  let { brandId } = useParams();
+  const { brandId, partnerId } = useParams();
+  const id = brandId || partnerId;
+  const idType = brandId ? "brandId" : "partnerId";
+
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [redirectStatus, setRedirectStatus] = useState("");
@@ -226,13 +230,13 @@ const Redirect = () => {
         const detectedDevice = detectDeviceAndBrowser();
         setDeviceInfo(detectedDevice);
 
-        // Загружаем данные по brandId
+        // Загружаем данные по brandId или partnerId в зависимости от маршрута
         const response = await axios.get(
-          `https://api.yooapp.ru/site/one/?brandId=${brandId}`,
+          `https://api.yooapp.ru/site/one/?${idType}=${id}`,
           {
             mode: "cors",
             timeout: 10000,
-          }
+          },
         );
 
         setData(response.data);
@@ -245,7 +249,11 @@ const Redirect = () => {
         console.error("Ошибка при загрузке данных:", error);
 
         if (error.response?.status === 404) {
-          setRedirectStatus("Бренд не найден. Проверьте ID.");
+          setRedirectStatus(
+            idType === "partnerId"
+              ? "Партнёр не найден. Проверьте ID."
+              : "Бренд не найден. Проверьте ID.",
+          );
         } else if (
           error.code === "NETWORK_ERROR" ||
           error.code === "ECONNABORTED"
@@ -259,13 +267,13 @@ const Redirect = () => {
       }
     };
 
-    if (brandId) {
+    if (id) {
       fetchDataAndRedirect();
     } else {
-      setRedirectStatus("ID бренда не указан в URL");
+      setRedirectStatus("ID не указан в URL");
       setLoading(false);
     }
-  }, [brandId]);
+  }, [id, idType]);
 
   // Ручной редирект по клику
   const handleManualRedirect = (type, links) => {

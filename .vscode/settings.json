@@ -1,3 +1,6 @@
 {
-    "i18next.i18nPaths": "c:/Users/Admon/Desktop/yoo-landing/src/locales"
+    "i18next.i18nPaths": "c:/Users/Admon/Desktop/yoo-landing/src/locales",
+    "i18n-ally.localesPaths": [
+        "src/locales"
+    ]
 }
